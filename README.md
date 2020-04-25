@@ -1,3 +1,3 @@
-# tecky-exercises
+# tecky-exercises-solutions
 
-Tecky-exercises for Justin Fung
+Tecky-exercises solution for cohort 3
