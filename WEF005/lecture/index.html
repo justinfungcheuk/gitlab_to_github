@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html> 
+    <head> <!-- 主要擺放形容該page的資訊 -->
+        <title>first page</title> <!-- 代表網頁的名字 -->
+        <link rel="stylesheet" href="style.css"> <!-- 有幾版一起分享使用就用 <link rel="stylesheet" href="style.css"> 去做 -->
+        <style>
+            /* CSS */
+        </style>
+    </head>
+    <body>
+        <header>
+            <!-- 由該部分開始打header, 帶出資訊性內容, 與 div 的功能幾乎一樣 -->
+        <nav> <!-- 可以形成一個如 Menu bar 的項目, 帶出資訊性內容 --></nav>
+        </header>
+        <div> <!-- <div> 是最常用, 代表一部分的資料 即是division的意思, 表達一個範圍的意思 -->
+            <!-- Heading最多去到 7, 沒有更多  -->
+            <h1>Heading 1</h1> <!-- Heading 1是最重要的, 主要是凸顯你的網頁主要帶出的訊息是甚麼 -->
+            <h2>Heading 2</h2> 
+            <h3>Heading 3</h3> 
+        <p class="inverse"><i>Paragraph</i></p> <!-- <i> 代表 italic text斜體 -->
+        <p class="xmas" id="special"><b>Paragraph</b></p> <!-- <b> 代表 Bold text  黑體 | id在每一版的html只能出現一次-->
+        <p class="xmas inverse">Para<br>graph</p> <!-- <br> 代表 分行 另外, 一個class內可加空格把另一個class加入去, 變成2個class-->
+        <p class="xmas">Paragraph</p>
+        <img src="Leonardo DiCaprio李奧納多·狄卡皮歐.jpg" height="10"> <!-- <img src=""> 為網頁加入圖片 -->
+        <audio src="iTunes Library Genius.itdb" controls> <!-- <audio src="" controls><code>audio</code></audio> 為網頁增加聲音片段-->
+        Your browser does not support the <code>audio</code> element.
+        </audio>
+        <p>Click <a href="http://www.google.com">here</a></p>
+        <ul> <!-- 代表: unordered list 無次序的列表, 由該部分開始是一個list -->
+            <li class="xmas">Item 1</li> <!-- <li> 代表 List item -->
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <hr> <!-- horizontal line 表示分行的意思 -->
+        </div>
+        <ol class="xmas"> <!-- 代表: ordered list 有序的列表, 以1. 2. 3.如此類推的排序項目, 由該部分開始是一個list -->
+            <li>Item 1</li> <!-- <li> 代表 List item -->
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <!-- <iframe 寬width 高height sec=""網頁> 為網頁增加額外畫中畫, 如增加另一個網頁畫面 --></iframe>
+        <iframe id="tecky" 
+            title="Tecky.io"
+            width="300"
+            height="200"
+            src="https://www.tecky.io">
+        </iframe>
+        <section>
+            <h2>Acknowledgement</h2>
+            <p>Special Thanks to...</p>
+            <ul>
+                <li>Me</li>
+            </ul>
+
+        </section>
+        <footer>
+            <!-- 與 div 的功能幾乎一樣 -->
+        </footer>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">The table header</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>The table body</td>
+                    <td>with two columns</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">The table footer</td>
+                </tr>
+            </tfoot>
+            <!-- 製作填寫資料 表格 -->
+            <form action="/login" method="POST">
+                <div>
+                   <label for="name">Name</label>
+                   <input type='text' name="name" id="name" placeholder="Input your name here"/>
+                </div>
+                <div>
+                   <label for="Email">Email</label>
+                   <input type='email' name="email" id="email"/>
+                </div>
+                <div>
+                   <label for="date_of_birth">Date of Birth</label>
+                   <input type='date' name="date_of_birth" id="date_of_birth" />
+                </div>
+                <div>
+                   <label for="age">Age</label>
+                   <input type='number' name="age" id="age"  />
+                </div>
+                 <div>
+                   <label for="district">District</label>
+                    <select name="district" id="district">
+                        <option value="1">Hong Kong Island</option>
+                        <option value="2">Kowloon</option>
+                        <option value="3">New Territories</option> 
+                    </select>
+                </div>
+                <div>
+                   <label for="gender">Gender</label>
+                    <input type='radio' name="gender" value="Male" />                         
+                    <input type='radio' name="gender" value="Female" />
+                </div>
+                <div>
+                   <label for="interest">Interest</label>
+                    <input type='checkbox' name="programming" />                          
+                    <input type='checkbox' name="hiking" />
+                    <input type='checkbox' name="swimming" />
+                </div>
+                <div>
+                    <input type='submit' value="submit" />
+                    <input type='reset' value="reset" />
+                </div>
+            </form>
+        </table>
+
+    </body>
+</html>

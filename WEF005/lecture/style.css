@@ -1,0 +1,30 @@
+p {
+    color: red;
+}
+
+li {
+    background: green;
+}
+
+li:hover { /* 表示只要是 li的元素, 滑鼠擺上去都會變色 */
+    background: pink;
+}
+
+#special { /* id要用 # 符號來代替 */
+    text-decoration: underline;
+}
+
+[height="10"] {  /* 只要是height="10"就有金色框起來  */
+    border: solid 10px gold;
+}
+
+/* 將div擺在 class="xmas"的前面, 表示只要在 div內的所有 .xmas都是適用於該項目 */
+div > .xmas { /* class 要用 . 符號來代替 */ 
+/* div > .xmas 代表 div下面的class="xmas才適用於該項目, 而再下一層並不適用" */
+    font-weight: bold;
+}
+
+.inverse {
+    background: black; /* RGB format */
+    color: white; 
+}
