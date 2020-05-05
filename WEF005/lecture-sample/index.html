@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+            }
+            header {
+                background: #207c3e;
+                color:white;
+                padding: 10px;
+
+                display: flex;
+                flex-direction: column;
+
+            }
+
+
+
+            h1 {
+                font-size: 96px;
+                margin: 0;
+                /*text-align: center;*/
+            }
+
+            h1, h2 {
+                text-align: center;
+            }
+
+            #page {
+                position: relative; /*最近的position attitue*/
+                background: #eaeb7d;
+            }
+
+            footer {
+                position: absolute; /*絕對座標*/
+                bottom: 0;
+                padding: 20px;
+            }
+
+            .mill {
+                color:#207c3e
+            }
+
+            .calories {
+                background: white;
+                width: 150px;
+                height: 150px;
+                padding: 20px;
+                box-sizing: border-box; /*content-box表示 width & height 只會指住 content, 而border-box則會專指該圓圈*/
+                text-align: center; /*左右置中*/
+
+
+                display: flex; /*外面的框: 上下置中 而display: flex; 代表flexbox*/
+                justify-content: center; /*justify-content只可於flexbox使用才有效*/
+                flex-direction: column;  /*於flex box內的element可以任意擺放*/
+                border-radius: 50%; /*將該位置變成圓形*/
+            }
+
+            .calories p{
+                margin: 0;
+            }
+
+            img {
+                max-width: 100%; /*最大的闊度*/
+            }
+
+            .flex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /*Media query代表是一個額外的selector去定義到底如果screen size有不同, 有甚麼CSS你想去改變*/
+            @media only screen and (min-width: 480px) { /*如果是小於480px 就會運作 {} 內的所有項目*/
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+                
+            img {
+                    max-width: 400;
+                    margin: 0 auto; /*margin: 0 auto; 表示只要左右是0 margin 就會自動置中*/
+                    /* margin: 0 auto 代表　四邊(即是上下左右)都是　0   而margin: 10px(上) auto(左右) 0px(下);*/
+                    display: block; /*將 img 轉為 block type*/
+                }
+            }
+
+            #page {
+                min-height: 500px;
+            }
+
+        </style>
+    </head>
+    <body>
+    <div id="page">
+        <header>
+        <div>CocaCola</div>
+        <h1>陽光</h1>
+        <h2>檸檬茶</h2>
+        </header>
+    <footer> <!-- 將整個擺放至最下方的位置 -->
+        <div class = "calories">
+            <p>Calarioes<br>115</p>
+            <p>6% MV<span>*</span></p>
+            <p>Ask your doctor before dringking</p>
+        </div>
+        <div>46 Calories per 100 mL</div>
+        <div class = "mill">250mL (毫升)</div>
+    </footer> <!-- 將整個擺放至最下方的位置 -->
+    <div class="flex"></div>
+        <img src="lemon.jpg">
+    </div>
+    </div>
+    </body>
+</html>

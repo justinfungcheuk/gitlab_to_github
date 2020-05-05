@@ -28,3 +28,8 @@ div > .xmas { /* class 要用 . 符號來代替 */
     background: black; /* RGB format */
     color: white; 
 }
+
+/*只要是有一個page #=id的底下的div的class是row的任何底下的element有item才可以task之餘,有data-promotion是christmas的底色就是紅色*/
+#page > div.row .items[data-promotion="christmas"] {
+    background-color: red;
+  }
