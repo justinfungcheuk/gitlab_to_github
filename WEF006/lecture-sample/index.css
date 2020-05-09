@@ -1,0 +1,19 @@
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+    width: 255px;
+}
+
+.grid {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background: black;
+    color: white;
+    transition: all 1s; /* transition 是讓該指令產生動畫*/
+}
+
+.big {
+    background: red;
+    font-size: 40px;
+}
