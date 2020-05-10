@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #page {
+                width: 600px;
+                border: solid 2px #e2e3e7;
+                border-radius: 10px;
+                color: #6f747e;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            header {
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+
+            }
+
+            .share {
+                color: #3D7BF0;
+            }
+
+            .turn {
+                display: flex;
+                justify-content: center;
+            }
+
+            .turn > div { /* .turn > div 代表運作 <div class ="turn">內的<div class="current"> 而如果只是 .turn div就包括所有的div. 但是如果是 .turn > current就只是運作 class = "current" */
+                width: 200px;
+                margin: 5px;
+                padding: 5px 15px;
+                border-bottom: solid 1px #eeeeee;
+                border-top: solid 1px #f3f3f3;
+                border-left: solid 1px #f3f3f3;
+                border-right: solid 1px #fefefe;
+                border-radius: 5px;
+                border: solid 1px #eeeeee;
+            }
+
+            .turn > div.current {
+                border-bottom: solid 2px #1bb4a0;
+                box-shadow: 0px 2px 3px #eeeeee;
+            }
+            .turn-text{
+                text-align: center; /* text-align: center 文字置中 */
+                padding: 10px; /* padding: 10px 設置間距空間的大小 */
+            }
+
+
+            span.x {
+                color: #000000;
+            }
+
+            span.o {
+                color: #F0E7CC;
+            }
+
+
+            /*
+            .difficulty {
+                float: left;
+            }
+
+            .share {
+                float:right;
+            }
+            */
+
+            .tic-tac-toe {
+                background: #1BB4A0;
+                display: flex;
+                justify-content: center; /*將凸出來的,擺放到下一行*/
+                padding: 10px;
+            }
+
+            .block-group {
+                width: 210px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .block {
+                border: solid 4px #159686;
+                width: 70px;
+                height: 70px;
+                box-sizing: border-box; /*表示無論如何,就算計算了border最大都是70px的尺寸*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .block span.x,
+            .block span.o {
+                font-size: 48px;
+            }
+            
+            .block.top {
+                border-top: none; /* none 將線條的最邊界變成尖平邊 */
+            }
+
+            .block.left {
+                border-left: none;
+            }
+
+            .block.right {
+                border-right: none;
+            }
+
+            .block.bottom {
+                border-bottom: none;
+            }
+
+             /*.block:first-child {
+                border-top: none;
+                border-left: none;
+            } */
+            
+
+            /* 上下寫法都是一樣的 .block:first-child 和 .block:last-child */
+
+            /*.block:last-child {
+                border-bottom: solid 4px transparent;
+                border-right: solid 4px transparent;
+            } */
+
+            .tic-tac-toe {
+                background: #1bb4a0;
+            }
+
+            footer {
+                display: flex;
+                justify-content: center;
+            }
+            footer > button { /* > 該符號代表 footer入面即時的botton, 即是如果footer入面有額外加一個<div><button> 那麼該footer > button就不可運作 */
+                color: #159686;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                background: transparent;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="page">
+            <header>
+                <div class="difficulty">
+                    Medium
+                </div>
+                <div class="share">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+            </header>
+            <div class="turn">
+                <div class="current">
+                    X
+                </div>
+                <div>
+                    O
+                </div>
+            </div>
+            <div class="turn-text">
+                <span class="x">X</span> Turn
+            </div>
+            <div class="tic-tac-toe">
+                <div class="block-group">
+                <div class="block top left">
+                
+                </div>
+                <div class="block top">
+                    
+                </div>
+                <div class="block top right">
+                    
+                </div>
+                <div class="block left">
+                  
+                </div>
+                <div class="block">
+                    
+                </div>
+                <div class="block right">
+                    
+                </div>
+                <div class="block bottom left">
+                     
+                </div>
+                <div class="block bottom">
+                    
+                </div>
+                <div class="block bottom right">
+                    
+                </div>
+            </div>
+            </div>
+            <footer>
+                <button>Restart Game</button> <!-- button 代表一個按鈕  -->
+            </footer>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+<!-- span 的用處是用來把 inline 的事項上再加上 CSS. 例如: 我只想要該 X 的字上更改, 就用 span 更改只是該字母或該推字上應用CSS -->
