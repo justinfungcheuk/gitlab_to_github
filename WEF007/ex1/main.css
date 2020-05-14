@@ -1,0 +1,33 @@
+body {
+    background: #ffc506;
+}
+
+.header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.social-icon {
+    font-size: 20px; /* 這些 social-icon 是一種 font-size */
+    background: #453913;
+    color: #ffc506;
+    width: 35px;
+    height: 35px;
+    /*text-align: center;*/ 
+    /*line-height: 35px; 該寫法與display&justify-content&align-items一樣 但line-height只適用於一行的coding*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+.social-icon:hover { /* hover的功能是, 當滑鼠擺上去時會亮起其他顏色 */
+    background: #161616;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-end; /* 將所有social-icons擺到右邊 */
+    align-items: flex-end; /* 將所有social-icons擺下一點的位置 */
+}
