@@ -1,0 +1,82 @@
+html, body { /* 要body及html 100%才可以佔領整個頁面 */
+    height: 100%;
+}
+
+body {
+    background: white;
+}
+
+#page {
+    height: 100%;
+}
+
+#page > .row {
+    height: 100%;
+}
+
+.threads {
+    border-right: solid 1px #DBDBDB;
+    height: 100%;
+    padding: 0;
+    /* overflow: scroll; 當被霸占位置時, 就出現一個拉上拉下的功能 */
+}
+
+.menu-bar {
+    height: 40px;
+    text-align: center;
+    color: #ff9900;
+}
+
+.post-list {
+    overflow-y: scroll; /* overflow-y: scroll 表示只有 y軸 才可以出現上下移動來用滑鼠滑動 */
+    height: calc(100% - 40px); /* 計返100%, 減返吹水台的位置, 但要先define 吹水台的 height & text-align & color */
+ } 
+
+.post {
+    display: flex;
+    color: #2d2d2d;
+}
+
+.post > .indicators {
+    width: 30px;
+    padding-left: 10px;
+}
+
+.post > .post-summary {
+    flex: 1;
+}
+
+.post > .post-metadata {
+    width: 90px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.post-summary .author-time-like {
+    margin-bottom: 10px;
+}
+
+.post-summary, .post-metadata {
+    border-bottom: solid 1px #a1a1a1; /* 形成一個底間 */
+}
+
+.post-metadata > select {
+    margin-bottom: 10px;
+    border: none;
+}
+
+.post-metadata > .channel {
+    padding: 4px 10px;
+    background: #ebebeb;
+    color: #a1a1a1;
+    float: right; /* float: right 該功能只適用於 block element */
+    border-radius: 20px;
+}
+
+.girl {
+    color: #ff0000;
+}
+
+.body {
+    color: #0000ff;
+}

@@ -27,7 +27,7 @@ body {
     }
     .menu { 
         order: -2;
-        margin-right: -30px; /* 負數是拉向別人近一點 */
+        margin-right: -30px; /* 負數是拉向別人近一點   */
         margin-left: -30px;
     }
 }
