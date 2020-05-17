@@ -3,7 +3,7 @@ html, body { /* 要body及html 100%才可以佔領整個頁面 */
 }
 
 body {
-    background: white;
+    background: #151515;
 }
 
 #page {
@@ -34,7 +34,7 @@ body {
 
 .post {
     display: flex;
-    color: #2d2d2d;
+    color: #ffffff;
 }
 
 .post > .indicators {
@@ -67,8 +67,8 @@ body {
 
 .post-metadata > .channel {
     padding: 4px 10px;
-    background: #ebebeb;
-    color: #a1a1a1;
+    background: #EBEBEB;
+    color: #A1A1A1;
     float: right; /* float: right 該功能只適用於 block element */
     border-radius: 20px;
 }
