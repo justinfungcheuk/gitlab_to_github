@@ -155,11 +155,16 @@ body {
 
 .media > div > div { /* media入面的div再入面的div 即是<div class="col-3">內的div */
     background: #ffffff;
-    padding: 10px; 
+    padding: 10px;
+    padding-bottom: 20px; 
 }
 
 .media .information {
-    padding: 10px;
+    padding: 10px; /* background是不計算在padding內的 */
+    padding: 0px; /* 使該內文和圖片icon_photo.png成一直線平排 */
+    background: url(icon_photo.png); /* 如不是顏色是一幅圖, 就使用 url(); 但該寫法會將該圖片重複填滿整個畫面*/
+    background-repeat: no-repeat; /* 可以解決上述該圖片重複填滿畫面的問題, 只有一幅圖片出現 */
+    background-position: bottom right;
 }
 
 button {
@@ -171,3 +176,116 @@ button {
     font-size: 12px;
     padding: 3px 12px; /* 3px是表示上下 12px是表示左右 */
 }
+
+.main {
+    margin-top: 3   0px;
+}
+
+.event {
+    display: flex;
+}
+
+.date {
+    background: #2E2E2E;
+    display: flex; /* 當你需要運用以垂直向下展示有關資料時, 可使用display:flex;可將有關資料調整到中間 */
+    flex-direction: column; /* 因為是打直向下所有用 flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    width: 80px;
+}
+
+.event:nth-child(odd) .date { /* 如果是 odd 單數目的就將該background轉色 */
+    background: #cccccc;
+}
+
+.date .day {
+    font-size: 24px;
+}
+
+.date .month {
+    color: #9c9c9c;
+    font-size: 12px;
+}
+
+.event .information {
+    flex: 1; /* flex內的information沒有提及佔領多少位置, 就會用到最小為止, 只有用了 flex 就會用到最小的位置, 該用法 flex: 1; 就會指令其中一個會佔領所有位置, 所以就是 flex: 1; */
+    background: linear-gradient(#ffffff, #cccccc); /* linear-gradient 表示漸層底顏色*/
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+.news .information {
+    position: relative;
+    background: #ffffff;
+    padding: 30px;
+}
+
+.news .tags-wrap {
+    border-top: solid 1px #EFEFEF;
+    border-bottom: solid 1px #EFEFEF;
+    padding: 1px;
+    margin: 5px 0;
+}
+
+.news .tags {
+    border-top: solid 1px #EFEFEF;
+    border-bottom: solid 1px #EFEFEF;
+    padding: 2px 0;
+    margin: 0;
+}
+
+.news .date { /* 於news內的date內設定固定的高度 */
+    height: 100px;
+    position: absolute;
+    top: -97px; /* 透過.news .information的postion: relative; 和 .news .date的position: absolute; 以top: -100px, 以上方的圖片計算, 向上移動-100px */
+    border-bottom: solid 3px #FFC506; /* 用border-bottom: solid 3px #FFC506 執行出一條橙色的底線*/
+    left: 30px; 
+}
+
+.song {
+    background: linear-gradient(#ffffff, #cccccc);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.song .information {
+    flex: 1;
+}
+
+.play-button {
+    width: 30px;
+    height: 30px;
+    background: url(icon_playback.png);
+}
+
+.pause-button {
+    background-position:0 -30px ; /* 0 表示x軸不變不移動, -30px 表示y軸向上移動30px, 該做法就可以做到展示pasuse按鈕出來  */
+}
+
+h3 {
+    font-family: 'League Gothic'; /* 用來改變h3的字體 */
+}
+
+@media only screen and (max-width: 768px) and (min-width: 992px) {
+     /* 以上範圍是表示從 576 至 767 之間 */
+     .event {
+         flex-direction: column;
+     }
+
+     .event .date {
+         flex-direction: row; /* 如果是以上範圍之間, 就不運作 flex-direction: colum; 而是運作 row */
+         width: 100%;
+         font-size: 12px;
+         padding: 10px 0;
+     }
+
+     .event .date .day {
+         font-size: 12px;
+     }
+
+     .event .date .day {
+         padding: 0 5px;
+     }
