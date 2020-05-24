@@ -47,6 +47,8 @@ function quicksortBasic(array) { // quicksortBasic 在function入面 call回自�
     return quicksortBasic(lesser).concat(pivot, quicksortBasic(greater));
   }
 
+  console.log(quicksortBasic([7,6,,4,3,5,2]));
+
   // factorial (因子/階乘)
   // 0! = 1
   // 1! = 1
@@ -62,3 +64,25 @@ function quicksortBasic(array) { // quicksortBasic 在function入面 call回自�
   }
   console.log(factorial(10));
 // 以上結果會等於 3628800 即是等於 10 x 9 x 8 x 7 x 6 x 5 x 4 x 3 x 2 x 1
+
+const cards = "34567890JQKA2";
+
+const tree = buckets.BSTree(function(first,second){
+  return cards.indexOf(first) - cards.indexOf(second);
+});
+
+tree.add("0");
+tree.add("2");
+tree.add("A");
+tree.add("Q");
+tree.add("K");
+tree.add("5");
+tree.add("7");
+tree.add("J");
+tree.inorderTraversal(function(num){
+  console.log(num);
+});
+
+tree.levelTraversal(function(level){
+  console.log(num);
+})
