@@ -44,7 +44,7 @@ var numUniqueEmails = function(emails) {
         
         // al.ex    +hongkong <<< parts[0]
         // names[0]  names[1]
-        const names = parts[0].split('+'); // parts[0] 表示只取 al.ex該部分
+        const names = parts[0].split('+'); // parts[0] 表示只取 al.ex該部分, 亦即是指一個 array(註明: 因為parts是一個array - array就如一個櫃,從櫃入面的格子裡取出東西的意思) 入面的第0格的意思
         
         // al.ex <<< names[0]
         const finalName = names[0].replace(/\./g,""); // g是代表入面所有的 . 符號, 如果沒有g就只取代一個 . 符號就完結
