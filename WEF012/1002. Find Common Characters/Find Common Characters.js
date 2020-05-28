@@ -20,7 +20,7 @@ var commonChars = function(A) {
         let k = 0; // k 代表cloo該字, 由 0 開始逐一檢查 cloo & cklo, 而 cklo代表 j
         for (let j = 0; j < chars.length; j++) {
             while (chars[j] > result[k]) { // 如果 j 大於 k 就轉位, 先檢查到相同字母為止
-                result.splice(k, 1); // .splice()的意思是從array內刪除東西, 其方法(x,1)是表示由x代表第幾隻開始刪除, 而 1 是表示刪除多少個
+                result.splice(k, 1); // .splice()的意思是從array內刪除東西, 其方法(k,1)是表示由k代表第幾隻開始刪除, 而 1 是表示刪除多少個
         }
         if(chars[j] == result[k]) {
          k++;
