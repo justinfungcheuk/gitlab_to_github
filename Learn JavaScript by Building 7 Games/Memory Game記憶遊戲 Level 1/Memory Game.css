@@ -5,20 +5,25 @@
     /* box-sizing: border-box屬性使元素充滿整個邊框，因此我們可以跳過數學計算。 */
 }
 
-img {
-    width: 150px;
-    height: 100px;
-    border: 1px;
-}
-
-.contain {
-    object-fit: contain;
-}
-
 body {
     height: 100vh;
     display: flex;
     background: #060AB2;
+}
+
+.img {
+    width: 150px;
+    height: 100px;
+}
+
+.narrow {
+    width: 100px;
+    height: 150px;
+    margin-top: 10px;
+}
+
+.contain {
+    object-fit: contain;
 }
 
 .memoery-game {
