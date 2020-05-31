@@ -44,7 +44,11 @@ if (year.startsWith('bc')){ // startsWith()表示由bc開始
     year = - year.substr(2); // 如果只要後面的字就用 substr()表示
 }
 
-year = parseInt(year);
+// parseInt()這個函數就是在括號裡面輸入一個字符串,然後返回一個整數結果,最簡單的方法是輸入一個字符串,再把字符串裡面的數字給提取出來,得到一個數字類型的數字
+// 但是, 如果是輸入一個 0x開頭的字符串,就會按照十六進制的形式來轉換,如果不設定好規則,很容易發生混款
+// 因此, parseInt可以傳入第二個參數, 第二個參數是一個基數,就是告訴函數需要多少進制
+// 有特殊情況, 第二個參數, 如果參數為0, 那麼就以十進制來轉換, 參數小於2或大於36, 就返回NaN
+year = parseInt(year); // parseInt(string, radix)   將壹個字符串 string 轉換為 radix 進制的整數， radix 為介於2-36之間的數。
 if (isNaN(year)) {
     console.log('Not a valid year :(');
     continue; // 不想該運作由此停止, 想該項目繼續運作下一個loop, 可加continue作繼續運算繼續loop

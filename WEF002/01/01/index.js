@@ -13,7 +13,7 @@ do {
     }
 
 // 5) You may hint the player whether the number is larger or smaller
-if (typeof input === 'underfined') { // typeof表示屬於甚麼類型, 表示如何檢查是否undefined, 何謂type?例如: typeof = 1是number | typeof true是boolean | let a;是undefined | typeof a是undefined;
+if (typeof input === 'undefined') { // typeof表示屬於甚麼類型, 表示如何檢查是否undefined, 何謂type?例如: typeof = 1是number | typeof true是boolean | let a;是undefined | typeof a是undefined;
     input = prompt ('Welcome! Gimme a number, please.')
     } else if (input > rand) {
     input = prompt ('What is the number? (Should be smaller)');
