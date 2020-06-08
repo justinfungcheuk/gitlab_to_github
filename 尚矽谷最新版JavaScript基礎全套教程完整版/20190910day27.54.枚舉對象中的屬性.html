@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        
+        var obj = {
+            
+            name:"孫悟空",
+            age:18,
+            gender:"男",
+            addree:"花果山"
+        };
+        
+        //枚舉對象中的屬性
+        //使用 for... in 語句
+        /*
+         * 語法:
+         * for(var 變量 in 對象){
+         *
+         *  }
+         *
+         * for... in語句對象中有幾個屬性, 循環就會執行幾次
+         * 每次執行時, 會將對象中的一個屬性的名字賦值給變量
+         */
+        
+        for(var n in obj){
+            console.log("屬性名:"+n);
+            
+            console.log("屬性值:"+obj[n]);
+        }
+    </script>
+</html>

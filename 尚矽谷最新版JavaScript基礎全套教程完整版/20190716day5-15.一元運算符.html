@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * 一元運算符, 只需要一個操作數
+             * + 正號
+             *    - 正號不會對數字產生任何影響
+             * - 負號
+             *    - 負號可以對數字進行負號的取反
+             *    - 對於非Number類型的值,
+             *      它會將先轉換為Number, 然後再運算
+             *      可以對一個其他的數據類型使用 + 來將其轉換為Number [+ 適用於任意類型 例如: Boolean String Number]
+             *      它的原理和Number()函數一樣
+             */
+            
+            var a = 123;
+            
+            a = -a;
+            
+            a = true;
+            
+            a = "18";
+            
+            a = +a;
+            
+            /*console.log("a = "+a);
+            console.log(typeof a);*/
+            
+            var result = 1 + +"2" + 3;
+            
+            console.log("result = "+result);
+        </script>
+    </head>
+</html>

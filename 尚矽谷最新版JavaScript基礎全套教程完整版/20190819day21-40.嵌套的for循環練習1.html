@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * 打印出1-100之間所有的質數
+             *
+             */
+            
+            //打印 2-100 之間所有的質數
+            for(var i = 2 ; i<=100 ; i++){
+                
+                //創建一個布爾值, 用來保存結果, 默認 i 是質數
+                var flag = true;
+                
+                //判斷 i 是否是質數
+                //獲取 2-i 之間的所有的數
+                for(var j=2 ; j<i ; j++){
+                    
+                    //判斷i是否能被j整除
+                    if(i%j == 0){
+                        //如果進入判斷則整明i不是質數, 修改flag值為false
+                        flag = false;
+                    }
+                }
+                
+                //如果是質數, 則打印i的值
+                if(flag){
+                    console.log(i);
+                }
+                
+            }
+
+        </script>
+    </head>
+</html>

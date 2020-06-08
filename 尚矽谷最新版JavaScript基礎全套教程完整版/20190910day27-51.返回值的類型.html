@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        
+        function fun(){
+            alert("函數要執行了");
+            
+            for(var i=0 ; i<5 ; i++){
+                
+                
+                if(i == 2){
+                    //使用break可以退出當前的循環
+                    //break;
+                    
+                    //continue用於跳過當次循環
+                    //continue;
+                    
+                    //使用return可以結束整個函數
+                    //return;
+                }
+                
+                console.log(i);
+            }
+            
+            alert("函數執行完了");
+        }
+        
+        //fun();
+        
+        /*
+         * 返回值可以是任意的數據類型
+         * 也可以是一個對象, 也可以是一個函數
+         */
+        function fun2(){
+            
+            //var obj = {name:"沙和尚"};
+            //return obj;
+            //return {name:"沙和尚"}; //該寫法和上面的寫法是一樣的
+        }
+        
+        var a = fun2();
+        
+        //console.log("a = "+a.name);
+        
+        function fun3(){
+            //在函數內部再聲明一個函數
+            function fun4(){
+                alert("我是fun4");
+            }
+            
+            //將fun4函數對象作為返回值返回
+            return fun4;
+        }
+        
+        a = fun3();
+        //console.log(a);
+        //a();
+        fun3()();
+    </script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * && 和 || 非布爾值的情況
+             * - 對於非布爾值進行與或運算時,
+             *   會向將其轉換為布爾值, 然後再運算, 並且返回原值
+             *
+             * && 與運算:
+             * - 如果第一個值為true, 則必然返回第二個值
+             * - 如果第一個值為false, 則直接返回第一個值
+             *
+             * || 或運算:
+             * - 如果第一個值為true, 則直接返回第一個值
+             * - 如果第一個值為false,則直接返回第二個值
+             */
+            
+            //true && true
+            //與運算: 如果兩個值都為true, 則返回後邊的值
+            var result = 2 && 1;
+            
+            //與運算: 如果兩個值中有false, 則返回靠前的false
+            //false && true
+            result = 0 && 2;
+            result = 2 && 0;
+            //false && false
+            result = NaN && 0;
+            result = 0 && NaN;
+            
+            //true || true
+            //如果第一個值為true, 則直接返回第一個值
+            result = 1 || 2;
+            result = 2 || NaN;
+            result = 2 || 0;
+            
+            //如果第一個值為false, 則直接返回第二個值
+            result = NaN || 1;
+            result = NaN || 0;
+            
+            result = "" || "hello";
+            
+            result = -1 || "hello";
+            
+            console.log("result = "+result);
+             
+        </script>
+    </head>
+</html>

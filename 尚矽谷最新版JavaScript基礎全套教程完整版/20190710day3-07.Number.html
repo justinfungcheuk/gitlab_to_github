@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * 在JS 中所有的數值都是Number類型,
+             * 包括 整數 和 浮點數 (小數)
+             * JS 中可以表示的數字的最大值
+             * Number.MAX.VALUE
+             * 1.7976931348623157e+308
+             *
+             * Number.MIN_VALUE 大於0的最小值
+             * 5e-324
+             *
+             * 如果使用 Number 表示的數字超過了最大值, 則會返回一個 Infinity
+             * - Infinity = 表示一個正無限
+             * - -Infinity 表示一個負無限
+             * - 使用 typeof 檢查 Infinity 也會返回 Number
+             * NaN 是一個特殊的數字, 表示Not A Number
+             * - 使用 typeof 檢查一個 NaN 也會返回Number
+             */
+            
+            //數字123
+            var a = 123;
+            
+            //字符串123
+            var b = "123";
+            
+            /*
+             * 可以使用一個運算符 typeof
+             * - 來檢查一個變量的類型
+             * 語法 typeof 後面跟的是 一個變量
+             * 檢查字符串, 會返回string
+             * 檢查數值時, 會返回number
+             */
+            //console.log(typeof b);  用typeof 來檢查 var 的類型 是 字符串 還是 變量
+            
+            a = Number.MAX_VALUE * Number.MAX_VALUE;
+            
+            a = Infinity; // Infinity 就是一個 字面量;
+            
+            a = "abc" * "bcd"; // 不能計算出來, 所以結果是NaN
+            
+            a = NaN;
+            
+            //console.log(typeof a);
+            
+            a = Number.MIN_VALUE;
+            
+            //console.log(a);
+            
+            /*
+             *在JS中整數的運算基本可以保證精確
+             */
+            var c = 123 + 456;
+            
+            /*
+             *如果使用JS進行浮點元素運算, 可能得到一個不精確的結果
+             * 所以千萬不要使用JS進行對精確度要求比較高的運算 例如: 錢
+             */
+            var c = 0.1 + 0.2;
+            
+            console.log(c);
+
+        </script>
+    </head>
+</html>

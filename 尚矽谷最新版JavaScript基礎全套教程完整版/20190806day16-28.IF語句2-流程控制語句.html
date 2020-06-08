@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * if語句
+             * 語法二:
+             * if(條件表達式){
+             *      語句...
+             *    }else{
+             *          語句...
+             *    }
+             *
+             * if...else...語句
+             * 當該語句執行時, 會先對 if 後的條件表達式進行求值判斷,
+             * 如果該值為 true, 則執行 if 後的語句
+             * 如果該值為 false, 則執行 else 後的語句
+             *
+             * 語法三:
+             * if(條件表達式){
+             *      語句...
+             * }else if(條件表達式){
+             *      語句...
+             * }else if(條件表達式){
+             *      語句...
+             * }else{
+             *      語句...
+             * }
+             *
+             * if...else if...else
+             * 當該語句執行時, 會從上到下依次對條件表達式進行求值判斷
+             * 如果值為　true, 則執行當前語句
+             * 如果值為 false, 則繼續向下判斷
+             * 如果所有的條件都不滿足, 則執行最後一個　else 後的語句
+             * 最後只能有一個 else!!!
+             * 該語句中, 只會有一個代碼塊被執行, 一旦代碼塊執行了, 則直接結束語句
+             */
+            var age = 50;
+            
+            /* if(age >=60){
+                alert("You have retired"); 
+            }else{
+                alert("You still not retirement");
+            } */
+            
+            /*age = 200;
+            
+            if(age > 100){
+                alert("life is meaningless");
+            }else if(age > 80){
+                alert("You are not young");
+            }else if(age > 60){
+                alert("You have retired");
+            }else if(age > 30){
+                alert("You are middle-aged");
+            }else if(age > 17){
+                alert("You are an adult");
+            }else{
+                alert("You are a child");
+            } */
+            
+            age = 90;
+            
+            if(age > 17 && age <= 30){
+                alert("You are an adult");
+            }else if(age > 30 && age <= 60){
+                alert("You are middle-aged");
+            }else if(age > 60 && age <=80){
+                alert("You have retired");
+            }else{
+                alert("You are a little old");
+            }
+            
+        </script>
+    </head>
+</html>
