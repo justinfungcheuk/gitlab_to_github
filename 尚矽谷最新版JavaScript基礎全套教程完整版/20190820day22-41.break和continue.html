@@ -28,7 +28,7 @@
             /*for(var i=0 ; i<5 ; i++){
                 console.log("@外層循環"+i);
                 for(var j=0 ; j<5 ; j++){
-                    break;
+                    break; 由於break關鍵字, 會立即終止離它最近的那個循環語句, 所以該break會終止內層循環
                     console.log("內層循環:"+j);
                 }
             }*/
@@ -39,8 +39,9 @@
              * 使用break語句時, 可以在break後跟著一個label,
              * 這樣break將會結束指定的循環, 而不是最近的
              */
-            
-            /* outer:
+
+            /* 該outer用於表示整個外層循環 */
+            /* outer: 
             for(var i=0 ; i<5 ; i++){
                 console.log("@外層循環"+i);
                 for(var j=0 ; j<5 ; j++){
@@ -56,7 +57,7 @@
             /*for(var i=0 ; i<5 ; i++){
                 
                 if(i==2){
-                    continue;
+                    continue; 所以continue會停止運作 i==2, 但會繼續運作 3 和 4
                 }
                 
                 console.log(i);
@@ -68,7 +69,7 @@
                 for(var j=0 ; j<5 ; j++){
                     
                     
-                    continue;
+                    continue; // 如果直接寫continue會直接跳過所有的運行, 變成猶如break一樣
                     
                     console.log("-->"+j);    //內部循環
                 }
