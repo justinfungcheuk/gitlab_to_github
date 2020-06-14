@@ -9,14 +9,17 @@
          */
     
         function isOu(num){
-            
-                return num % 2 == 0;
-
+        /*   if(num % 2 == 0){
+                return true;
+            } else {
+                return false;
+            }
+        }*/
+        return num % 2 == 0;
         }
-        
-        var result = isOu(15);
-        
-        //console.log("result = "+result);
+
+        var result = isOu(2);
+        // console.log("result = "+result);
         
         /*
          * 定義一個函數, 可以根據半徑計算一個圓的面積, 並返回計算結果
@@ -57,21 +60,21 @@
         //sayHello(obj);
         
         /*
-         * 實參可以是一個對象, 也可以是一個函數
-         *
+         * 實參可以是一個對象, 也可以是一個函數, 對象能做的事,函數也能做
+         * 函數也可以作為一個參數
          */
         
         function fun(a){
             console.log("a = "+a);
-            //a(obj);
+            // a(obj); // 調用 a 就是代表調用 sayHello
         }
         
         //fun(sayHello);
         
-        //fun(function(){alert("Hello")});
+        //fun(function(){alert("Hello")}); 表示 a = 的值
         
-        fun(mianji(10));
-        
+        fun(mianji(10)); // 把這個函數作為參數傳給mianji
+         
         /*
          * mianji()   //加了括號就是傳到返回值
          * - 調用函數

@@ -8,20 +8,20 @@
             alert("函數要執行了");
             
             for(var i=0 ; i<5 ; i++){
-                
+                // console.log(i); 寫在這個位置會有 0, 1, 2 出現, 這是在 break 之前判斷
                 
                 if(i == 2){
                     //使用break可以退出當前的循環
                     //break;
                     
-                    //continue用於跳過當次循環
+                    //continue用於跳過當次循環, 只跳一次 2, 
                     //continue;
                     
                     //使用return可以結束整個函數
-                    //return;
+                    //return; 後面所有的函數都不執行 包括 alert
                 }
                 
-                console.log(i);
+                console.log(i); // 寫在這個位置只有 0, 1, 出現, 這是在 break 後判斷
             }
             
             alert("函數執行完了");
@@ -37,6 +37,8 @@
             
             //var obj = {name:"沙和尚"};
             //return obj;
+            
+            // 返回一個對象
             //return {name:"沙和尚"}; //該寫法和上面的寫法是一樣的
         }
         
@@ -45,7 +47,7 @@
         //console.log("a = "+a.name);
         
         function fun3(){
-            //在函數內部再聲明一個函數
+            //在函數內部再聲明一個函數, 而在內部裡面還可以再聲明一個函數
             function fun4(){
                 alert("我是fun4");
             }
@@ -57,6 +59,6 @@
         a = fun3();
         //console.log(a);
         //a();
-        fun3()();
+        fun3()(); // 這個寫法和 a = fun3(); a(); 是一樣的, 只是上面是兩個部分, fun3()();是一個部分的區分
     </script>
 </html>
