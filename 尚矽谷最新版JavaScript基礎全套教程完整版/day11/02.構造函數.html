@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 創建一個 Person 構造函數
+         * - 在 Person 構造函數中, 為每一個對象都添加了一個 sayName 的方法
+         *       目前我們的方法是在構造函數內部創建的的, 也就是構造函數每執行一次新的 sayName 的方法
+         *    也是所有實例得 sayName 都是唯一的
+         *    這樣就導致了構造函數執行一次就會創建一個新的方法,
+         *         所以 執行 10000 次就會創建 10000個的方法, 而 10000 個方法都是一模一樣的
+         *         這時完全沒有必要的, 完全可以使所有的對象共享同一個方法
+         */ 
+         function Person(name, age, gender){
+             this.name = name;
+             this.age = age;
+             this.gender = gender;
+             // 向對象中添加一個方法
+             this.sayName = fun;
+         }
+
+         //將 sayName 方法在全局作用域中定義
+         function fun(){
+                 alert("Hello大家好, 我是:"+this.name);
+         };
+
+         // 創建一個Person的實例
+         var per = new Person("孫悟空", 18, "男");
+         var per2 = new Person("豬八戒", 28, "男");
+         
+         per.sayName();
+         per2.sayName();
+
+         //console.log(per.sayName == per2.sayName);
+        </script>
+    </head>
+</html>
