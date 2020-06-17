@@ -19,12 +19,20 @@
              this.age = age;
              this.gender = gender;
              // 向對象中添加一個方法
-             this.sayName = fun;
+             //this.sayName = fun;
          }
 
          //將 sayName 方法在全局作用域中定義
-         function fun(){
+         /*
+          * 將函數定義在全局作用域, 汙染了全局作用域的命名空間, 因為重新建立一個fun會覆蓋掉原來的fun函數
+          *   而且定義在全局作用域中也很不安全, 儘量不要在全局作用域中寫玩意
+          */ 
+         /*function fun(){
                  alert("Hello大家好, 我是:"+this.name);
+         };*/
+         //向原型中添加sayName方法
+         Person.prototype.sayName = function(){
+            alert("Hello大家好, 我是:"+this.name);
          };
 
          // 創建一個Person的實例
