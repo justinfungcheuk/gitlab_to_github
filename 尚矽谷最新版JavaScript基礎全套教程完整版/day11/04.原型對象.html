@@ -34,14 +34,19 @@
           *  當我們使用一個對象的屬性或方法時, 會在自身中尋找
           *        自身中如果有, 則直接使用,
           *        如果沒有則去原型對象中尋找, 如果原型對象中有, 則使用,
-          *        如果沒有則去原型的原型中尋找
+          *        如果沒有則去原型的原型中尋找,直到找到Object對象的原型
+          *        Object對象的原型沒有原型, 如果在Object中依然沒有找到, 則返回 undefined
           */
 
          //console.log(mc.__proto__.hasOwnProperty("hasOwnProperty"));
 
         // console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
 
-        console.log(mc.__proto__.__proto__.__proto__);
+        //console.log(mc.__proto__.__proto__.__proto__);
+
+        //console.log(mc.hello);
+
+        //console.log(mc.__proto__.__proto__.__proto__);
 
 
 
