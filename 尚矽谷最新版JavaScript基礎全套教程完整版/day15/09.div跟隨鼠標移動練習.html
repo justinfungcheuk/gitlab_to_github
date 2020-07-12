@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <style type="text/css">
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*
+             * 開啟 box1 的絕對定位
+             */
+            position: absolute;
+        }
+
+        </style>
+
+        <script type="text/javascript">
+        window.onload = function(){
+
+            /*
+             * 使 div 可以跟隨鼠標移動
+             */
+
+            //獲取 box1 
+            var box1 = document.getElementById("box1");
+            //綁定鼠標移動事件
+            document.onmousemove = function(event){
+
+                //解決兼容問題
+                event = event || window.event;
+
+                //獲取滾動條滾動的距離
+                /*
+                 * chrome 認為瀏覽器的滾動條是 body 的, 可以通過 body.scrollTop 來獲取
+                 * 火狐等瀏覽器認為瀏覽器的滾動條是 html 的
+                 */
+                //var st = document.body.scrollTop; //適用於　chrome
+                //var st = document.documentElement.scrollTop; // 適用於其他瀏覽器
+                var st = document.body.scrollTop || document.documentElement.scrollTop;
+                var sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+                //獲取鼠標的座標
+                /*
+                 * clientX 和 clientY
+                 *  用於獲取鼠標在當前的可見窗口的座標
+                 * div 的偏移量, 是相對於整個頁面的 (包括滑鼠可以移動的滾動條畫面)
+                 *
+                 * pageX 和 pageY 可以獲取鼠標相對於當前頁面的座標
+                 * 但是這兩個屬性在 IE8 中不支持, 所以如果需要兼容 IE8, 則不要使用
+                 */
+                var left = event.clientX;
+                var top = event.clientY;
+
+                //設置 div 的偏移量
+                box1.style.left = left + sl + "px";
+                box1.style.top = top + st + "px";
+
+            };
+        };
+
+
+        </script>
+        <body style="height: 1000px; width: 2000px;">
+            <div id = "box1"></div>
+        </body>
+    </head>
+</html>
