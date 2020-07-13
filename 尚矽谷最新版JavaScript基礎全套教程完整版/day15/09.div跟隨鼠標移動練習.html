@@ -58,11 +58,20 @@
                 box1.style.top = top + st + "px";
 
             };
+
+            var box2 = document.getElementById("box2");
+            box2.onmousemove = function(event){
+                event = event || window.event;
+
+                event.cancelBubble = true;
+
+            };
         };
 
 
         </script>
         <body style="height: 1000px; width: 2000px;">
+            <div id = "box2" style="width: 500px; height: 500px; background-color: #bfa;"></div>
             <div id = "box1"></div>
         </body>
     </head>
