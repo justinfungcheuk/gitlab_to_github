@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            /*
+             * 使圖片可以自動切換
+             */
+
+            //獲取 img 標籤
+            var img1 = document.getElementById("img1");
+
+            //創建一個數組來保存圖片的路徑
+            var imgArr = ["img/1_BillGates.jpg", "img/2_SteveJobs.jpg", "img/3_ElonMusk.jpg", "img/4_MarkZuckerberg.jpg", "img/5_SundarPichai.jpg"]
+
+            //創建一個變量, 用來保存當前圖片的索引
+            var index = 0; // 默認選用第一張所以要使用 var index = 0;
+
+            //定義一個變量, 用來保存定時器的標識
+            var timer;
+
+            //為 btn01 綁定一個單擊響應函數
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function () {
+
+                /*
+                 * 目前, 我們每點擊一次按鈕, 就會開啟一個定時器
+                 *       點擊多次就會開啟多個定時器, 這就導致圖片的切換速度過快
+                 *       並且我們只能關閉最後一次開啟的定時器
+                 */
+                // 在開啟定時器之前, 需要將當前元素上的其他定時器關閉
+                clearInterval(timer);
+
+                /*
+                 * 開啟一個定時器, 來自動切換圖片
+                 */
+                timer = setInterval(function () {
+
+                    //使索引自增
+                    index++;
+
+                    //判斷索引是否超過最大索引
+                    /* if(index >= imgArr.length){
+                        //則將 index 設置為 0
+                        index = 0;
+                    } */
+                    //index = index % imgArr.length;
+                    index %= imgArr.length;
+                    //以上三種寫法都是一樣的 
+
+                    //修改 img1 的 src 屬性
+                    img1.src = imgArr[index];
+
+                }, 1000);
+            };
+            /*
+             * 開啟一個定時器, 來自動切換圖片
+             */
+            /* setInterval(function(){
+                
+                //使索引自增
+                index++;
+
+                //判斷索引是否超過最大索引
+                /* if(index >= imgArr.length){
+                    //則將 index 設置為 0
+                    index = 0;
+                } 
+                //index = index % imgArr.length;
+                index %= imgArr.length;
+                //以上三種寫法都是一樣的 
+
+                //修改 img1 的 src 屬性
+                img1.src = imgArr[index];
+
+            }, 1000); */
+
+            //為 btn02 綁定一個單擊響應函數
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function () {
+                //點擊按鈕以後, 停止圖片的自動切換, 關閉定時器
+                /*
+                 * clearInterval()可以接收任意參數
+                 *     如果參數是一個有效的定時器的標識, 則停止對應的定時器
+                 *     如果參數不是一個有效的標識, 則甚麼也不做
+                 */
+                clearInterval(timer);
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <img id="img1" src="img/1_BillGates.jpg" />
+    <br /><br />
+    <button id="btn01">開始</button>
+    <button id="btn02">停止</button>
+</body>
+
+</html>
