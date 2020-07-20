@@ -23,25 +23,23 @@
 
          window.onload = function(){
 
-             //為 document 綁定一個按鍵按下的事件
-             document.onkeydown = function(event){
-                 event = event || window.event;
+            //定義一個變量, 來表示移動的速度
+            var speed = 20;
 
-                 //定義一個變量, 來表示移動的速度
-                 var speed = 20;
+            //創建一個變量表示方向
+            //通過修改 dir 來影響移動的方向
+            var dir = 0;
 
-                 //當用戶按了 ctrl 以後, 速度加快
-                 if(event.ctrlKey){
-                     speed = 100;
-                 }
-
-                 /*
+            //開啟一個定時器, 來控制 div 的移動
+            setInterval(function(){ //這個函數 function() 代表每隔 30 毫秒 就執行一次, 每執行就會根據 dir 的值判斷執行那個代碼(也就是執行那個case)
+                /*
                   * 37 左
                   * 38 上
                   * 39 右
                   * 40 下
                   */
-                 switch(event.keyCode){
+                 //把整個 switch 放到函數 function() 裡, 代表這個函數每執行一次就會對整個 swithc 進行判斷
+                  switch(dir){
                      case 37:
                      //alert("向左"); left 值減小
                      box1.style.left = box1.offsetLeft - speed + "px";
@@ -59,6 +57,29 @@
                      box1.style.top = box1.offsetTop + speed + "px";
                      break;
                  };
+            }, 30) ;
+
+             //為 document 綁定一個按鍵按下的事件
+             document.onkeydown = function(event){
+                 event = event || window.event;
+
+                 
+
+                 //當用戶按了 ctrl 以後, 速度加快
+                 if(event.ctrlKey){
+                     speed = 500;
+                 }else{
+                     speed = 10;
+                 }
+
+                 //使 dir 等於按鍵的值
+                 dir = event.keyCode;
+             };
+
+             //當按鍵鬆開時, div 不再移動
+             document.onkeyup = function(){
+                 //設置方向為 0
+                dir = 0;
              };
          };
         </script>
