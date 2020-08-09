@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title></title>
-        <script type="text/javascript">
 
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
         /*
          * 創建一個構造函數, 專門用來創建Person對象的
          * 構造函數就是一個普通的函數, 創建方式和普通函數沒有區別,
-         * 不同的是構造函數習慣上[首字母大寫]
+         * 不同的是構造函數習慣上[首字母大寫] 
          *
          * 構造函數和普通函數的區別就是調用方式的不同
          * 普通函數是直接調用, 構造函數需要使用 new 關鍵字來調用
@@ -27,45 +27,45 @@
          * 2. 當以方法的形式調用時, 谁調用方法 this 就是誰
          * 3. 當以構造函數的形式調用時, this 就是新創建的那個對象
          */
-         function Person(name, age, gender){
-             this.name = name
-             this.age = age
-             this.gender = gender
-             this.sayName = function(){
-                 alert(this.name);
-             }
-         }
+        function Person(name, age, gender) {
+            this.name = name
+            this.age = age
+            this.gender = gender
+            this.sayName = function() {
+                alert(this.name);
+            }
+        }
 
-         function Dog(){
+        function Dog() {
 
-         }
+        }
 
-         var per = new Person("孫悟空", 18, "男");
-         var per2 = new Person("玉兔精", 16, "女");
-         var per3 = new Person("你我他", 38, "男");
+        var per = new Person("孫悟空", 18, "男");
+        var per2 = new Person("玉兔精", 16, "女");
+        var per3 = new Person("你我他", 38, "男");
 
-         var dog = new Dog();
+        var dog = new Dog();
 
-         /*console.log(per);
-         console.log(dog);
-         console.log(per3);*/
+        /*console.log(per);
+        console.log(dog);
+        console.log(per3);*/
 
-         /*
-          * 使用 instanceof 可以檢查一個對象是否是一個類的實例
-          * 語法: 
-          *      對象 instanceof 構造函數
-          * 如果是, 則返回 true, 否則返回 false
-          */
-         //console.log(dog instanceof Person);
-         //console.log(per instanceof Person);
+        /*
+         * 使用 instanceof 可以檢查一個對象是否是一個類的實例
+         * 語法: 
+         *      對象 instanceof 構造函數
+         * 如果是, 則返回 true, 否則返回 false
+         */
+        //console.log(dog instanceof Person);
+        //console.log(per instanceof Person);
 
 
-         /*
-          * 所有的對象都是 Object 的後代,
-          * 所以任何對象和 Object 在 instanceof 檢查時都會返回 true
-          */
-         // console.log(per instanceof Object);
+        /*
+         * 所有的對象都是 Object 的後代,
+         * 所以任何對象和 Object 在 instanceof 檢查時都會返回 true
+         */
+        // console.log(per instanceof Object);
+    </script>
+</head>
 
-        </script>
-    </head>
 </html>

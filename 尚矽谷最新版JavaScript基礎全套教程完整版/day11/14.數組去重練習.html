@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title></title>
-        <script type="text/javascript">
 
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
         //創建一個數組
-        var arr = [1,2,3,2,2,1,3,4,2,5];
+        var arr = [1, 2, 3, 2, 2, 1, 3, 4, 2, 5];
 
         //去除數組中重複的數字
         //獲取數組中的每一個元素
-        for(var i=0; i<arr.length; i++){
+        for (var i = 0; i < arr.length; i++) {
             //console.log(arr[i]);
             //獲取當前元素後的所有元素
-            for(var j=i+1; j<arr.length; j++){
-            //console.log("---->"+arr[j]);
-            //判斷兩個元素的值是否相等
-            if(arr[i] == arr[j]){
-                //如果相等則整明出現了重複的元素, 則刪除 j 對應的元素
-                arr.splice(j,1);
-                //當刪除了當前 j 所在的元素以後, 後邊的元素會自動補位
-                //此時將不會再比較這個元素, 需要再比較一次 j 所在位置的元素
-                //使 j 自減, j-- 表示把原來的位置再比較了一次
-                j--;
+            for (var j = i + 1; j < arr.length; j++) {
+                //console.log("---->"+arr[j]);
+                //判斷兩個元素的值是否相等
+                if (arr[i] == arr[j]) {
+                    //如果相等則證明出現了重複的元素, 則刪除 j 對應的元素
+                    arr.splice(j, 1);
+                    //當刪除了當前 j 所在的元素以後, 後邊的元素會自動補位
+                    //此時將不會再比較這個元素, 需要再比較一次 j 所在位置的元素
+                    //使 j 自減, j-- 表示把原來的位置再比較了一次
+                    j--;
                 }
             }
         }
 
         console.log(arr);
-        
+    </script>
+</head>
 
-        </script>
-    </head>
 </html>
