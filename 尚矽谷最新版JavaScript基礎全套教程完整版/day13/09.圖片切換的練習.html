@@ -1,114 +1,114 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title></title>
-        <style type="text/css">
-        
-        *{
-            margin:0;
-            padding:0;
-        }
 
-        #outer  {
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #outer {
             width: 640px;
-            margin:50px auto;
+            margin: 50px auto;
             padding: 10px;
             background-color: greenyellow;
             /*設置文本居中*/
             text-align: center;
-            
         }
-        </style>
+    </style>
 
-        <script type="text/javascript">
-        window.onload = function(){
+    <script type="text/javascript">
+        window.onload = function() {
 
             /*
-             * 點擊按鈕切換圖片
+             * 點擊按鈕切換圖片 
              */
 
-             //獲取兩個按鈕
-             var perv = document.getElementById("prev");
-             var next = document.getElementById("next");
+            //獲取兩個按鈕
+            var perv = document.getElementById("prev");
+            var next = document.getElementById("next");
 
-             /*
-              * 要切換圖片就是要修改 img 標籤的 src 屬性
-              */
+            /*
+             * 要切換圖片就是要修改 img 標籤的 src 屬性
+             */
 
-              //獲取 img 標籤
-              var img = document.getElementsByTagName("img")[0];
+            //獲取 img 標籤
+            var img = document.getElementsByTagName("img")[0];
 
-              //創建一個數組, 用來保存圖片的路徑
-              var imgArr = ["img/1_BillGates.jpg" , "img/2_SteveJobs.jpg" , "img/3_ElonMusk.jpg" , "img/4_MarkZuckerberg.jpg" , "img/5_SundarPichai.jpg"];
+            //創建一個數組, 用來保存圖片的路徑
+            var imgArr = ["img/1_BillGates.jpg", "img/2_SteveJobs.jpg", "img/3_ElonMusk.jpg", "img/4_MarkZuckerberg.jpg", "img/5_SundarPichai.jpg"];
 
-              //創建一個變量, 來保存當前正在顯示的圖片的索引
-              var index = 0;
+            //創建一個變量, 來保存當前正在顯示的圖片的索引
+            var index = 0;
 
-              //獲取 id 為 info 的 p 元素
-              var info = document.getElementById("info");
-              //設置提示文字
-              info.innerHTML = "一共 "+imgArr.length+ " 張圖片, 當前第"+(index+1)+" 張";
+            //獲取 id 為 info 的 p 元素
+            var info = document.getElementById("info");
+            //設置提示文字
+            info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
 
 
-             //分別為兩個按鈕綁定單擊響應函數
-             prev.onclick = function(){
+            //分別為兩個按鈕綁定單擊響應函數
+            prev.onclick = function() {
 
-                 /*
-                  * 切換到上一張, 索引自減
-                  */
-                  index--;
+                /*
+                 * 切換到上一張, 索引自減
+                 */
+                index--;
 
-                  //判斷 index 是否小於 0
-                  if(index < 0){
-                      //index = 0; //如果 index < 0 讓它用一個 index = 0; 表示 等於 0 的值
-                      index = imgARr.length -1;
-                  }
+                //判斷 index 是否小於 0
+                if (index < 0) {
+                    //index = 0; //如果 index < 0 讓它用一個 index = 0; 表示 等於 0 的值
+                    index = imgArr.length - 1;
+                }
 
-                 //alert("上一張");
-                 img.src = imgArr[index];
+                //alert("上一張");
+                img.src = imgArr[index];
 
-                 //當點擊按鈕以後, 重新設置信息
-                 info.innerHTML = "一共 "+imgArr.length+ " 張圖片, 當前第"+(index+1)+" 張";
-             };
+                //當點擊按鈕以後, 重新設置信息
+                info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            };
 
-             next.onclick = function(){
+            next.onclick = function() {
 
-                 /*
-                  * 切換到下一張是 index 自增
-                  */
-                  index++;
+                /*
+                 * 切換到下一張是 index 自增
+                 */
+                index++;
 
-                  if(index > imgArr.length - 1){
+                if (index > imgArr.length - 1) {
                     index = 0; //這個表示 如果 index 大於最大的索引就變成 0 意思是回到第一張圖片 BillGates 
-                  };
+                };
 
-                 //alert("下一張");
+                //alert("下一張");
 
-                 //切換圖片就是修改 img 的 src 屬性
-                 //要修改一個元素的屬性 元素.屬性 = 屬性值
-                 img.src = imgArr[index];
+                //切換圖片就是修改 img 的 src 屬性
+                //要修改一個元素的屬性 元素.屬性 = 屬性值
+                img.src = imgArr[index];
 
-                 //當點擊按鈕以後, 重新設置信息
-                 info.innerHTML = "一共 "+imgArr.length+ " 張圖片, 當前第"+(index+1)+" 張";
-             };
+                //當點擊按鈕以後, 重新設置信息
+                info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            };
 
         };
-        </script>
-    </head>
+    </script>
+</head>
 
 
-    <body>
+<body>
 
-        <div id ="outer">
+    <div id="outer">
 
-            <p id="info"></p>
+        <p id="info"></p>
 
-            <img src="img/1_BillGates.jpg" alt="BillGates"/>
+        <img src="img/1_BillGates.jpg" alt="BillGates" />
 
-            <button id="prev">上一張</button>
-            <button id="next">下一張</button>
+        <button id="prev">上一張</button>
+        <button id="next">下一張</button>
 
-        </div> 
-    </body>
+    </div>
+</body>
+
 </html>
