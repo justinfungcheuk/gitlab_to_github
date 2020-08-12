@@ -1,94 +1,94 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Untitled Document</title>
-        <link rel="stylesheet" type="text/css" href="style/css.css" />
-        <script type="text/javascript">
-        
-            window.onload = function() {
-                // 創建一個"廣州"節點,添加到#city下 btn01
-                myClick("btn01",function(){
-                    //創建廣州節點 <li>廣州</li>
-                    //創建 li 元素節點
-                    /*
-                     * document.createElement();
-                     * 可以用於創建一個元素節點對象,
-                     * 它需要一個標籤名作為參數, 將會根據該標籤名創建元素節點對象,
-                     * 並將創建好的對象作為返回值返回
-                     */
-                    var li = document.createElement("li");
 
-                    //創建廣州文本節點
-                    /*
-                     * document.createTextNode();
-                     * 可以用來創建一個文本節點對象
-                     * 需要一個文本內容作為參數, 將會根據該內容創建文本節點, 並將新的節點返回
-                     */
-                    var gzText = document.createTextNode("廣州");
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Untitled Document</title>
+    <link rel="stylesheet" type="text/css" href="style/css.css" />
+    <script type="text/javascript">
+        window.onload = function() {
+            // 創建一個"廣州"節點,添加到#city下 btn01
+            myClick("btn01", function() {
+                //創建廣州節點 <li>廣州</li>
+                //創建 li 元素節點
+                /*
+                 * document.createElement();
+                 * 可以用於創建一個元素節點對象,
+                 * 它需要一個標籤名作為參數, 將會根據該標籤名創建元素節點對象,
+                 * 並將創建好的對象作為返回值返回
+                 */
+                var li = document.createElement("li");
 
-                    //將 gzText 設置 li 的子節點
-                    /*
-                     * appendChild()
-                     * - 向一個父節點中添加一個新的子節點
-                     * - 用法: 父元素.appendChild(子節點); 
-                     */
-                     li.appendChild(gzText);
+                //創建廣州文本節點
+                /*
+                 * document.createTextNode();
+                 * 可以用來創建一個文本節點對象
+                 * 需要一個文本內容作為參數, 將會根據該內容創建文本節點, 並將新的節點返回
+                 */
+                var gzText = document.createTextNode("廣州");
 
-                     //獲取 id 為 city 的節點
-                     var city = document.getElementById("city");
+                //將 gzText 設置 li 的子節點
+                /*
+                 * appendChild()
+                 * - 向一個父節點中添加一個新的子節點
+                 * - 用法: 父元素.appendChild(子節點); 
+                 */
+                li.appendChild(gzText);
 
-                    //將廣州添加到 city 下
-                    city.appendChild(li);
-                });
+                //獲取 id 為 city 的節點
+                var city = document.getElementById("city");
 
-                //將"廣州"節點插入到 #bj 前面
-                myClick("btn02", function(){
-                    //創建一個廣州
-                    var li = document.createElement("li");
-                    var gzText = document.createTextNode("廣州");
-                    li.appendChild(gzText);
+                //將廣州添加到 city 下
+                city.appendChild(li);
+            });
 
-                    //獲取 id 為 bj 的節點
-                    var bj = document.getElementById("bj");
+            //將"廣州"節點插入到 #bj 前面
+            myClick("btn02", function() {
+                //創建一個廣州
+                var li = document.createElement("li");
+                var gzText = document.createTextNode("廣州");
+                li.appendChild(gzText);
 
-                    //獲取 city
-                    var city = document.getElementById("city");
+                //獲取 id 為 bj 的節點
+                var bj = document.getElementById("bj");
 
-                    /*
-                     * insertBefore
-                     * - 可以在指定的子節點前插入新的子節點
-                     * - 語法:
-                     *        父節點.insertBefore(新節點, 舊節點);
-                     */
-                    city.insertBefore(li , bj);
-                });
+                //獲取 city
+                var city = document.getElementById("city");
+
+                /*
+                 * insertBefore
+                 * - 可以在指定的子節點前插入新的子節點
+                 * - 語法:
+                 *        父節點.insertBefore(新節點, 舊節點);
+                 */
+                city.insertBefore(li, bj);
+            });
 
             //使用"廣州"節點替換 #bj 節點
-            myClick("btn03", function(){
+            myClick("btn03", function() {
                 //創建一個廣州
-                    var li = document.createElement("li");
-                    var gzText = document.createTextNode("廣州");
-                    li.appendChild(gzText);
+                var li = document.createElement("li");
+                var gzText = document.createTextNode("廣州");
+                li.appendChild(gzText);
 
-                    //獲取 id 為 bj 的節點
-                    var bj = document.getElementById("bj");
+                //獲取 id 為 bj 的節點
+                var bj = document.getElementById("bj");
 
-                    //獲取 city
-                    var city = document.getElementById("city");
+                //獲取 city
+                var city = document.getElementById("city");
 
-                    /*
-                     * replaceChild()
-                     * - 可以使用指定的子節點替換已有的子節點
-                     * - 語法:
-                     *       父節點.replaceChild(新節點 , 舊節點);
-                     */
-                    city.replaceChild(li , bj);
+                /*
+                 * replaceChild()
+                 * - 可以使用指定的子節點替換已有的子節點
+                 * - 語法:
+                 *       父節點.replaceChild(新節點 , 舊節點);
+                 */
+                city.replaceChild(li, bj);
 
             });
 
             //刪除 #bj 節點
-            myClick("btn04", function(){
+            myClick("btn04", function() {
                 //獲取 id 為 bj 的節點
                 var bj = document.getElementById("bj");
                 //獲取 city
@@ -103,14 +103,14 @@
                  * - 另一種同樣的, 但比較常用的移除語法:
                  *        子節點.parentNode.removeChild(子節點);
                  */
-                //city.removeChild(bj);
+                city.removeChild(bj);
 
                 //
-                bj.parentNode.removeChild(bj);
+                //bj.parentNode.removeChild(bj);
             });
 
             //讀取 #city 內的 HTML 代碼
-            myClick("btn05", function(){
+            myClick("btn05", function() {
                 //獲取city
                 var city = document.getElementById("city");
 
@@ -118,13 +118,13 @@
             });
 
             //設置 #bj 內的HTML代碼
-            myClick("btn06", function(){
+            myClick("btn06", function() {
                 //獲取 bj
                 var bj = document.getElementById("bj");
                 bj.innerHTML = "香港";
             });
 
-            myClick("btn07", function(){
+            myClick("btn07", function() {
 
                 //向 city 中添加廣州
                 var city = document.getElementById("city");
@@ -145,40 +145,41 @@
 
 
         };
-        
 
-            function myClick(idStr, fun){
-                var btn = document.getElementById(idStr);
-                btn.onclick = fun;
-            }
 
-        </script>
-        
-    </head>
-    <body>
-        <div id="total">
-            <div class="inner">
-                <p>
-                    你喜歡哪個城市?
-                </p>
+        function myClick(idStr, fun) {
+            var btn = document.getElementById(idStr);
+            btn.onclick = fun;
+        }
+    </script>
 
-                <ul id="city">
-                    <li id="bj">北京</li>
-                    <li>上海</li>
-                    <li>東京</li>
-                    <li>首爾</li>
-                </ul>
-                
-            </div>
+</head>
+
+<body>
+    <div id="total">
+        <div class="inner">
+            <p>
+                你喜歡哪個城市?
+            </p>
+
+            <ul id="city">
+                <li id="bj">北京</li>
+                <li>上海</li>
+                <li>東京</li>
+                <li>首爾</li>
+            </ul>
+
         </div>
-        <div id="btnList">
-            <div><button id="btn01">創建一個"廣州"節點,添加到#city下</button></div>
-            <div><button id="btn02">將"廣州"節點插入到#bj前面</button></div>
-            <div><button id="btn03">使用"廣州"節點替換#bj節點</button></div>
-            <div><button id="btn04">删除#bj節點</button></div>
-            <div><button id="btn05">讀取#city内的HTML代碼</button></div>
-            <div><button id="btn06">設置#bj内的HTML代碼</button></div>
-            <div><button id="btn07">創建一個"廣州"節點,添加到#city下</button></div>
-        </div>
-    </body>
+    </div>
+    <div id="btnList">
+        <div><button id="btn01">創建一個"廣州"節點,添加到#city下</button></div>
+        <div><button id="btn02">將"廣州"節點插入到#bj前面</button></div>
+        <div><button id="btn03">使用"廣州"節點替換#bj節點</button></div>
+        <div><button id="btn04">删除#bj節點</button></div>
+        <div><button id="btn05">讀取#city内的HTML代碼</button></div>
+        <div><button id="btn06">設置#bj内的HTML代碼</button></div>
+        <div><button id="btn07">創建一個"廣州"節點,添加到#city下</button></div>
+    </div>
+</body>
+
 </html>

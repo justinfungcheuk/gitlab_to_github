@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title></title>
-        <script type="text/javascript">
 
-        window.onload = function(){
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function() {
 
             //獲取 body 標籤
             //var body = document.getElementsByTagName("body")[0];
@@ -14,15 +14,15 @@
             /*
              * 在 document 中有一個屬性 body, 它保存的是 body 的引用
              */
-             var body = document.body;
+            var body = document.body;
 
-             /*
-              * document.documentElement 保存的是 html 根標籤
-              */
+            /*
+             * document.documentElement 保存的是 html 根標籤
+             */
 
-             document.documentElement;
+            document.documentElement;
 
-             var html = document.documentElement;
+            var html = document.documentElement;
 
             //console.log(de);
 
@@ -48,56 +48,56 @@
              * getElementsByClassName( ) 可以根據 class 屬性值獲取一組元素節點對象
              *   但是該方法不支持 IE8 及以下的瀏覽器
              */
-             //var box1 = document.getElementsByClassName("box1");
-             //console.log(box1.length);
+            //var box1 = document.getElementsByClassName("box1");
+            //console.log(box1.length);
 
-             //獲取頁面中的所有的 div
-             var divs = document.getElementsByTagName("div");
+            //獲取頁面中的所有的 div
+            var divs = document.getElementsByTagName("div");
 
-             //獲取 class 為 box1 中的所有的 div
-             //.box1 div 
-             /*
-              *  document.querySelector()
-              * - 需要一個選擇器的字符串作為參數, 可以根據一個 CSS 選擇器來查詢一個元素節點對象
-              * - 雖然 IE8 中沒有 getElementsByClassName() 但是可以使用 querySelector() 代替
-              * - 使用該方法總會返回唯一的一個元素, 如果滿足條件的元素有多個, 那麼它只會返回第一個
-              */
-             var div = document.querySelector(".box1 div");
+            //獲取 class 為 box1 中的所有的 div
+            //.box1 div 
+            /*
+             *  document.querySelector()
+             * - 需要一個選擇器的字符串作為參數, 可以根據一個 CSS 選擇器來查詢一個元素節點對象
+             * - 雖然 IE8 中沒有 getElementsByClassName() 但是可以使用 querySelector() 代替
+             * - 使用該方法總會返回唯一的一個元素, 如果滿足條件的元素有多個, 那麼它只會返回第一個
+             */
+            var div = document.querySelector(".box1 div");
 
-             var box1 = document.querySelector(".box1");
+            var box1 = document.querySelector(".box1");
 
-             //console.log(div.innerHTML);
-             //console.log(box1.innerHTML);
+            //console.log(div.innerHTML);
+            //console.log(box1.innerHTML);
 
-             /*
-              * document.querySelectorAll()
-              * - 該方法和 querySelector() 用法類似, 不同的是它會將符合條件的元素封裝到一個數組中返回
-              * - 即使符合條件的元素只有一個, 它也會返回數組
-              */
-             box1 = document.querySelectorAll(".box1");
-             box1 = document.querySelectorAll("#box2");
-             console.log(box1);
+            /*
+             * document.querySelectorAll()
+             * - 該方法和 querySelector() 用法類似, 不同的是它會將符合條件的元素封裝到一個數組中返回
+             * - 即使符合條件的元素只有一個, 它也會返回數組
+             */
+            box1 = document.querySelectorAll(".box1");
+            box1 = document.querySelectorAll("#box2");
+            console.log(box1);
 
         };
+    </script>
+</head>
 
-        </script>
-    </head>
-    <body>
-        <div id="box2"></div>
-        <div class="box1">
-            我是第一個box1
-            <div>我是box1中的div</div>
-        </div>
-        <div class="box1">
-            <div>我是box1中的div</div>
-        </div>
-        <div class="box1">
-            <div>我是box1中的div</div>
-        </div>
-        <div class="box1">
-            <div>我是box1中的div</div>
-        </div>
+<body>
+    <div id="box2"></div>
+    <div class="box1">
+        我是第一個box1
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
 
         <div></div>
-    </body>
+</body>
+
 </html>
