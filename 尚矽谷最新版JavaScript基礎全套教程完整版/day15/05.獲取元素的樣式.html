@@ -12,19 +12,18 @@
         }
     </style>
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
 
             //點擊按鈕以後讀取 box1 的樣式
             var box1 = document.getElementById("box1");
             var btn01 = document.getElementById("btn01");
-            btn01.onclick = function () {
+            btn01.onclick = function() {
                 //讀取 box1 的寬度
                 //alert(box1.style.width);
 
                 /*
                  * 獲取元素的當前顯示的樣式
-                 *     語法: 元素.currentStyle.樣式名
+                 *     語法: 元素.currentStyle.樣式名 
                  * 它可以用來讀取當前元素正在顯示的樣式
                  *     如果當前元素沒有設置該樣式, 則獲取它的默認值
                  *
@@ -64,7 +63,7 @@
 
                 //alert(getStyle(box1, "width"));
 
-                var w = getStyle(box1 , "width");
+                var w = getStyle(box1, "width");
                 alert(w);
             };
         };
@@ -75,14 +74,15 @@
          *         obj  要獲取樣式的元素
          *         name 要獲取樣式的樣式名
          */
-        function getStyle(obj , name) {
+        function getStyle(obj, name) {
 
-             if(window.getComputedStyle){ //因為 getComputedStyle 是屬於全局裡面的, 所以它是 window 對象的屬性, 因此 window.getComputedStyle 和 getComputedStyle 是一樣的
-            //所以加了 window. 就變成了一個對象的屬性, 而沒有加 window. 的時候則是一個變量需要去做出尋找
+            if (window.getComputedStyle) {
+                //因為 getComputedStyle 是屬於全局裡面的, 所以它是 window 對象的屬性, 因此 window.getComputedStyle 和 getComputedStyle 是一樣的
+                //所以加了 window. 就變成了一個對象的屬性, 而沒有加 window. 的時候則是一個變量需要去做出尋找
 
                 //正常瀏覽器的方式, 具有 getComputedStyle() 方法
-                return getComputedStyle(obj , null)[name];
-            }else{
+                return getComputedStyle(obj, null)[name];
+            } else {
                 // IE8 的方式, 沒有 getComputedStyle() 方法
                 return obj.currentStyle[name];
             };
@@ -92,12 +92,11 @@
             //但是 if else 更清晰和常用!!!!! 
         };
 
-            //正常瀏覽器的方式
-            //return getComputedStyle(obj , null)[name]; // [name] 表示使用該方式可以獲取 name的變量是甚麼就獲取甚麼 例如 name 是 width 就獲取 width, 更靈活
+        //正常瀏覽器的方式
+        //return getComputedStyle(obj , null)[name]; // [name] 表示使用該方式可以獲取 name的變量是甚麼就獲取甚麼 例如 name 是 width 就獲取 width, 更靈活
 
-            // IE8 的方式
-            // return obj.currentStyle[name]; 
-
+        // IE8 的方式
+        // return obj.currentStyle[name];
     </script>
 </head>
 

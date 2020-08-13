@@ -10,14 +10,13 @@
             height: 200px;
             background-color: yellowgreen;
         }
-
+        
         #s1 {
             background-color: yellow;
         }
     </style>
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
 
             /*
              * 事件的冒泡 (Bubble)
@@ -27,7 +26,7 @@
 
             //為 s1 綁定一個單擊響應函數
             var s1 = document.getElementById("s1");
-            s1.onclick = function (event) {
+            s1.onclick = function(event) {
                 event = event || window.event;
                 alert("我是span的單擊響應函數");
 
@@ -38,7 +37,7 @@
 
             //為 box1 綁定一個單擊響應函數
             var box1 = document.getElementById("box1");
-            box1.onclick = function (event) {
+            box1.onclick = function(event) {
                 event = event || window.event;
                 alert("我是div的單擊響應函數");
 
@@ -46,7 +45,7 @@
             };
 
             //為 body 綁定一個單擊響應函數
-            document.body.onclick = function(){
+            document.body.onclick = function() {
                 alert("我是body的單擊響應函數");
             };
         };

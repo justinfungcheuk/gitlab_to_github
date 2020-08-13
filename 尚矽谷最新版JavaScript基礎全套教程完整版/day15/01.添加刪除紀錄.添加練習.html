@@ -44,7 +44,7 @@
             return false;
         };
 
-        window.onload = function () {
+        window.onload = function() {
 
             /*
              * 點擊超連結以後, 刪除一個員工的信息
@@ -58,14 +58,14 @@
                 allA[i].onclick = delA;
             }
 
-    /*
-     * 添加員工的功能
-     * - 點擊按鈕以後, 將員工的信息添加到表格中
-     */
+            /*
+             * 添加員工的功能
+             * - 點擊按鈕以後, 將員工的信息添加到表格中
+             */
 
-            //為提交按鈕綁定一個
+            //為提交按鈕綁定一個單擊響應函數
             var addEmpButton = document.getElementById("addEmpButton");
-            addEmpButton.onclick = function () {
+            addEmpButton.onclick = function() {
 
                 //獲取用戶添加的員工信息
                 //獲取員工的名字
@@ -132,7 +132,7 @@
                 //獲取 employeeTable 中的 tbody
                 var tbody = employeeTable.getElementsByTagName("tbody")[0];
 
-                //將 tr 添加到 table 中 換成 添加到 tobyd
+                //將 tr 添加到 table 中 換成 添加到 tbody
                 //employeeTable.appendChild(tr);
                 tbody.appendChild(tr);
             };
@@ -200,4 +200,5 @@
         </table>
     </div>
 </body>
+
 </html>

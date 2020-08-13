@@ -44,7 +44,7 @@
             return false;
         };
 
-        window.onload = function () {
+        window.onload = function() {
 
             /*
              * 點擊超連結以後, 刪除一個員工的信息
@@ -58,14 +58,14 @@
                 allA[i].onclick = delA;
             }
 
-    /*
-     * 添加員工的功能
-     * - 點擊按鈕以後, 將員工的信息添加到表格中
-     */
+            /*
+             * 添加員工的功能
+             * - 點擊按鈕以後, 將員工的信息添加到表格中
+             */
 
             //為提交按鈕綁定一個
             var addEmpButton = document.getElementById("addEmpButton");
-            addEmpButton.onclick = function () {
+            addEmpButton.onclick = function() {
 
                 //獲取用戶添加的員工信息
                 //獲取員工的名字
@@ -89,11 +89,11 @@
                 var tr = document.createElement("tr");
 
                 //設置 tr 中的內容
-                tr.innerHTML = "<td>"+name+"</td>"+
-                               "<td>"+email+"</td>"+
-                               "<td>"+salary+"</td>"+
-                               "<td><a href='javascript:;'>Delete</a></td>";
-                
+                tr.innerHTML = "<td>" + name + "</td>" +
+                    "<td>" + email + "</td>" +
+                    "<td>" + salary + "</td>" +
+                    "<td><a href='javascript:;'>Delete</a></td>";
+
                 //獲取剛剛添加的 a 元素, 並為其綁定單擊響應函數
                 var a = tr.getElementsByTagName("a")[0]; //因為 tr 裡面的 a 只有一個, 所以要使用 [0]
                 a.onclick = delA;
@@ -104,7 +104,7 @@
                 //獲取 employeeTable 中的 tbody
                 var tbody = employeeTable.getElementsByTagName("tbody")[0];
 
-                //將 tr 添加到 table 中 換成 添加到 tobyd
+                //將 tr 添加到 table 中 換成 添加到 tbody中
                 //employeeTable.appendChild(tr);
                 tbody.appendChild(tr);
                 //下面方法不推薦用會影響delete沒反應, 而上面的 tbody.appendChild(tr); 比較適合, 可以正常執行代碼
@@ -179,4 +179,5 @@
         </table>
     </div>
 </body>
+
 </html>

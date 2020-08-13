@@ -6,38 +6,39 @@
     <title>添加刪除紀錄練習</title>
     <link rel="stylesheet" type="text/css" href="ex_2_style/css.css" />
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
 
             /*
              * 點擊超連結以後, 刪除一個員工的信息
              */
 
-            //獲取所有超連結
+            //獲取所有超連結 
             var allA = document.getElementsByTagName("a");
 
             //為每個超連結都綁定一個單擊響應函數
             for (var i = 0; i < allA.length; i++) {
-                allA[i].onclick = function () {
+                allA[i].onclick = function() {
 
                     //點擊超連結以後需要刪除超連結所在的那行
                     //這裡我們點擊那個超連結 this 就是誰
                     //alert(this); // this 表示在你點擊那一個 A 的時候, 它就屬於哪一個 A
 
                     //獲取當前 tr
-                    var tr = this.parentNode.parentNode; // this.parentNode.parentNode; 表示 A 的父親的父親, 也就是等於 tr
+                    var tr = this.parentNode.parentNode;
+                    // this.parentNode.parentNode; 表示 A 的父親的父親, 也就是等於 tr
 
                     //獲取要刪除的員工的名字
-                    //var name = tr.getElementsByTagName("td")[0].innerHTML; //獲取 td 裡面的第一個 tom 所以需要使用 [0], 而需要獲取 [0] 裡面的內容則需要使用 innerHTML
+                    //var name = tr.getElementsByTagName("td")[0].innerHTML; 
+                    //獲取 td 裡面的第一個 tom 所以需要使用 [0], 而需要獲取 [0] 裡面的內容則需要使用 innerHTML
                     var name = tr.children[0].innerHTML;
-                    
+
                     //刪除之前彈出一個提示框
                     /*
                      * confirm() 用於彈出一個帶有確認和取消按鈕的提示框
                      *        需要一個字符串作為參數, 該字符串將會作為提示文字顯示出來
                      * 如果用戶點擊確認則會返回 true, 如果點擊取消則返回 false
                      */
-                    var flag = confirm("確認刪除"+name+"嗎?");
+                    var flag = confirm("確認刪除" + name + "嗎?");
 
                     //如果用戶點擊確認
                     if (flag) {

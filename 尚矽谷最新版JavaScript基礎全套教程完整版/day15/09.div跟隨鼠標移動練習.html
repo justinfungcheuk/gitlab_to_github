@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title></title>
-        <style type="text/css">
-        #box1{
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
             width: 100px;
             height: 100px;
             background-color: red;
@@ -13,11 +14,10 @@
              */
             position: absolute;
         }
+    </style>
 
-        </style>
-
-        <script type="text/javascript">
-        window.onload = function(){
+    <script type="text/javascript">
+        window.onload = function() {
 
             /*
              * 使 div 可以跟隨鼠標移動
@@ -26,7 +26,7 @@
             //獲取 box1 
             var box1 = document.getElementById("box1");
             //綁定鼠標移動事件
-            document.onmousemove = function(event){
+            document.onmousemove = function(event) {
 
                 //解決兼容問題
                 event = event || window.event;
@@ -60,19 +60,19 @@
             };
 
             var box2 = document.getElementById("box2");
-            box2.onmousemove = function(event){
+            box2.onmousemove = function(event) {
                 event = event || window.event;
 
                 event.cancelBubble = true;
 
             };
         };
+    </script>
 
+    <body style="height: 1000px; width: 2000px;">
+        <div id="box2" style="width: 500px; height: 500px; background-color: #bfa;"></div>
+        <div id="box1"></div>
+    </body>
+</head>
 
-        </script>
-        <body style="height: 1000px; width: 2000px;">
-            <div id = "box2" style="width: 500px; height: 500px; background-color: #bfa;"></div>
-            <div id = "box1"></div>
-        </body>
-    </head>
 </html>
