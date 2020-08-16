@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
         }
-
+        
         #box1 {
             width: 100px;
             height: 100px;
@@ -18,7 +18,7 @@
             left: 0;
             /* 因為在 IE 裡面沒有指定的值, 所以會獲取 auto, 所以最好是給予它一個值 例如: left: 0; */
         }
-
+        
         #box2 {
             width: 100px;
             height: 100px;
@@ -31,8 +31,7 @@
     </style>
     <script type="text/javascript" src="tools.js"></script>
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
 
             //獲取 box1
             var box1 = document.getElementById("box1");
@@ -43,32 +42,33 @@
             var btn02 = document.getElementById("btn02");
 
             //點擊按鈕以後, 使 box1 向右移動 (left值增大)
-            btn01.onclick = function () {
-                move(box1, "left", 800, 20); // 800 代表要移動的目標是 800 往右移動, 而 10 則代表移動的速度
+            btn01.onclick = function() {
+                move(box1, "left", 800, 20);
+                // 800 代表要移動的目標是 800 往右移動, 而 10 則代表移動的速度
             }; //因為 btn01 沒有傳遞回調函數, 只是一個 undefined, 所以會報錯 及 必須傳遞回調函數,
 
             //點擊按鈕以後, 使 box1 向左移動 (left值減小)
-            btn02.onclick = function () {
-                move(box1, "left", 0, 10); // 0 代表要移動的目標是 0 往左移動, 而 -10 則代表移動的速度
+            btn02.onclick = function() {
+                move(box1, "left", 0, 10);
+                // 0 代表要移動的目標是 0 往左移動, 而 -10 則代表移動的速度
             };
 
             //獲取 btn03
             var btn03 = document.getElementById("btn03");
-            btn03.onclick = function () {
+            btn03.onclick = function() {
                 move(box2, "left", 800, 10);
             };
 
             //獲取測試按鈕
             var btn04 = document.getElementById("btn04");
-            btn04.onclick = function () {
+            btn04.onclick = function() {
                 //move(box2 , "width" , 800 , 10);
                 //move(box2 , "top" , 800 , 10);
                 //move(box2 , "height" , 800 , 10);
-                move(box2, "width", 800, 10, function () {
-                    move(box2, "height", 400, 10, function () {
-                        move(box2, "top", 0, 10, function () {
-                            move(box2, "width", 100, 10, function () {
-                            });
+                move(box2, "width", 800, 10, function() {
+                    move(box2, "height", 400, 10, function() {
+                        move(box2, "top", 0, 10, function() {
+                            move(box2, "width", 100, 10, function() {});
                         });
                     });
                 });
@@ -81,9 +81,9 @@
          * 所有的執行正在執行的定時器都在這個變量中保存
          */
         //var timer; 
-        //因為該 var timer 是全局變量會同時影響 box1 和 box2, 由於 box1 或 box2 在移動時, 另外一個再移動會導致其中一個停止運動, 所以需要取消該全局變量
-
-
+        /*因為該 var timer 是全局變量會同時影響 box1 和 box2, 
+        由於 box1 或 box2 在移動時, 另外一個再移動會導致其中一個停止運動, 所以需要取消該全局變量
+        */
     </script>
 </head>
 

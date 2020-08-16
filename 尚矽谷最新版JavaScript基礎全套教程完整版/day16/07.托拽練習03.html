@@ -11,20 +11,27 @@
             background-color: red;
             position: absolute;
         }
-
+        
         #box2 {
             width: 100px;
             height: 100px;
             background-color: yellow;
             position: absolute;
-
             left: 200px;
             top: 200px;
         }
+        
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
     </style>
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
             /*
              * 拖拽 box1 元素 
              * - 拖拽的流程
@@ -39,17 +46,21 @@
             var box1 = document.getElementById("box1");
             var box2 = document.getElementById("box2");
             var img1 = document.getElementById("img1");
+            var box3 = document.getElementById("box3");
 
             //開啟 box1 的拖拽
             drag(box1);
-            //開啟 box1 的拖拽
+            //開啟 box2 的拖拽
             drag(box2);
 
             drag(img1);
 
+            drag(box3);
+
+
             //為 box1 綁定一個鼠標按下事件
             //1. 當鼠標在被拖拽元素按下時, 開始拖拽      onmousedown
-            box1.onmousedown = function (event) {
+            box1.onmousedown = function(event) {
 
                 //設置 box1 捕獲所有鼠標按下的事件
                 /*
@@ -73,7 +84,7 @@
                 //這個 document.onmousemove = function(event){}; 必須要擺在 box1.onmousedown = function(){}; 裡面, 因為它是發生在當鼠標按下後的事件
 
                 //為 document 綁定一個 onmousemove 事件
-                document.onmousemove = function (event) {
+                document.onmousemove = function(event) {
                     event = event || window.event;
                     //2. 當鼠標移動時被拖拽元素跟隨鼠標移動      onmousemove
                     //獲取鼠標的座標
@@ -87,7 +98,7 @@
                 };
 
                 //為document綁定一個鼠標鬆開事件
-                document.onmouseup = function () {
+                document.onmouseup = function() {
                     //3. 當鼠標鬆開時, 被拖拽元素固定在當前位置  onmouseup
                     //取消 document 的 onmousemove 事件
                     document.onmousemove = null;
@@ -117,7 +128,7 @@
          */
         function drag(obj) { // 括號裡面的 (obj) 代表 給誰開啟拖拽就開誰
             //1. 當鼠標在被拖拽元素按下時, 開始拖拽      onmousedown
-            obj.onmousedown = function (event) {
+            obj.onmousedown = function(event) {
 
                 //設置 box1 捕獲所有鼠標按下的事件
                 /*
@@ -141,7 +152,7 @@
                 //這個 document.onmousemove = function(event){}; 必須要擺在 box1.onmousedown = function(){}; 裡面, 因為它是發生在當鼠標按下後的事件
 
                 //為 document 綁定一個 onmousemove 事件
-                document.onmousemove = function (event) {
+                document.onmousemove = function(event) {
                     event = event || window.event;
                     //2. 當鼠標移動時被拖拽元素跟隨鼠標移動      onmousemove
                     //獲取鼠標的座標
@@ -155,7 +166,7 @@
                 };
 
                 //為document綁定一個鼠標鬆開事件
-                document.onmouseup = function () {
+                document.onmouseup = function() {
                     //3. 當鼠標鬆開時, 被拖拽元素固定在當前位置  onmouseup
                     //取消 document 的 onmousemove 事件
                     document.onmousemove = null;
@@ -189,7 +200,9 @@
 
     <div id="box2"></div>
 
-    <img src="Rockefeller.jpg" id = "img1" style = "position: absolute;" />
+    <div id="box3"></div>
+
+    <img src="Rockefeller.jpg" id="img1" style="position: absolute;" />
 </body>
 
 </html>

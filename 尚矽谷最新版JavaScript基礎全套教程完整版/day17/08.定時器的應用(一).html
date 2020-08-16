@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
         }
-
+        
         #box1 {
             width: 100px;
             height: 100px;
@@ -21,8 +21,7 @@
     </style>
 
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
 
             //獲取 box1
             var box1 = document.getElementById("box1");
@@ -33,13 +32,13 @@
             var timer;
 
             //點擊按鈕以後, 使 box1 向右移動 (left值增大)
-            btn01.onclick = function () {
+            btn01.onclick = function() {
 
                 //關閉上一個定時器
                 clearInterval(timer); //用途是取消連續按鈕增加移動速度
 
                 //開啟一個定時器, 用來執行動畫效果
-                timer = setInterval(function () { //把var去掉 用途是取消連續按鈕增加移動速度
+                timer = setInterval(function() { //把var去掉 用途是取消連續按鈕增加移動速度
 
                     //獲取 box1 的原來的 left 值
                     var oldValue = parseInt(getStyle(box1, "left")); // 運用 parseInt()把一個字符串的和法數字取出來
@@ -48,7 +47,7 @@
                     var newValue = oldValue + 1;
 
                     //判斷 newValue 是否大於 800
-                    if(newValue > 800){
+                    if (newValue > 800) {
                         newValue = 800;
                     }
 
@@ -56,7 +55,7 @@
                     box1.style.left = newValue + "px";
 
                     //當元素移動到 800px 時, 使其停止執行動畫
-                    if(newValue == 800){
+                    if (newValue == 800) {
                         //達到目標, 關閉定時器
                         clearInterval(timer);
                     }
@@ -84,8 +83,6 @@
                 return obj.currentStyle[name];
             };
         };
-
-
     </script>
 </head>
 

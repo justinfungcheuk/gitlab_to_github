@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
         }
-
+        
         #box1 {
             width: 100px;
             height: 100px;
@@ -21,8 +21,7 @@
     </style>
 
     <script type="text/javascript">
-
-        window.onload = function () {
+        window.onload = function() {
 
             //獲取 box1
             var box1 = document.getElementById("box1");
@@ -33,13 +32,13 @@
             var btn02 = document.getElementById("btn02");
 
             //點擊按鈕以後, 使 box1 向右移動 (left值增大)
-            btn01.onclick = function () {
-                move(box1 , 800 , 10); // 800 代表要移動的目標是 800 往右移動, 而 10 則代表移動的速度
+            btn01.onclick = function() {
+                move(box1, 800, 10); // 800 代表要移動的目標是 800 往右移動, 而 10 則代表移動的速度
             };
 
             //點擊按鈕以後, 使 box1 向左移動 (left值減小)
-            btn02.onclick = function () {
-                move(box1 , 0 , 10); // 0 代表要移動的目標是 0 往左移動, 而 -10 則代表移動的速度
+            btn02.onclick = function() {
+                move(box1, 0, 10); // 0 代表要移動的目標是 0 往左移動, 而 -10 則代表移動的速度
             };
         };
 
@@ -55,7 +54,8 @@
          */
 
         //嘗試創建一個可以執行簡單動畫的函數
-        function move(obj , target , speed) { //因為這個動畫是給 box1 添加的, 所以需要把 box1 作為參數傳遞進去函數裡面, 所以需要寫上 (obj)
+        function move(obj, target, speed) {
+            //因為這個動畫是給 box1 添加的, 所以需要把 box1 作為參數傳遞進去函數裡面, 所以需要寫上 (obj)
             //關閉上一個定時器
             clearInterval(timer); //用途是取消連續按鈕增加移動速度
 
@@ -65,13 +65,13 @@
             //判斷速度的正負值
             //如果從 0 向 800 移動, 則 speed 為正
             //如果從 800 向 0 移動, 則 speed 為負
-            if(current > target){
+            if (current > target) {
                 //由於 current > target, 所以此時速度應為負值
                 speed = -speed;
             }
 
             //開啟一個定時器, 用來執行動畫效果
-            timer = setInterval(function () { //把var去掉 用途是取消連續按鈕增加移動速度
+            timer = setInterval(function() { //把var去掉 用途是取消連續按鈕增加移動速度
 
                 //獲取 box1 的原來的 left 值
                 var oldValue = parseInt(getStyle(obj, "left")); // 運用 parseInt()把一個字符串的和法數字取出來
@@ -84,7 +84,7 @@
                 //向左移動時, 需要判斷 newValue 是否小於 target
                 //向右移動時, 需要判斷 newValue 是否大於 target
                 if ((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) { //左右的條件只要滿足一條, 就可以讓它等於 target
-                //    向左移動就代表小於該目標 target      向右移動就代表大於該目標 target
+                    //    向左移動就代表小於該目標 target      向右移動就代表大於該目標 target
                     newValue = target;
                 }
 
@@ -118,8 +118,6 @@
                 return obj.currentStyle[name];
             };
         };
-
-
     </script>
 </head>
 
