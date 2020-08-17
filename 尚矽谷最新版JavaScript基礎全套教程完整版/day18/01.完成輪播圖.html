@@ -11,8 +11,8 @@
             margin: 0px;
             padding: 0px;
         }
-
         /* 设置div容器 */
+        
         #outer {
             /* 设置高和宽,
             虽然照片宽度是300px,但是imgList li设置了margin左右外边距为10px,
@@ -31,8 +31,8 @@
             /* 裁剪溢出的内容 */
             overflow: hidden;
         }
-
         /* 設置 imgList */
+        
         #imgList {
             /* 去除項目符號 */
             list-style: none;
@@ -46,8 +46,8 @@
               */
             left: 0px;
         }
-
         /* 設置圖片中的 li */
+        
         #imgList li {
             /* 設置浮動 */
             float: left;
@@ -55,8 +55,8 @@
             margin: 0 10px;
             /*上下是 0 左右是 10px */
         }
-
         /* 設置導航按鈕 */
+        
         #navDiv {
             /* 開啟絕對定位 */
             position: absolute;
@@ -68,9 +68,8 @@
                   660 - 125 = 535/2 = 267.5
              */
             /* left: 267px; */
-
         }
-
+        
         #navDiv a {
             /* 設置超連結浮動 */
             float: left;
@@ -86,8 +85,8 @@
             /* 兼容 IE8 透明 */
             filter: alpha(opacity=50);
         }
-
         /* 設置鼠標移入的效果 */
+        
         #navDiv a:hover {
             background-color: black;
         }
@@ -97,7 +96,7 @@
     <script type="text/javascript" src="tools.js"></script>
 
     <script type="text/javascript">
-        window.onload = function () {
+        window.onload = function() {
             var outer = document.getElementById('outer');
             var imgList = document.getElementById('imgList');
             var imgs = imgList.getElementsByTagName('img');
@@ -133,7 +132,7 @@
                 allA[i].num = i; // allA[i] 代表所有每一個的超連結
 
                 //為超連結綁定單擊響應函數
-                allA[i].onclick = function () {
+                allA[i].onclick = function() {
 
                     //關閉自動切換的定時器
                     clearInterval(timer);
@@ -153,11 +152,11 @@
                     setA();
 
                     //使用 move 函數來切換圖片
-                    move(imgList, "left", -660 * index, 20, function () {
+                    move(imgList, "left", -660 * index, 20, function() {
                         //要執行動畫的對象是 imgList
                         //要執行的動畫的屬性 "left"
-                        //要執行的動畫的目標 -520*index
-                        //要執行動畫時的速度 10
+                        //要執行的動畫的目標 -660*index
+                        //要執行動畫時的速度 20
                         //回調函數可以先寫上, 不一定用: function(){};
 
                         //動畫執行完畢, 開啟自動切換
@@ -174,7 +173,7 @@
             function setA() {
 
                 //判斷當前索引是否是最後一張圖片
-                if(index >= imgArr.length - 1){ //表示等於最後一張圖片索引
+                if (index >= imgArr.length - 1) { //表示等於最後一張圖片索引
                     //則將 index 設置為 0
                     index = 0;
 
@@ -198,7 +197,7 @@
             function autoChange() {
 
                 //開啟一個定時器, 用來定時去切換圖片
-                var timer = setInterval(function () {
+                var timer = setInterval(function() {
 
                     //使索引自增
                     index++;
@@ -207,14 +206,13 @@
                     index %= imgArr.length;
 
                     //執行動畫, 切換圖片
-                    move(imgList, "left", -660 * index, 20, function () {
+                    move(imgList, "left", -660 * index, 20, function() {
                         //修改導航按鈕
                         setA();
                     });
                 }, 3000);
             };
         };
-
     </script>
 </head>
 
