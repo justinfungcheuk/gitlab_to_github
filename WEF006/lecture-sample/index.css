@@ -10,7 +10,8 @@
     margin: 5px;
     background: black;
     color: white;
-    transition: all 1s; /* transition 是讓該指令產生動畫*/
+    transition: all 1s;
+    /* transition 是讓該指令產生動畫*/
 }
 
 .big {
