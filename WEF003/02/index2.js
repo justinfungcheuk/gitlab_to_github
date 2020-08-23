@@ -13,8 +13,10 @@
 function checkMarkSix(result, bid) {
     let matched = 0;
     for (let num of result) {
+        // 第一個就 bid[0], 第二個就 bid[1], 因為 array 的寫法就是 []包著的數字就代表拿取第幾個的數字
         if (bid[0] === num || bid[1] === num) {
             matched++;
+            //因為 matched++ 一定是要能夠被 reassign, 所以不可以用 const, 而要用 let
         }
     }
     return matched === 2;
@@ -24,7 +26,7 @@ console.log(checkMarkSix([1, 3, 5, 7, 9, 11], [1, 3])); // returns: true
 console.log(checkMarkSix([1, 3, 5, 7, 9, 11], [2, 3])); // returns: false
 console.log(checkMarkSix([2, 4, 10, 15, 14, 19], [2, 19])); // returns: true
 
-function checkMarkSixAugmented(result, bid) {
+function checkMarkSixAugmented(result, bid) { //Augmented(增強)
     let matched = 0;
     for (let bidNumber of bid) {
         for (let num of result) {
