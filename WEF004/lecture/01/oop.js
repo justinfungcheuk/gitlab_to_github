@@ -4,7 +4,7 @@
 /*
  * 以下 Classes 包含有三種東西
  * 第一種: 新的生命 constructor - class Human{ constructor(weight, money)}
- * 第二種: MEthod - 就是 method名 及 () 闊號 - 例如: eat() 或 walk()
+ * 第二種: Method - 就是 method名 及 () 闊號 - 例如: eat() 或 walk()
  * 第三種: 如需要 call 個 method 就要用 object - 即是 object.Method Name(); 例如: alex.eat();
  * 第四種: 如要提取下題的 weight, 並不需要加上 weight() 闊號, 只需要 console.log(alex.weight); 即可
  * 以上為 class 的基本 systax(語法)

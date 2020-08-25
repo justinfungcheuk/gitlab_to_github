@@ -12,7 +12,7 @@ const students = [ // students array
 // }
 
 //           下面的 function 是屬於 lambda /block 都是一堆指引來的      -> student.map - 一對一地,經過你的處理, 形成一個新名單出來
-// 例如: 你的名單原本是一個 array object, 而你的新名單想形成 array of string, 就會使用 map 去做
+// 例如: 你的名單原本是一個 array of object, 而你的新名單想形成 array of string, 就會使用 map 去做
 const studentNames = students.map(function(original) { // original 代表原本的模樣而該function 會運作3次, 因為students有3個
     /* 透過 map, 如果你有個 array, 如該題的 array 是 students, 
      * 你想有另一個 array 是和 students array 一模一樣的長度, 
