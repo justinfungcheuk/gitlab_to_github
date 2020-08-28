@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>first page</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- rel 代表 relationship 而 link 也可有多個不同的link存在-->
+    <style>
+        /* CSS 可在 <style> 內編寫 */
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- header 用途類似於 div -->
+        <nav>
+            <!-- nav 用於寫出一個 menu bar -->
+
+        </nav>
+    </header>
+    <div>
+        <!-- h1 - h7 代表 heading 但只有 1 至 7 -->
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <!-- 由於 heading 是粗體, 所以使用 <b></b> 是沒有變化的, 因為不可以粗體再加上粗體 -->
+        <p class="inverse"><i>Paragraph</i></p>
+        <p class="xmas" id="special"><b>Paragraph</b></p>
+        <p class="xmas inverse">Para<br>
+            <!-- 在 class="" 裡面可額外再加上其他 class 例如: "xmas inverse"  -->
+            <!-- br 代表分行 -->graph</p>
+        <p class="xmas">Paragraph</p>
+        <img src="2_SteveJobs.jpg" height="10">
+        <audio controls src="Fight.mp4">
+            Your browser does not support the <code>audio</code> element.
+        </audio>
+        <p>Click
+            <a href="http://www.google.com">here</a></p>
+        <!-- href="" 代表 hyperlink reference 連接參考 -->
+        <ul>
+            <!-- ul - unorder list 代表以下項目是一個清單 list -->
+            <li class="xmas">Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <hr>
+        <!-- hr 代表 horizontal line 分行 -->
+    </div>
+    <ol class="xmas">
+        <!-- ol - order list 代表以下項目是一個有數字次序的清單 list -->
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+    <iframe width="300" height="200" src="https://www.tecky.io">
+        <!-- iframe 代表畫中畫 -->
+    </iframe>
+    <section>
+        <!-- section 是用以輔助 div -->
+        <h2>Acknowledgement</h2>
+        <p>Special Thanks to...</p>
+        <ul>
+            <li>Me</li>
+        </ul>
+    </section>
+    <footer>
+        <!-- 類似於 div -->
+    </footer>
+
+    <table>
+        <!-- table 通常分為三部分 table, thead, tbody -->
+        <thead>
+            <tr>
+                <th colspan="2">The table header</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>The table body</td>
+                <td>with two columns</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">The table footer</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

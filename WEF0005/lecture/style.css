@@ -1,0 +1,48 @@
+p {
+    /* element */
+    /* p {} 代表將所有的 p 選擇出來*/
+    color: red;
+    /*  color 則代表直接將文字更改顏色*/
+}
+
+li {
+    background: green;
+    /* background 代表將 li 的底色轉變顏色 */
+}
+
+li:hover {
+    /* hover 代表當滑鼠在該 li 上就會有以下背景顏色的效果 */
+    background: #ccffcc;
+}
+
+#special {
+    text-decoration: underline;
+    /* text-decoration: 代表文字的裝飾; 例如: 可配上 underline 底線 */
+}
+
+[height="10"] {
+    /* [height="10"] 代表只要是 height = "10" 就會有以下的 border 效果 */
+    border: solid 10px black;
+}
+
+div>.xmas {
+    /* div .xmas 代表任何於 div 內的 class="xmas" */
+    /* div > .xmas 代表在 div 下面接著的 class="xmas" 才會有該 css 效果 */
+    font-weight: bold;
+    /* font-weight: 代表字體的粗細 例如: 可配上 bold 粗體 */
+}
+
+.inverse {
+    /* inverse 代表反白 */
+    background: black;
+    color: white;
+}
+
+#page>div.row .items[data-promotion='christmas'] {
+    /* 只要是 id 為 page 下的 div 
+     * 而 class 是 row 的任何底下及任何的 element 有 items 的 class 之外, 
+     * 它的 attribute 是 data-promotion="christmas", 
+     * 它的 background-color: 就是紅色;  
+     */
+    background-color: red;
+}
