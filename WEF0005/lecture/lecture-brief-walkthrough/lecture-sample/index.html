@@ -2,11 +2,141 @@
 <html>
 
 <head>
-
+    <style>
+        body {
+            margin: 0;
+            /* 貼邊製作一個網站, 所以用 body{margin: 0;} */
+        }
+        
+        header {
+            background: #207c3e;
+            color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            /* flex-direction: column 表示當screen夠細時,就打直落 */
+        }
+        
+        h1 {
+            font-size: 96px;
+            margin: 0;
+            /* margin 外邊距 */
+        }
+        
+        h1,
+        h2 {
+            text-align: center;
+        }
+        
+        #page {
+            position: relative;
+            /* 透過 id = page 包起所有東西, 因為內文而變大, 該page就會成為attribute的相對定點位 */
+            /* postion relative 可以任意地排位, 放左或右 */
+            background: #EAEB7D;
+        }
+        
+        footer {
+            position: absolute;
+            /* position: absolute; 絕對座標 */
+            bottom: 0;
+            padding: 20px;
+        }
+        
+        .mill {
+            color: #207c3e;
+        }
+        
+        .calories {
+            background: white;
+            width: 150px;
+            height: 150px;
+            padding: 20px;
+            box-sizing: border-box;
+            /* box-sizing: border-box 表示無論padding是多少, width都是150px的寬度 */
+            text-align: center;
+            display: flex;
+            /* display: flex 只可以與 justify-content 一起使用 */
+            justify-content: center;
+            flex-direction: column;
+            /* 上下置中 = display: flex; justify-content: center; flex-direction: column; */
+            /* 在flex內的element 可任意排位, 如何擺放都可以 */
+            border-radius: 50%;
+            /* border-radius: 50px 曲到圓 */
+        }
+        
+        .calories p {
+            margin: 0;
+        }
+        
+        .img {
+            max-width: 100%;
+            /* 相對於寬度 最大是 100%    */
+        }
+        
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 當只是用了 flex 只是定義了置中, 沒有定義上下,
+             * 所以需要將上下都置中, 使用 justify-content 和 align-items
+             */
+        }
+        
+        @media only screen and (min-width: 480px) {
+            /* 透過 @media 來將在不同 screen size時, 將CSS改變  */
+            /* 當 max-width 768px 以下就會應用以下功能 相反 min-width 768px 以上就會執行另一種功能 */
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                /* 當 screen 夠大時, 就打橫放*/
+            }
+            img {
+                max-width: 400px;
+                /*margin: 0 auto;*/
+                /* margin: 0 auto; 就會左右置中 */
+                /* margin: 0; 代表四邊都是 0
+                 * margin: 0 auto; 代表 0 = 上下, auto = 左右
+                 * margin: 10px auto 0px; 代表 10px = 上, auto = 左右, 0px = 下
+                 * margin: 10px 上 auto 右 0px 下 auto 左;
+                 */
+                display: block;
+                /* 由於 img 不是 block type, 所以要將 img 轉為 block type  */
+            }
+        }
+        
+        @media only screen and (max-width: 250px) {
+            h1 {
+                font-size: 24px;
+            }
+            #page {
+                min-height: 500px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
+    <div id="page">
+        <header>
+            <div>CocaCola</div>
+            <h1>陽光</h1>
+            <h2>檸檬茶</h2>
+        </header>
+        <footer>
+            <div class="calories">
+                <p>Calories<br>115</p>
+                <!-- p 內不能再有 p, 即是段落中不能再有段落 -->
+                <p>6% MV<span>*</span></p>
+                <!-- 用span來表達某一個字有特別的用途 -->
+                <p>Ask your doctor before drinking</p>
+            </div>
+            <div>46 Calories per 100mL</div>
+            <div class="mill">250 mL (毫升)</div>
+        </footer>
+        <div class="flex">
+            <img src="lemon.png">
+        </div>
+    </div>
 </body>
 
 </html>
