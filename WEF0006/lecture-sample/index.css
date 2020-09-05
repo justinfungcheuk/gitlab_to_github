@@ -7,7 +7,14 @@
 .grid {
     width: 50px;
     height: 50px;
-    margin: 1px;
+    margin: 5px;
     background: black;
     color: white;
+    transition: all 1s;
+    /* transition 製作動畫效果 all 代表全部發生 1s 的動畫效果 */
+}
+
+.big {
+    background: red;
+    font-size: 40px;
 }

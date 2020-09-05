@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <style>
+        div {
+            border: solid 3px black;
+            padding: 20px;
+        }
+        
+        div.clicked {
+            /* 只要點擊到 div, 它的背景都會變成黃色 */
+            background: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        .outer
+        <div class="inner">
+            .innner
+            <div class="outer">
+                .innermost
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
