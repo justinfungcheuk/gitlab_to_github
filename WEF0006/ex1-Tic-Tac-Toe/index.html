@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/c510cd0578.js" crossorigin="anonymous"></script>
+    <style>
+        #page {
+            width: 600px;
+            border: solid 2px #E2E3E7;
+            border-radius: 10px;
+            color: #6F747E;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        /* .difficulty {
+            float: left;
+        }
+        
+        .share {
+            float: right;
+        } */
+        
+        .difficulty select {
+            font-size: 18px;
+            border: none;
+            background: none;
+            color: #6F747E;
+        }
+        
+        .share {
+            color: #3D7BF0;
+            font-size: 18px;
+        }
+        
+        .turn {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .turn>div {
+            /* .turn > div {} 代表只包含 <div class="turn"> 內的 <div class = "current"> 該 div*/
+            /* .turn  div {} 代表包含 <div class="turn"> 所有 div*/
+            display: flex;
+            justify-content: space-between;
+            width: 150px;
+            margin: 4px;
+            padding: 4px 15px;
+            border-bottom: solid 1px #eeeeee;
+            border-left: solid 1px #f3f3f3;
+            border-right: solid 1px #f3f3f3;
+            border-top: solid 1px #fefefe;
+            border-radius: 5px;
+        }
+        
+        .turn>div.current {
+            /* .turn>div.current 只會選擇了 <div class="turn"> 內的 <div class="current"> */
+            border-bottom: solid 2px #1bb4a0;
+            box-shadow: 0px 2px 5px #6F747E;
+        }
+        
+        .turn-text {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        span.x {
+            color: black;
+        }
+        
+        span.o {
+            color: #F0E7CC;
+        }
+        
+        .tic-tac-toe {
+            background: #1BB4A0;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .block-group {
+            width: 210px;
+            display: flex;
+            flex-wrap: wrap;
+            /* flex-wrap: wrap; 將多出來的格, 顯示出來*/
+        }
+        
+        .block {
+            border: solid 4px #159686;
+            width: 70px;
+            height: 70px;
+            box-sizing: border-box;
+            /* 無論如何, 計算了 border 都是70px */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .block span.x,
+        .block span.o {
+            font-size: 48px;
+        }
+        
+        .block.top {
+            border-top: none;
+        }
+        
+        .block.left {
+            border-left: none;
+        }
+        
+        .block.right {
+            border-right: none;
+        }
+        
+        .block.bottom {
+            border-bottom: none;
+        }
+        
+        footer {
+            display: flex;
+            justify-content: center;
+            /* text-align: center; 由於它不可以調整 padding, 所以我們用 display: flex; 較理想*/
+        }
+        
+        footer button {
+            color: #159686;
+            padding: 10px;
+            width: 100%;
+            /* width: 100% 代表將整個位置霸佔 */
+            border: none;
+            /* 沒有邊線存在  border: none */
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page">
+        <header>
+            <div class="difficulty">
+                <select>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Difficult</option>
+                </select>
+            </div>
+            <div class="share">
+                <i class="fas fa-share-alt"></i>
+            </div>
+        </header>
+        <div class="turn">
+            <div class="current">
+                <div class="player">X</div>
+                <div class="score">-</div>
+            </div>
+            <div>
+                <div class="player">O</div>
+                <div class="score">-</div>
+            </div>
+        </div>
+        <div class="turn-text">
+            <span class="x">X</span>Turn
+            <!-- span 和 div 的分別 
+                span 是沒有 width 和 height, 但 div 是有的
+                通常 span 是用於字, 而 div 用於框框
+             -->
+        </div>
+        <div class="tic-tac-toe">
+            <div class="block-group">
+                <div class="block top left">
+
+                </div>
+                <div class="block top">
+
+                </div>
+                <div class="block top right">
+
+                </div>
+                <div class="block left">
+
+                </div>
+                <div class="block">
+
+                </div>
+                <div class="block right">
+
+                </div>
+                <div class="block bottom left">
+
+                </div>
+                <div class="block bottom">
+
+                </div>
+                <div class="block bottom right">
+
+                </div>
+            </div>
+        </div>
+        <footer>
+            <button>Restart Game</button>
+        </footer>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
