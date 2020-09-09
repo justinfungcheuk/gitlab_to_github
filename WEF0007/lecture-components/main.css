@@ -1,0 +1,17 @@
+.bg-dark {
+    background-color: red!important;
+}
+
+.navbar-dark .navbar-nav .nav-link.disabled {
+    color: rgba(255, 255, 255, .55);
+}
+
+body {
+    background: #ff6666;
+}
+
+#page {
+    margin-top: 20px;
+    background: white;
+    padding: 0;
+}
