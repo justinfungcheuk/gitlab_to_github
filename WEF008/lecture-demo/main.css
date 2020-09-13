@@ -1,4 +1,6 @@
-html, body { /* 要body及html 100%才可以佔領整個頁面 */
+html,
+body {
+    /* 要body及html 100%才可以佔領整個頁面 */
     height: 100%;
 }
 
@@ -10,7 +12,8 @@ body {
     height: 100%;
 }
 
-#page > .row {
+#page>.row {
+    /* id = "page" 內的那一層 row */
     height: 100%;
 }
 
@@ -28,25 +31,31 @@ body {
 }
 
 .post-list {
-    overflow-y: scroll; /* overflow-y: scroll 表示只有 y軸 才可以出現上下移動來用滑鼠滑動 */
-    height: calc(100% - 40px); /* 計返100%, 減返吹水台的位置, 但要先define 吹水台的 height & text-align & color */
- } 
+    overflow-y: scroll;
+    /* overflow-y: scroll 表示只有 y軸 才可以出現上下移動來用滑鼠滑動 */
+    height: calc(100% - 40px);
+    /* 計返100%, 減返吹水台的位置, 但要先define 吹水台的 height & text-align & color */
+}
 
 .post {
     display: flex;
     color: #ffffff;
 }
 
-.post > .indicators {
+
+/* 當使用了 displa: flex 代表每一樣東西都有它自己的大小 */
+
+.post>.indicators {
     width: 30px;
     padding-left: 10px;
 }
 
-.post > .post-summary {
+.post>.post-summary {
     flex: 1;
+    /* flex: 1; 來霸佔整個空間 */
 }
 
-.post > .post-metadata {
+.post>.post-metadata {
     width: 90px;
     text-align: right;
     padding-right: 15px;
@@ -56,20 +65,26 @@ body {
     margin-bottom: 10px;
 }
 
-.post-summary, .post-metadata {
-    border-bottom: solid 1px #a1a1a1; /* 形成一個底間 */
+.post-summary,
+.post-metadata {
+    border-bottom: solid 1px #a1a1a1;
+    /* 形成一個底間 */
 }
 
-.post-metadata > select {
+.post-metadata>select {
     margin-bottom: 10px;
     border: none;
+    /* border: none 將它的外框去除 */
 }
 
-.post-metadata > .channel {
+.post-metadata>.channel {
     padding: 4px 10px;
     background: #EBEBEB;
     color: #A1A1A1;
-    float: right; /* float: right 該功能只適用於 block element */
+    float: right;
+    /* float: right 該功能只適用於 block element
+     * 用於將該部分自己向右移動, 擺在右邊 
+     */
     border-radius: 20px;
 }
 
@@ -80,3 +95,26 @@ body {
 .body {
     color: #0000ff;
 }
+
+
+/*  text-overflow: ellipsis;
+ * 可以將將一個句子多了出來的字變成 ... 
+ */
+
+
+/*
+position: relative; (在自己的位置移動)
+top: 40px; left: 40px;
+
+position: absolute; (對著之上的relative 調整絕對座標)
+top: 40px; left: 40px;
+
+position: -webkit-sticky; (向下滾動滾動條就會固定)
+position: sticky;
+top: 20px;
+
+position: fixed (無論何時都會固定在版面上)
+*/
+
+
+/* span 的 padding和 margin 只可以調整左右, 不可以調整上下 */
