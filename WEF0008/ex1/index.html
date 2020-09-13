@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="webfonts/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-md"><img src="img/acoustic_logo.png"></div>
+            <!-- md 的時候才做 colum, sm 就不需要 -->
+            <div class="col-md social-icons">
+                <div class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <div class="social-icon">
+                    <i class="fab fa-dribbble"></i>
+                </div>
+                <div class="social-icon">
+                    <i class="fab fa-soundcloud"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row menu">
+            <div class="col">
+                <nav class="navbar navbar-expand-md navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Navbar</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="overlay-wrap">
+                                <div class="overlay">
+                                    <h2>The Party Of Your Life</h2>
+                                    <p>Read more</p>
+                                </div>
+                            </div>
+                            <img src="img/slideshow1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <div class="overlay-wrap">
+                                <div class="overlay">
+                                    <h2>The Party Of Your Life</h2>
+                                    <p>Read more</p>
+                                </div>
+                            </div>
+                            <img src="img/slideshow2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <div class="overlay-wrap">
+                                <div class="overlay">
+                                    <h2>The Party Of Your Life</h2>
+                                    <p>Read more</p>
+                                </div>
+                            </div>
+                            <img src="img/slideshow3.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row media">
+            <div class="col-12">
+                <h3>LATEST MEDIA</h3>
+            </div>
+            <div class="col-3">
+                <div>
+                    <img class="img-fluid" src="img/media-image.jpg">
+                    <!-- class="img-fluid" 按照格的大小以流動性調整圖片的大小來適應格的大小 -->
+                    <div class="information">
+                        <p class="title">JazzClub</p>
+                        <p class="description">Barcelona, Spain</p>
+                        <button> View Set </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <img class="img-fluid" src="img/media-image.jpg">
+                    <!-- class="img-fluid" 按照格的大小以流動性調整圖片的大小來適應格的大小 -->
+                    <div class="information">
+                        <p class="title">JazzClub</p>
+                        <p class="description">Barcelona, Spain</p>
+                        <button> View Set </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <img class="img-fluid" src="img/media-image.jpg">
+                    <!-- class="img-fluid" 按照格的大小以流動性調整圖片的大小來適應格的大小 -->
+                    <div class="information">
+                        <p class="title">JazzClub</p>
+                        <p class="description">Barcelona, Spain</p>
+                        <button> View Set </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div>
+                    <img class="img-fluid" src="img/media-image.jpg">
+                    <!-- class="img-fluid" 按照格的大小以流動性調整圖片的大小來適應格的大小 -->
+                    <div class="information">
+                        <p class="title">JazzClub</p>
+                        <p class="description">Barcelona, Spain</p>
+                        <button> View Set </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row main">
+            <div class="col-md-3">
+                <h3>UPCOMING EVENTS</h3>
+                <div class="events">
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                            <button>BUY NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>LATEST NEWS</h3>
+                <div class="news">
+                    <img src="img/news.jpg" class="img-fluid">
+                    <div class="information">
+                        <div class="date">
+                            <span class="day">30</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2021</span>
+                        </div>
+                        <h4>The Interview</h4>
+                        <div class="tags-wrap">
+                            <p class="tags">Filed Under: <span>News</span></p>
+                        </div>
+                        <p class="description">In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna
+                            ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim. Morbi[…]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h3>LATEST ALBUM</h3>
+                <div class="album">
+                    <img src="img/album.jpg" class="img-fluid">
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+                    <div class="song">
+                        <div class="information">
+                            <p class="title">APAP</p>
+                            <p class="description">New York, NY</p>
+                        </div>
+                        <div class="control">
+                            <div class="play-button"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
