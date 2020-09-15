@@ -162,7 +162,7 @@ span.m-left {
     z-index: 1;
 }
 
-a.about-me-info p {
+.about-me-info p {
     font-size: 1.3rem;
     color: #BEBEBE;
 }
@@ -254,6 +254,7 @@ div[class^='bar-'] {
     text-transform: capitalize;
     border: 3px solid #ed5565;
     padding: 15px 30px;
+    border-radius: 50px;
     color: #ed5565;
     font-size: 1.1rem;
     letter-spacing: 1px;
