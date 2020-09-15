@@ -33,7 +33,7 @@ for (let i = 0; i < blocks.length; i++) {
     block.addEventListener('click', function() {
         if (!playing) {
             return;
-        } // 如果不是正在遊戲中, 就不要再操作, 所有 不是遊戲中就要 return, 結束遊戲
+        } // 如果不是正在遊戲中, 就不要再操作, 所以 不是遊戲中就要 return, 結束遊戲
 
         //console.log(block.innerHTML.trim()); //透過 trim() 將空格 或 分行 全部清除
         if (block.innerHTML.trim() == '') { //同樣地 if 也需要將 空格 或 分行 全部清除
