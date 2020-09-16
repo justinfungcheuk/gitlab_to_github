@@ -60,7 +60,7 @@ for (let i = 0; i < blocks.length; i++) {
             //for (let condition of winningConditions) { // 將 condition 取出來
             for (let j = 0; j < winningConditions.length; j++) {
                 const condition = winningConditions[j];
-                // 以上兩款的 for loop 都是一樣的, 只是原始 for loop 多了 const condition = 
+                // 以上兩款的 for loop 都是一樣的, 只是原始 for loop 多了 const condition = const condition = winningConditions[j];
                 /*
                  * for (let condition of winningConditions)
                  * 是將所有的 let winningConditions = [] 內的所有東西取出來
