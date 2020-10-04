@@ -20,7 +20,7 @@
          * - 通過自減可以使變量在自身的基礎上減 1
          * - 自減分成兩種: 後-- (a--) 和 前-- (--a)
          *  無論是a-- 還是 --a 都會立即使原變量的值自減 1
-         *   不同的是 --a 和 --a 的值不同
+         *   不同的是 a-- 和 --a 的值不同
          *   a-- 是變量的原值 (自減前的值)
          *   --a 是變量的新值
          *
@@ -28,10 +28,10 @@
 
         var num = 10;
 
-        //num--;
-        //console.log(num--);
+        num--;
+        console.log(num--);
 
-        //--num; 
+        --num;
         console.log(--num);
 
         console.log("num = " + num);
@@ -40,7 +40,7 @@
 
         //使a自增1
         //a++;
-        //a++;  
+        //a++;
         //++a;
 
         //console.log(a++);
@@ -49,16 +49,17 @@
 
         //console.log("a++ = " + a++);
 
-        //console.log("a = "+a);
+        //console.log("a = " + a);
 
         var c = 10;
 
         //使c自增1, 第一次c++, 是在10的基礎上自增
-        //c++;
+        c++;
         //console.log(c++);
 
         //第二次c++, 是在11的基礎上自增
         c++;
+        //console.log(c++);
 
         var d = 20;
 
@@ -66,8 +67,8 @@
         //console.log(++d); //22
 
         //20 + 22 + 22
-        //var result = d++ + ++d + d;
-        //console.log("result ="+result);
+        var result = d++ + ++d + d;
+        console.log("result =" + result);
 
         //d = 20
         d = d++;
