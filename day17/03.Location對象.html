@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        /*
+         * Location
+         * - 該對象中封裝了瀏覽器的地址欄的信息
+         */
+
+        window.onload = function () {
+
+            //獲取按鈕對象
+            var btn = document.getElementById("btn");
+
+            btn.onclick = function () {
+
+                //如果直接打印 Location, 則可以獲取到地址欄的信息 (當前頁面的完整的路徑)
+                //alert(location); // 獲取瀏覽器的地址 = 瀏覽器的網址
+
+                /*
+                 * 如果直接將 location 屬性修改為一個完整的路徑, 或相對路徑
+                 * 則我們的頁面會自動跳轉到該路經, 並且會生成相應的歷史紀錄
+                 */
+                //location = "http://www.baidu.com"; // 直接轉到百度網頁
+                //location = "01.BOM.Navigator對象.html";
+
+                /*
+                 * Location 對象方法
+                 * - assign() 加載新的文檔
+                 * - reload() 重新加載當前文檔
+                 * - replace() 用新的文檔替換當前文檔
+                 */
+
+                /*
+                 * assign()
+                 * - 用來跳轉到其他的頁面, 作用和直接修改 location 一樣 （location = "http://www.baidu.com";）
+                 */
+                 //location.assign("http://www.baidu.com");
+
+                 /*
+                  * reload()
+                  * - 用於重新加載當前頁面, 作用和刷新功能按扭一樣
+                  * - 如果在方法中傳遞一個 true, 作為參數, 則會強制清空緩存刷新頁面
+                  */
+                 //location.reload(true);
+
+                 /*
+                  * repalce()
+                  * - 可以使用一個新的頁面替換當前頁面, 調用完畢也會跳轉頁面
+                  *      不會生成歷史紀錄, 不能使用回退按扭回退
+                  */
+                 location.replace("01.BOM.Navigator對象.html");
+
+            };
+        };
+
+    </script>
+</head>
+
+<body>
+
+    <button id="btn">點我一下</button>
+
+    <h1>Location</h1>
+
+    <input type="text" />
+    <a href="01.BOM.Navigator對象.html">去BOM</a>
+</body>
+
+</html>

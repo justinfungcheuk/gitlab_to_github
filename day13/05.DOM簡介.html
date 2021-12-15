@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+    </head>
+    <body>
+        <button id = "btn">我是一個按鈕</button>
+        <script type="text/javascript">
+
+        /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！1
+         * 瀏覽器已經為我們提供 文檔節點 對象 這個對象是　window 屬性
+         *   可以在頁面中直接使用, 文檔節點代表的是整個網頁
+         */
+         console.log(document);
+
+         //獲取到 button 對象
+         var btn = document.getElementById("btn");
+
+         console.log("btn");
+
+         //修改按鈕的文字
+         console.log(btn.innerHTML);
+         btn.innerHTML = "I'm Button";
+
+        </script>
+    </body>
+</html>

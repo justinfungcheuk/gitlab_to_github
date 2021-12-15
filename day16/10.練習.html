@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        //使 div 可以根據不同的方向鍵向不同的方向移動
+        /*
+         * 按左鍵, div 向左移
+         * 按右鍵, div 向右移
+         * ...... 如此類推！！！
+         */
+
+        window.onload = function() {
+
+            //為 document 綁定一個按鍵按下的事件
+            document.onkeydown = function(event) {
+                event = event || window.event;
+
+                //定義一個變量, 來表示移動的速度
+                var speed = 20;
+
+                //當用戶按了 ctrl 以後, 速度加快
+                if (event.ctrlKey) {
+                    speed = 100;
+                }
+
+                /*
+                 * 37 左
+                 * 38 上
+                 * 39 右
+                 * 40 下
+                 */
+                switch (event.keyCode) { // 因為做相等的判斷，我們不用 if語句，用 switch...case語句 會更方便快捷！！！
+                    case 37:
+                        //alert("向左"); left 值減小
+                        box1.style.left = box1.offsetLeft - speed + "px";
+                        break;
+                    case 39: 
+                        //alert("向右");
+                        box1.style.left = box1.offsetLeft + speed + "px";
+                        break;
+                    case 38:
+                        //alert("向上");
+                        box1.style.top = box1.offsetTop - speed + "px";
+                        break;
+                    case 40:
+                        //alert("向下");
+                        box1.style.top = box1.offsetTop + speed + "px";
+                        break;
+                };
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

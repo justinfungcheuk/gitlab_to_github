@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * 將其他數據類型轉換為Boolean
+             * - 使用Boolean ()函數
+             *   數字  轉換 ---> 布爾
+             *  - 除了 0 和 NaN. 其餘都是 true
+             *   字符串 轉換 ---> 布爾
+             *  - 除了空串, 其餘的都是 true
+             *  - null 和 undefined 都會轉換為 false
+             *  - 對象也會轉換為 true
+             * 
+             * 
+             *  - 0，NaN，空串，null，undefined 都是 false
+             */
+            
+            var a = 123; // true
+            a = -123; // true
+            a = 0; // flase
+            a = Infinity; // true
+            a = NaN; // flase
+            
+            //調用 Boolean() 函數來將 a 轉換為布爾值
+            a = Boolean(a);
+            
+            a = "       ";
+            
+            a = Boolean(a);
+            
+            a = null; // false
+            a = Boolean(a);
+            
+            a = undefined; 
+            a = Boolean(a);
+            
+            console.log(typeof a);
+            console.log(a);
+            
+        </script>
+    </head>
+</html>

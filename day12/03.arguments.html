@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 在調用函數時, 瀏覽器每次都會傳遞進兩個隱含的參數:
+         *   1. 函數的上下文對象 this
+         *   2. 封裝實參的對象 arguments
+         *      - arguments 是一個類數組對象, 它也可以通過索引來操作數據, 也可以獲取長度
+         *      - 在調用函數時, 我們所傳遞的實參都會在 arguments 中保存
+         *      - arguments.length 可以用來獲取實參的長度
+         *      - 我們即使不定義形參, 也可以通過 arguments 來使用實參
+         *           只不過比較麻煩
+         *           arguments[0] 表示第一個實參
+         *           arguments[1] 表示第二個實參
+         *      - 它裡面有一個屬性叫做 callee
+         *           這個屬性對應一個函數對象, 就是我們當前正在執行的函數的對象
+         */
+
+         function fun(a,b) {
+            // console.log(arguments instanceof Array);
+            // console.log(Array.isArray(arguments)); //Array.isArray() 是可以檢查是不是一個Array
+            // console.log(arguments.length);
+            // console.log(arguments[1]);
+             console.log(arguments.callee == fun);
+         }
+         fun("hello",true); // fun()的括號裡面是傳遞實參 "hello", true
+
+        </script>
+    </head>
+</html>

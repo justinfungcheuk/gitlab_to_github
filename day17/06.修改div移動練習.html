@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <style type="text/css">
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+        </style>
+        <script type="text/javascript">
+
+        //使 div 可以根據不同的方向鍵向不同的方向移動
+        /*
+         * 按左鍵, div 向左移
+         * 按右鍵, div 向右移
+         * ......
+         */
+
+         window.onload = function(){
+
+            //定義一個變量, 來表示移動的速度
+            var speed = 10;
+
+            //創建一個變量表示方向
+            //通過修改 dir 來影響移動的方向
+            var dir = 0;
+
+            //開啟一個定時器, 來控制 div 的移動
+            setInterval(function(){ //這個函數 function() 代表每隔 30 毫秒 就執行一次, 每執行就會根據 dir 的值判斷執行那個代碼(也就是執行那個case)
+                /*
+                  * 37 左
+                  * 38 上
+                  * 39 右
+                  * 40 下
+                  */
+                 //把整個 switch 放到函數 function() 裡, 代表這個函數每執行一次就會對整個 swithc 進行判斷
+                  switch(dir){
+                     case 37:
+                     //alert("向左"); left 值減小
+                     box1.style.left = box1.offsetLeft - speed + "px";
+                     break;
+                     case 39:
+                     //alert("向右");
+                     box1.style.left = box1.offsetLeft + speed + "px";
+                     break;
+                     case 38:
+                     //alert("向上");
+                     box1.style.top = box1.offsetTop - speed + "px";
+                     break;
+                     case 40:
+                     //alert("向下");
+                     box1.style.top = box1.offsetTop + speed + "px";
+                     break;
+                 };
+            }, 30) ; // 每隔30毫秒調用一次
+
+             //為 document 綁定一個按鍵按下的事件
+             document.onkeydown = function(event){ // 所有的 速度speed 或 方向 都是在 onkeydown 裡面設置的！
+                 event = event || window.event;
+
+                 
+
+                 //當用戶按了 ctrl 以後, 速度加快
+                 if(event.ctrlKey){
+                     speed = 500;
+                 }else{
+                     speed = 10;
+                 }
+
+                 //使 dir 等於按鍵的值
+                 dir = event.keyCode;
+             };
+
+             //當按鍵鬆開時, div 不再移動
+             document.onkeyup = function(){
+                 //設置方向為 0
+                dir = 0;
+             };
+         };
+        </script>
+    </head>
+    <body>
+        <div id="box1"></div>
+    </body>
+</html>

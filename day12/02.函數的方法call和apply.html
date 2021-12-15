@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        function fun(a,b){
+            console.log("a = "+a);
+            console.log("b = "+b);
+            // alert(this.name);
+        }
+
+        var obj = {
+             name:"obj",
+             sayName:function(){
+                 alert(this.name);
+             }
+        };
+
+        /* 函數對象的方法: 
+         * call()和apply()
+         * - 這兩個方法都是函數對象的方法, 需要通過函數對象來調用
+         * - 當對函數調用　call() 和　apply() 都會調用函數執行
+         * - 在調用　call　和　apply() 可以將一個對象指定為第一個參數
+         *       此時這個對象將會成為函數執行時的 this
+         * - call() 方法可以將實參在對象之後依次傳遞
+         * - apply()方法需要將實參封裝到一個數組中統一傳遞
+         *
+         * - this 的情況:
+         *        1. 以函數形式調用時, this 永遠都是 Window
+         *        2. 以方法的形式調用時, this 是調用方法的對象
+         *        3. 以構造函數的形式調用時, this 是新創建的那個對象
+         *        4. 使用 call 和 apply 調用時, this 是指定的那個對象
+         */
+
+         fun.call(obj,2,3); // 這裡的 2 代表等於 a, 而 3 代表等於 b
+         fun.apply(obj,[2,3]); // 使用中闊號[] 把 2 和 3 封裝到一個數組裡面來傳遞它們的值給 fun
+
+         var obj2 = {name:"obj2"};
+
+        //  fun.apply();
+        //  fun.call();
+        //  fun();
+
+        // fun.call(obj); 
+        //fun.apply(obj); 
+
+        //fun(); 這種方法永遠都是 window 的形式, 但是 fun.apply(); 和 fun.call(); 都是可以你指定是甚麼就是甚麼
+
+        obj.sayName.apply(obj2); // 用這種方式可以指定函數執行甚麼東西, 所以闊號()裡面的參數是甚麼, this 指的就是甚麼
+
+
+        </script>
+    </head>
+</html>

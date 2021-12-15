@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>全選練習</title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            //由於每一個方法都需要獲取勾選框，每一個函數都能訪問到 items，所以需要把 items 放到全局作用域。
+            //獲取四個多選框 items
+            var items = document.getElementsByName("items");
+            //獲取全選 / 全不選的多選框
+            var checkedAllBox = document.getElementById("checkedAllBox");
+
+            /* 
+             * 全選按鈕
+             * - 點擊按鈕以後, 四個多選框全都被選中
+             */
+
+            //1. #checkedAllBtn
+            //為 id 為 checkedAllBtn 的按鈕綁定一個單擊響應函數
+            var checkedAllBtn = document.getElementById("checkedAllBtn");
+            checkedAllBtn.onclick = function () {
+
+                //遍歷 items
+                for (var i = 0; i < items.length; i++) {
+
+                /*  checked屬性 代表設置或返回 checkbox 是否應被選中！！！！！ 
+                語法：
+                checkboxObject.checked = true選中 或 false不選中
+                    通過多選框的 checked屬性 可以獲取 例如：items[i].checked 或者 設置多選框的選中狀態
+                    alert(items[i].checked);
+                    設置四個多選框變成選中狀態        
+                */
+                // 設置四個多選框變成選中狀態  
+                    items[i].checked = true; // items[i] 代表每一個勾選框
+                }
+
+                //將全選 / 全不選設置為選中
+                checkedAllBox.checked = true;
+
+            };
+
+            /*
+             * 全不選按鈕
+             * - 點擊按鈕以後, 四個多選框都變成沒選中的狀態
+             *
+             */
+            //2. #checkedNoBtn
+            //為 id 為 checkedNoBtn 的按鈕綁定一個單擊響應函數
+            var checkedNoBtn = document.getElementById("checkedNoBtn");
+            checkedNoBtn.onclick = function () {
+
+                for (var i = 0; i < items.length; i++) {
+                    //將四個多選框設置為沒選中的狀態
+                    items[i].checked = false;
+                }
+
+                //將全選 / 全不選設置為不選中
+                checkedAllBox.checked = false;
+
+
+            };
+
+            /*
+             * 反選按鈕
+             * - 點擊按鈕以後, 選中的按鈕變成沒選中, 沒選中的變成選中
+             */
+            //3. #checkedRevBtn
+            var checkedRevBtn = document.getElementById("checkedRevBtn");
+            checkedRevBtn.onclick = function () {
+
+                //將 checkedAllBox 設置為選中狀態
+                checkedAllBox.checked = true;
+
+                for (var i = 0; i < items.length; i++) {
+
+                    //判斷多選框狀態 - 由於 items[i].checked 原本就是一個布爾值，所以不用寫 items[i].checked = true
+                    //設置時先對勾選框的狀態進行判斷，如果是 true 就設置成 false，如果是 false 就設置為 true
+                    /* if(items[i].checked){ 
+                        //證明多選框已選中, 則設置為沒選中狀態
+                        items[i].checked = false;
+                    }else{
+                        //證明多選框沒選中, 則設置為選中狀態
+                        items[i].checked = true;
+                    } */
+
+                    // 下面的寫法和上面的 if語句 是一樣的效果，下面的寫法更簡單！
+                    items[i].checked = !items[i].checked;
+                    // ! 感嘆號表示 取反, 如果 !items[i].checked 是 true就給予它一個 false, 相反則給予 true
+
+
+
+
+                    //判斷四個多選框是否全選, 需要再次遍歷去判斷檢查四個多選框是否全選，因為在反選時，不一定是全選或全不選。
+                    //只要有一個沒選中則就不是全選
+                    if (!items[i].checked){
+                        //一旦進入判斷, 則證明不是全選狀態
+                        //將 checkedAllBox 設置為沒選中狀態
+                        checkedAllBox.checked = false;
+                    }
+                }
+
+                //在反選時也需要判斷四個多選框是否全都選中
+
+            };
+
+            /*
+             * 提交按鈕:
+             * - 點擊按鈕以後, 將所有選中的多選框的 value屬性值 彈出
+             */
+            //4. #sendBtn
+            //為 sendBtn 綁定單擊響應函數
+            var sendBtn = document.getElementById("sendBtn");
+            sendBtn.onclick = function () {
+                //遍歷 items
+                for (var i = 0; i < items.length; i++) {
+
+                    //判斷多選框是否選中 - 有選中的多選框才彈出 value屬性值
+                    if (items[i].checked) {
+                        alert(items[i].value);
+                    }
+                }
+            };
+
+            //5. #checkedAllBox
+            /*
+             * 全選 / 全不選 多選框
+             * - 當它選中時, 其餘的也選中, 當它取消時其餘的也取消
+             *
+             * 在事件的響應函數中, 響應函數是給誰綁定的 this 就是誰 （該 this 和我們的以方法形式調用的 this 是一樣的！）
+             * - 例如：checkedAllBox 該事件的響應函數中，它的響應函數 是給 checkedAllBox 綁定的，這個 this 就是 checkedAllBox
+             * - 在 JS 的瀏覽器的底層調用函數的時候，它是以 方法的形式 調用，因此 this 就是調用方法的對象
+             */
+            //為 checkedAllBox 綁定單擊響應函數
+            checkedAllBox.onclick = function () {
+                //alert(this); 檢查之後的 this 是 [object HTMLInputElement]，因此我們可以得到 checkAllBox 確實是 input
+                //alert(this === checkedAllBox); // true -》 this 全等於 checkedAllBox，所以我們可以在下面的 items[i].checked = this.checked; 
+                //把 checkAllBox 換成 this  
+
+                //設置多選框的選中狀態
+                for (var i = 0; i < items.length; i++) {
+                    // items[i].checked = checkedAllBox.checked;
+                    items[i].checked = this.checked; 
+                    /*！！！！！重點！！！！！
+                    由於 checkAllBox 是我們綁定的單擊響應函數對象，
+                    而這裡的 function 是一個單擊響應函數 或稱為 事件處理函數，
+                    因此在函數裡面就會有 this 的存在，而該 this 是誰呢？ 它是由我們的函數調用的方式所決定的，
+                    如果是以我們的函數形式調用，this 就是 window！
+                    如果是以方法的形式調用，this 就是調用方法的對象！
+                    而在這裡的 function函數 是 checkAllBox 的屬性。因此如果該 function函數 是用方法的形式調用，這個 this 就是 checkAllBox。
+                    因為響應函數綁定了 checkedAllBox 所以 this 就是綁定了它
+                    表示 只要checkedAllBox.checked是true的時候, items[i].checked都是true, 相反則是 false
+                    */
+                }
+            };
+
+            //6. items
+
+            /*
+             * 如果四個多選框全都選中, 則 checkAllBox 也應該選中
+             * 如果四個多選框全都沒選中, 則 checkAllBox 也不應該選中
+             */
+
+            //為四個多選框分別綁定點擊響應函數
+            for (var i = 0; i < items.length; i++){
+                items[i].onclick = function(){ 
+                    /* 當點擊的時候該函數就會觸發，當函數發達後我們要進行判斷四個多選框是否全選，我們需要一個一個的判斷勾選框是否被選，
+                     * 我們需要透過在 for循環 裡面在加上一個 for循環，再次遍歷 items
+                     * 由於我們必須判斷 4個勾選框 都是被選了，也就是 4個勾選框都是 true 才是全選的。所以我們要把 4個勾選框都要看一遍才能確定它們4個勾選框是全選的。
+                     * 所以只要 items[j].checked 有一個沒選中則就不是全選！！！所以我們要取反 !items[j].checked，
+                     * 一旦進入判斷, 則證明不是全選狀態，將 checkedAllBox 設置為沒選中狀態 checkedAllBox.checked = false; 
+                     * 而如果我們只是設置了 false -》 checkedAllBox.checked = false; 沒有設置 true，只能在全選時取消一個選框才有效果把全選取消，再點回項目全部都選擇後，全選則不會顯示全選。
+                     * 所以我們要將 checkedAllBox 設置為選中狀態 checkedAllBox.checked = true;
+
+                     * 完成以上代碼後，我們的勾選框在瀏覽器一開始就會全部選中，然後再進入 for循環 進行 if語句 的判斷，
+                     * 如果我們一直沒有滿足條件，一直沒有進入判斷，則證明就是全選 -》checkedAllBox.checked = true;
+                     * 而當進入判斷的時候，則不是全選 -》checkedAllBox.checked = false; 就會導致 checkedAllBox.checked = true; 失效
+
+                     * 我們可以把 checkedAllBox屬性 放到全局作用域，讓每一個函數都能訪問到。
+                     * 
+                     */
+
+                    //將 checkedAllBox 設置為選中狀態
+                    checkedAllBox.checked = true;
+
+                    for (var j = 0; j < items.length; j++){
+                        //判斷四個多選框是否全選, 需要再次遍歷去判斷檢查四個多選框是否全選
+                        //只要有一個沒選中則就不是全選
+                        if (!items[j].checked){
+                            //一旦進入判斷, 則證明不是全選狀態
+                            //將 checkedAllBox 設置為沒選中狀態
+                            checkedAllBox.checked = false;
+
+                            //一旦進入判斷, 則已經得出結果, 不用再繼續執行循環。例如：當 j=0 時，它的判斷是沒有被勾選，就直接停止執行循環！
+                            break;
+                        }
+                    }
+
+                };
+            }
+
+        };
+
+    </script>
+</head>
+
+<body>
+
+    <form method="post" action="">
+        你愛好的運動是？<input type="checkbox" id="checkedAllBox" />全選/全不選
+
+        <br />
+        <input type="checkbox" name="items" value="足球" />足球
+        <input type="checkbox" name="items" value="篮球" />籃球
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+        <br />
+        <input type="button" id="checkedAllBtn" value="全　選" />
+        <input type="button" id="checkedNoBtn" value="全不選" />
+        <input type="button" id="checkedRevBtn" value="反　選" />
+        <input type="button" id="sendBtn" value="提　交" />
+    </form>
+</body>
+
+</html>

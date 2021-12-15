@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 創建一個構造函數, 專門用來創建Person對象的
+         * 構造函數就是一個普通的函數, 創建方式和普通函數沒有區別,
+         * 不同的是構造函數習慣上[首字母大寫] 
+         *
+         * 構造函數和普通函數的區別就是調用方式的不同
+         * 普通函數是直接調用, 構造函數需要使用 new 關鍵字來調用 !!!!!!!!!!!!!!!!!!！！！！！！！！！！不加 new 就是普通函數
+         
+         *
+         * 構造函數的執行流程:
+         * 1. 當調用構造函數，就會立刻創建一個新的對象
+              function Person(){}
+            - var per = new Person();
+
+         * 2. 將新建的對象設置為函數中的 this, 在構造函數中可以使用 this 來引用新建的對象
+              function Person(){
+                  alert(this); 該 this 就是我們新建的對象 =》per，所以構造函數裡面的 this 和 新建的對象 per 是同一個東西
+              }
+              - var per = new Person(); 當函數以 new Person(); 構造函數形式調用的時候，this 就是新創建的那個 per對象，
+
+         * 3. 逐行執行函數中的代碼
+
+
+         * 4. 將新建的對象作為返回值返回
+              function Person(){}
+            - var per = new Person();
+         *
+
+
+
+
+
+         * 使用同一個構造函數創建的對象, 我們稱為一類對象, 也將一個構造函數稱為一個類。例如：Person構造函數，也稱為 Person類
+         - 例如：per1，per2，per3 這三個對象都是同類對象，都是 Person類的。
+
+         * 我們將通過一個構造函數創建的對象, 稱為是該類的實例
+         - 例如：per1，per2，per3 就是 Person類 的實例
+         *
+         * this 的情況:！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+         * 1. 當以函數的形式調用時, this 是 window！！！！！！！！！！！！！！！！！！！
+         * 2. 當以方法的形式調用時, 谁調用方法 this 就是誰！！！！！！！！！！！！！！！
+         * 3. 當以構造函數的形式調用時, this 就是新創建的那個對象！！！！！！！！！！！！
+         */
+        function Person(name, age, gender) { // Person稱為 Person類
+            // 在構造函數中可以使用 this 來引用新建的對象
+            // this 指向我們新建的對象 例如：per，per2，per3
+            this.name = name // 使用 this 來向新建的對象 per 添加一個 name屬性，因為 this 會作為返回值賦值給 per
+            this.age = age
+            this.gender = gender
+            this.sayName = function() {
+                alert(this.name);
+            }
+        }
+
+        function Dog() { // Dog稱為 Dog類
+
+        }
+
+        var per = new Person("孫悟空", 18, "男"); //使用 Person 創建的就是 Person類對象
+        var per2 = new Person("玉兔精", 16, "女");
+        var per3 = new Person("你我他", 38, "男");
+
+        var dog = new Dog();
+
+        console.log(per);
+        console.log(dog);
+        console.log(per3);
+
+        /*
+         * 使用 instanceof 可以檢查一個對象是否是一個類的實例
+         - 構造函數就是類
+         - 實例就是通過構造函數創建的對象
+          
+         * 語法: 
+         *      對象 instanceof 構造函數
+         * 如果是, 則返回 true, 否則返回 false
+         */
+        console.log(dog instanceof Person);
+        console.log(per instanceof Person);
+
+
+        /*
+         * 所有的對象都是 Object 的後代,
+         * 所以任何對象和 Object 在 instanceof 檢查時都會返回 true
+         */
+        console.log(per instanceof Object); // 檢查 Person 是否 Object 的實例
+    </script>
+</head>
+
+</html>

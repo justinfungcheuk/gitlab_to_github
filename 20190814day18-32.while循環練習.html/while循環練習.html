@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * 假如投資的年利率為 5%, 試求從1000元增長到5000元, 需花費多少年
+             * 
+             * 1000 = 1000 * 1.05
+             * 1050 = 1050 * 1.05
+             */
+            
+            //定義一個變量, 表示當前的錢數
+            
+            var money = 1000;
+            
+            //定義一個計數器
+            var count = 0;
+            
+            //money = money * 1.05
+            
+            //定義一個while循環來計算每年的錢數
+            while(money < 5000){
+                money *= 1.05;
+                
+                //使count自增
+                count++;
+            }
+            
+            /*//第一年的錢數
+            money *= 1.05;
+            
+            //第二年的錢數
+            money *= 1.05
+            
+            //第三年的錢數
+            money *= 1.05 
+            */
+
+            
+            console.log(money);
+            console.log("一共需要"+count+"年");
+        </script>
+    </head>
+</html>

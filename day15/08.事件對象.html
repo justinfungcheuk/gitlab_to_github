@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        #areaDiv {
+            border: 1px solid black;
+            width: 300px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        
+        #showMsg {
+            border: 1px solid black;
+            width: 300px;
+            height: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            /*
+             * 當鼠標在 areadiv 中移動時, 在 showMsg 中來顯示鼠標得座標
+             */
+            //獲取兩個 div
+            var areaDiv = document.getElementById("areaDiv");
+            var showMsg = document.getElementById("showMsg");
+
+            /*
+             * onmousemove
+             * - 該事件將會在鼠標的元素中移動時被觸發
+             *
+             * 事件對象
+             * - 當事件的響應函數被觸發時, 瀏覽器每次都會將一個事件對象作為實參傳遞進響應函數
+             *     在事件對象中封裝了當前事件相關的一切信息, 比如: 鼠標的座標 鍵盤那個按鍵被按下 鼠標滾輪滾動的方向...
+             */
+            areaDiv.onmousemove = function(event) { // (event) 是一個形參  
+                // alert(event);
+                /*
+                 * 在 IE8 中, 響應函數被觸發時, 瀏覽器不會傳遞事件對象
+                 *  在 IE8 及以下的瀏覽器中, 是將事件對象作為 window 對象的屬性保存的
+                 */
+                /* if(!event){
+                    event = window.event;
+                } */
+
+                //解決事件對象的兼容性問題 - IE8瀏覽器 和 其他瀏覽器都可以使用！！！
+                event = event || window.event; // ｜｜ 或者的符號是找 true 的，如果第一個 true 直接返回第一個，第二個是 false 直接返回第二個！！！
+                //以上的 if 和 event 寫法是一樣的
+
+                /*
+                 * clientX 返回當事件被觸發時，可以獲取鼠標指針的水平座標
+                 * clientY 返回當事件被觸發時，可以獲取鼠標指針的垂直座標
+                 */
+
+                var x = window.event.clientX;
+                var y = window.event.clientY;
+
+                //alert("x = "+x + " , y = "+y);
+
+                //在 showMsg 中顯示鼠標的座標
+                showMsg.innerHTML = "x = " + x + " , y = " + y;
+
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+
+    <div id="areaDiv"></div>
+    <div id="showMsg"></div>
+
+</body>
+
+</html>

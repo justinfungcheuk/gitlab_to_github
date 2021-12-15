@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+           
+            /*
+             * 我們的程序是由一條一條語句構成的
+             * 語句是按照自上向下的順序一條一條執行的
+             * 在 JS 中可以使用 {} 來為語句進行分組, 
+             * 同一個 {} 中的語句我們稱為是一組語句,
+             * 它們要麼都執行, 要麼都不執行
+             * 一個 {} 中的語句我們也稱為叫一個代碼塊
+             * - 在代碼塊的後邊就不用再編寫 ; 冒號了 !!!
+             *
+             *  JS 中的代碼塊, 只具有分組的作用, 沒有其他的用途
+             *   代碼塊內容的內容, 在外部是完全可見的, 不會與代碼塊外的其他語句隔離
+             */
+            
+            {
+                var a = 10;
+                alert("Hello");
+                console.log("Hello");
+                document.write("Statement");
+            }
+            
+            console.log("a = "+a);
+
+        </script>
+    </head>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF">
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 基本數據類型
+         * String Number Boolean Null Undefined
+         *
+         * 引用數據類型
+         * Object
+         *
+         * JS 中的變量都是保存到棧內存中
+         * - 基本數據類型的值直接在棧內存中存儲
+         * - 值與值之間是獨立存在, 修改一個變量不會影響其他的變量
+         * - 對象是保存到堆內存中的, 每創建一個新的對象, 就會在堆內存中開闢出一個新的空間,
+         * - 而變量保存的是對象的內存地址 (對象的引用), 如果兩個變量保存的是同一個對象引用,
+         * - 當一個通過一個變量修改屬性時, 另一個也會受到影響
+         */
+
+        var a = 123;
+        var b = a;
+        a++;
+
+        console.log("a = " + a);
+        console.log("b = " + b);
+
+        var obj = new Object();
+        obj.name = "孫悟空";
+
+        var obj2 = obj;
+
+        //修改obj的 name 屬性
+        obj.name = "豬八戒";
+
+        console.log(obj.name);
+        console.log(obj2.name);
+
+        //設置obj2為null
+        obj2 = null;
+
+        console.log(obj);
+        console.log(obj2);
+
+        var c = 10;
+        var d = 10;
+        console.log(c == d);
+
+        var obj3 = new Object(); //每次出現New 即是 創建一個新的對象, 就會在堆內存中開闢出一個新的空間,
+        var obj4 = new Object();
+        obj3.name = "沙和尚";
+        obj4.name = "沙和尚";
+
+        console.log(obj3);
+        console.log(obj4);
+
+        /*
+         * 當比較兩個基本數據類型的值時, 就是比較值 例如: 1 == 1
+         * 而比較兩個引用數據類型時, 它是比較對象的內存地址, ！！！！！！
+         * - 如果兩個對象是一模一樣的, 但是地址不同, 它也會返回 false ！！！！！
+         */
+        console.log(obj3 == obj4);
+    </script>
+</head>
+
+</html>

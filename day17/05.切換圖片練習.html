@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            /*
+             * 使圖片可以自動切換
+             */
+
+            //獲取 img 標籤
+            var img1 = document.getElementById("img1");
+
+            //創建一個數組來保存圖片的路徑
+            var imgArr = ["img/1_BillGates.jpg", "img/2_SteveJobs.jpg", "img/3_ElonMusk.jpg", "img/4_MarkZuckerberg.jpg", "img/5_SundarPichai.jpg"]
+
+            //創建一個變量, 用來保存當前圖片的索引
+            var index = 0; // 默認顯示第一張圖片所以要使用 var index = 0;
+
+            //定義一個變量, 用來保存定時器的標識
+            var timer; // ！！！重點！！！把它放到全局作用域是可以確保 btn01 和 btn02 都可以共用該變量 var timer！！！
+
+            //為 btn01 綁定一個單擊響應函數 - 當點擊按鈕的時候就會開啟定時器！！！
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function () {
+
+                /*
+                 * 目前, 我們每點擊一次按鈕, 就會開啟一個定時器。 例如：當你點擊10次就會開啟10個定時器，如此類推。
+                 *       點擊多次就會開啟多個定時器, 這就導致圖片的切換速度過快
+                 *       並且我們只能關閉最後一次開啟的定時器
+                 *
+                 * - 所以在開啟定時器之前, 需要將當前元素上的其他定時器關閉
+                 * - 再開啟定時器之前，需要將上一個定時器關閉。達到開一個，關一個的效果。避免圖片的切換速度加快！！！
+                 * 所以我們要用 clearInterval(timer); 來達到以上的效果！！！
+
+                   要關閉上一個定時器的前提是同一個元素，當你的定時器一個是給 img1 開啟的，另一個是給 h1 開啟的，由於它們不是同一個元素，所以不用關閉，
+
+                 */
+                clearInterval(timer);
+
+                /*
+                 * 開啟一個定時器, 來自動切換圖片
+                 */
+                timer = setInterval(function () {
+
+                    //使索引自增
+                    index++;
+
+                    //判斷索引是否超過最大索引 （因為一共只有 5張圖片，而最大的索引是 4，所以我們的索引不能大於4， 因為大於4後面就沒有圖片了！！！）
+                    /* if(index >= imgArr.length){
+                        //則將 index 設置為 0
+                        index = 0;
+                    } */
+                    //index = index % imgArr.length;
+                    // 例如：0%5=0，1%5=1，4%5=4，如此類推，而5%5=0 =》就會重新開始
+                    index %= imgArr.length;
+                    //以上三種寫法都是一樣的 
+ 
+                    //修改 img1 的 src 屬性
+                    img1.src = imgArr[index];
+
+                }, 1000); // 該 function函數 是每1秒就調用1次，而每調用1次，就會把索引自增1，再調用就會自增2，如此類推！！！
+            };
+            /*
+             * 開啟一個定時器, 來自動切換圖片
+             */
+            /* setInterval(function(){
+                
+                //使索引自增
+                index++;
+
+                //判斷索引是否超過最大索引
+                /* if(index >= imgArr.length){
+                    //則將 index 設置為 0
+                    index = 0;
+                } 
+                //index = index % imgArr.length;
+                index %= imgArr.length;
+                //以上三種寫法都是一樣的 
+
+                //修改 img1 的 src 屬性
+                img1.src = imgArr[index];
+
+            }, 1000); */
+
+            //為 btn02 綁定一個單擊響應函數
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function () {
+                //點擊按鈕以後, 停止圖片的自動切換, 關閉定時器
+                /*
+                 * clearInterval()可以接收任意參數
+                 *     如果參數是一個有效的定時器的標識, 則停止對應的定時器
+                 *     如果參數不是一個有效的標識, 則甚麼也不做
+                 */
+                clearInterval(timer);
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <img id="img1" src="img/1_BillGates.jpg" />
+    <br /><br />
+    <button id="btn01">開始</button>
+    <button id="btn02">停止</button>
+</body>
+
+</html>

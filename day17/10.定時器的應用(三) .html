@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            /* 因為在 IE 裡面沒有指定的值, 所以會獲取 auto, 所以最好是給予它一個值 例如: left: 0; */
+        }
+        
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            /* 因為在 IE 裡面沒有指定的值, 所以會獲取 auto, 所以最好是給予它一個值 例如: left: 0; */
+        }
+    </style>
+    <script type="text/javascript" src="tools.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //獲取 box1
+            var box1 = document.getElementById("box1");
+            //獲取 btn01
+            var btn01 = document.getElementById("btn01");
+
+            //獲取 btn02
+            var btn02 = document.getElementById("btn02");
+
+            //點擊按鈕以後, 使 box1 向右移動 (left值增大)
+            btn01.onclick = function() {
+                move(box1, "left", 800, 20);
+                // 800 代表要移動的目標是 800 往右移動, 而 10 則代表移動的速度
+            }; //因為 btn01 沒有傳遞回調函數, 只是一個 undefined, 所以會報錯 及 必須傳遞回調函數,
+
+            //點擊按鈕以後, 使 box1 向左移動 (left值減小)
+            btn02.onclick = function() {
+                move(box1, "left", 0, 10);
+                // 0 代表要移動的目標是 0 往左移動, 而 -10 則代表移動的速度
+            };
+
+            //獲取 btn03
+            var btn03 = document.getElementById("btn03");
+            btn03.onclick = function() {
+                move(box2, "left", 800, 10);
+            };
+
+            //獲取測試按鈕
+            var btn04 = document.getElementById("btn04");
+            btn04.onclick = function() {
+                //move(box2 , "width" , 800 , 10);
+                //move(box2 , "top" , 800 , 10);
+                //move(box2 , "height" , 800 , 10);
+                move(box2, "width", 800, 10, function() { // width 執行完後，就會調用 function(){}回調函數，再去修還 height
+                    move(box2, "height", 400, 10, function() {
+                        move(box2, "top", 0, 10, function() {
+                            move(box2, "width", 100, 10, function() {});
+                        });
+                    });
+                });
+            };
+        };
+
+        //定義一個變量, 用來保存定時器的標識
+        /*
+         * 目前我們的定時器的標識由全局變量 timer 保存
+         * 所有的執行正在執行的定時器都在這個變量中保存
+         */
+        //var timer; 
+        /*因為該 var timer 是全局變量會同時影響 box1 和 box2, 
+        由於 box1 或 box2 在移動時, 另外一個再移動會導致其中一個停止運動, 所以需要取消該全局變量
+        */
+
+        /**
+        參數：
+        obj：要執行動畫的對象
+        attr： 要執行動畫的樣式，比如：left top width height
+        target： 執行動畫的目標位置
+        speed： 移動的速度（整數向右移動，負數向左移動）
+        callback： 回調函數，這個函數會在動畫執行完畢以後執行
+         */
+    </script>
+</head>
+
+<body>
+
+    <button id="btn01">點擊按鈕以後box1向右移動</button>
+
+    <button id="btn02">點擊按鈕以後box1向左移動</button>
+
+    <button id="btn03">點擊按鈕以後box2向右移動</button>
+
+    <button id="btn04">測試按鈕</button>
+
+    <br /><br />
+
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <div style="width: 0; height: 1000px; border-left: 1px black solid; position: absolute; left: 800px; top: 0px;">
+    </div>
+</body>
+
+</html>

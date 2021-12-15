@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        //創建一個數組
+        var arr = ["孫悟空", "豬八戒", "沙和尚"];
+
+        /*
+         * push ()
+         * - 該方法可以向數組的末尾添加一個或多個元素, 並返回數組的新的長度！！！！！！！！！
+         * - 可以將要添加的元素作為方法的參數傳遞
+         *    這樣這些元素將會自動添加到數組的末尾
+         * - 該方法會將數組新的長度作為返回值返回
+         */
+
+        var result = arr.push("唐憎", "蜘蛛精", "白骨精", "玉兔精");
+
+        // console.log(arr);
+        // console.log("result = "+ result);
+
+        /*
+         * pop()
+         * - 該方法可以刪除數組的最後一個元素, 並將被刪除的元素作為返回值返回
+         * 
+         */
+
+        result = arr.pop();
+        // console.log(arr);
+        // console.log("result = "+result);
+
+        /*
+         * unshift()
+         * - 向數組開頭添加一個或多個元素, 並返回新的數組長度
+         * - 向前面插入元素以後, 其他的元素索引會依次調整
+         */
+        //console.log(arr);
+
+        arr.unshift("牛魔王", "二郎神");
+
+        console.log(arr);
+
+        /*
+         * shift()
+         * - 可以刪除數組的第一個元素, 並將被刪除的元素作為返回值返回
+         */
+        result = arr.shift();
+        console.log(arr);
+        console.log("result = " + result);
+    </script>
+</head>
+
+</html>

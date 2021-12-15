@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            /*
+             * 鍵盤事件:
+             * onkeydown
+             * - 按鍵被按下
+             * - 對於 onkeydown 來說如果一直按著某個按鍵不鬆手, 則事件會一直觸發
+             * - 當 onkeydown 連續觸發時, 第一次和第二次之間會間隔稍微長一點, 其他的會非常的快
+             *   這種設計是為了防止誤操作的發生!
+             *
+             * onkeyup
+             * - 按鍵被鬆開
+             *
+             * 鍵盤事件一般都會綁定給一些可以獲取到焦點的對象（例如：在 input框 裡面輸入文本，就是獲取焦點對象） 
+             * 或者是 document 文檔對象！！！！！！！！！！！
+             */
+
+            /* document.onkeydown = function(event){
+                event = event || window.event; */
+                // console.log("按鍵被按下了");
+            /*
+             * 可以通過 keyCode 來獲取按鍵的編碼
+             *  通過它可以判斷哪個按鍵被按下
+             * 除了 keyCode. 事件對象中還提供了幾個屬性
+             * altKey
+             * ctrlKey
+             * shiftKey
+             * - 這三個用來判斷 alt ctrl 和 shift 是否被按下
+             *        如果按下則返回 true, 否則返回 false
+             */
+
+            //console.log(event.keyCode);
+
+            //判斷一個 y 鍵是否被按下 
+            //判斷 y 和 ctrl 是否同時被按下
+            if (event.keyCode === 89 && event.ctrlKey) {
+                console.log("ctrl和y被按下了")
+            }
+
+            /* document.onkeyup = function(){
+                console.log("按鍵鬆開了")
+                
+            };*/
+
+            //獲取 input
+            var input = document.getElementsByTagName("input")[0]; // [0] 代表只要第一個！！！
+
+            input.onkeydown = function (event) {
+
+                event = event || window.event;
+
+                //console.log(event.keyCode);
+                //數字的編碼是 48 - 57
+                //使文本框中不能輸入數字
+                if (event.keyCode >= 48 && event.keyCode <= 57) {
+                    //在文本框中輸入內容, 屬於 onkeydown 的默認行為
+                    //如果在 onkeydown 中取消了默認行為, 則輸入的內容, 不會出現在文本框中
+                    return false; //取消默認行為
+                };// 總結以上，因為取消了默認行為，所以不可以輸入數字
+
+            };
+
+        };
+
+    </script>
+</head>
+
+<body>
+    <input type="text" />
+</body>
+
+</html>

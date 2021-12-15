@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute; /** 開啟絕對定位，讓 box1 可以一直往右直走 */
+            left: 0; /** 一直往右走的box1，就是修改它的 left值，當 left值逐漸增大就會一直往右移動 */
+            /* 因為在 IE 裡面沒有指定的值, 所以會獲取 auto, 所以最好是給予它一個值 例如: left: 0; */
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //獲取 box1
+            var box1 = document.getElementById("box1");
+            //獲取 btn01
+            var btn01 = document.getElementById("btn01");
+
+            //定義一個變量, 用來保存定時器的標識
+            var timer;
+
+            //點擊按鈕以後, 使 box1 向右移動 (left值增大)
+            btn01.onclick = function() {
+
+                //關閉上一個定時器
+                clearInterval(timer); //用途是取消連續按鈕增加移動速度
+
+                //開啟一個定時器, 用來執行動畫效果
+                timer = setInterval(function() { //把var去掉 用途是取消連續按鈕增加移動速度
+
+                    //獲取 box1 的原來的 left 值
+                    /*由於 0px+10會導致拼串不能計算，得到 0px+10，但 0px的值 我們必須要做計算，所以我們需要把 0px 轉換成一個 number 來做計算！！！
+                      因為我們要取出有效的數字，所以要使用 pasrseInt()函數來把px去掉，把合法的數字取出來使用（也就是把 0px 變成 0）！！！
+                    */
+                    var oldValue = parseInt(getStyle(box1, "left")); // 運用 parseInt()把一個字符串的合法數字取出來
+                    /** ！！！重點！！！ 
+                    Day15:05.讀取元素的樣式 - getStyle()方法
+                    getStle()方法 可以獲取元素當前顯示的樣式！
+                     */
+
+                    //新值 = 在舊值的基礎上增加
+                    var newValue = oldValue + 1;
+
+                    //判斷 newValue 是否大於 800
+                    if (newValue > 800) {
+                        newValue = 800;
+                    }
+
+                    //將新值設置給 box1 （也就是將 新值newValue 賦值給 box1）
+                    box1.style.left = newValue + "px";
+
+                    //當元素移動到 800px 時, 使其停止執行動畫
+                    if (newValue == 800) {
+                        //達到目標, 關閉定時器
+                        clearInterval(timer);
+                    }
+
+
+                }, 30);
+            };
+        };
+
+        /*
+         * 定義一個函數, 用來獲取指定元素的當前的樣式
+         * 參數:
+         *         obj  要獲取樣式的元素
+         *         name 要獲取樣式的樣式名
+         */
+        function getStyle(obj, name) {
+
+            if (window.getComputedStyle) { //因為 getComputedStyle 是屬於全局裡面的, 所以它是 window 對象的屬性, 因此 window.getComputedStyle 和 getComputedStyle 是一樣的
+                //所以加了 window. 就變成了一個對象的屬性, 而沒有加 window. 的時候則是一個變量需要去做出尋找
+
+                //正常瀏覽器的方式, 具有 getComputedStyle() 方法
+                return getComputedStyle(obj, null)[name];
+            } else {
+                // IE8 的方式, 沒有 getComputedStyle() 方法
+                return obj.currentStyle[name];
+            };
+        };
+    </script>
+</head>
+
+<body>
+
+    <button id="btn01">點擊按鈕以後box1向右移動</button>
+
+    <br /><br />
+
+    <div id="box1"></div>
+
+    <div style="width: 0; height: 1000px; border-left: 1px black solid; position: absolute; left: 800px; top: 0px;"></div>
+</body>
+
+</html>

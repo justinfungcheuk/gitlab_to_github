@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            /*
+             * 數據類型指的是字面量的類型
+             * 在JS中一共有六種數據類型
+             * String 字符串
+             * Number 數值 (e.g. 1234567890)
+             * Boolean布爾值
+             * Null   空值
+             * Undefined 未定義
+             * Object 對象
+             *
+             * 其中String Number Boolean Null Undefined 屬於基本數據類型
+             * 而Object 屬於引用數據類型
+             */
+            
+            /*
+             * String 字符串
+             * - 在JS中字符串需要使用 引號 引起來
+             * - 使用 雙引號 或 單引號 都可以,但是不要混用 -> '+"
+             * - 引號不能嵌套, 雙引號不能放雙引號, 單引號不能放單引號
+             */
+            var str = "hello"; //str是代表字符串
+            
+            //str = 'I said that: "Today is a good day!"'; //可以同時使用一個單引號 和 一個雙引號
+            
+            /*
+             * 在字符串中,我們可以使用 \ 作為轉義字符,
+             * - 當表示一些特殊符號時可以使用 \ 進行轉義
+             * \" 表示"
+             * \' 表示'
+             * \n 表示換行
+             * \t 制表符
+             * \\ 表示\
+             */
+            
+            //str = "I said that: \"Today is a \"ngood\t day!\""; //不可以同時有兩個雙引號
+            
+            //str = "I said that: "Today is a good day!""; //不可以同時有兩個雙引號
+            
+            //str = "\\";
+            
+            //輸出字面量 字符串str
+            //alert("srt");
+            
+            //輸出變量str
+            //alert(str);
+            
+            var str2 = "hello";
+            
+            str2 = "你好";
+            
+            str2 = 3;    //最後一次的 str2 = 3 有效
+            
+            alert("hello, 你好");
+            
+            console.log("I still would not come out!");
+            
+            
+        </script>
+    </head>
+</html>

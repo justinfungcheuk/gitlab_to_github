@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <style type="text.css">
+
+        </style>
+        <script type="text/javascript">
+
+        /*
+         * BOM
+         * - 瀏覽器對象模型
+         * - BOM 可以使我們通過 JS 來操作瀏覽器
+         * - 在 BOM 中為我們提供了一組對象, 用來完成對瀏覽器的操作
+         * - BOM 對象
+         *      Window
+         *      - 代表的是整個瀏覽器的窗口, 同時 window 也是網頁中的全局對象！！！！
+         *      Navigator
+         *      - 代表的是當前瀏覽器的信息, 通過該對象可以來識別不同的瀏覽器
+         *      Location
+         *      - 代表當前瀏覽器的地址欄信息, 通過 Location 可以獲取地址欄信息, 或者操作瀏覽器跳轉頁面
+         *      History
+         *      - 代表瀏覽器的歷史紀錄, 可以通過該對象來操作瀏覽器的歷史紀錄
+         *        由於隱私的原因, 該對象不能獲取到具體的歷史紀錄, 只能操作瀏覽器向前或向後翻頁
+         *        而且該操作只在當次訪問時有效！！！ 
+         *      Screen - 主要在移動端使用！
+         *      - 代表的是用戶的屏幕的信息, 通過該對象可以獲取到用戶的顯示器的相關的信息
+         *
+         *      這些 BOM 對象在瀏覽器中都是作為 window 對象的屬性保存的
+         *         可以通過 window 對象來使用, 也可以直接使用
+         *      
+         */
+
+         console.log(navigator);
+         console.log(location);
+         console.log(history);
+
+         /*
+          * Navigator
+          * - 代表的是當前瀏覽器的信息, 通過該對象可以來識別不同的瀏覽器
+          * - 由於歷史原因, Navigator 對象中的大部分屬性都已經不能幫助我們識別瀏覽器了
+          * - 一般我們只會使用 userAgent 來判斷瀏覽器的信息！！！！！！！！！！！！！！！！重點！！！！！！！！！！！！！！！
+          *                   userAgent 就是一個字符串, 這個字符串中包含有用來描述瀏覽器信息的內容
+          *                   不同的瀏覽器會有不同的 userAgent, 所以可以透過 userAgent 來判斷信息
+          *
+          * 火狐的 userAgent
+          * Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0
+          - rv:77.0 的版本
+          - Gecko 是 CSS頁面 渲染到引擎，渲染效果比較快比較好
+          - Firefox =》瀏覽器
+          * 
+           
+          * Chrome 的 userAgent
+          * Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36
+          *
+          * IE8
+          * Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E)
+          - MSIE 代表 Micorsoft 微軟，IE = IE瀏覽器
+          * IE9
+          * Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E)
+          * IE10
+          * Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E)
+
+          * IE11
+          * Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; rv:11.0) like Gecko
+          * - 在 IE11 已經將微軟和 IE 相關的標識已經去除了, 所以我們基本已經不能通過 userAgent 來識別一個瀏覽器是否是 IE 了
+          */
+
+          alert(navigator.appName);
+
+          console.log(navigator.userAgent);
+
+          // 主要通過 userAgent 來判斷 navigator 是什麼瀏覽器！！！
+          var ua = navigator.userAgent;
+
+          console.log(ua);
+
+          // 判斷一個字符串是否包含 firefox，可以通過 正則表達式來判斷 
+          if(/firefox/.test(ua)){ // 檢查 ua 裡面有沒有 firefox
+              alert("你是火狐!!!"); 
+          }else if(/chrome/i.test(ua)){ // i 代表忽略大小寫
+            alert("你是Chrome");
+          }else if(/msie/i.test(ua)){ // 只要有 msie 就代表是一個 IE瀏覽器
+              alert("你是IE瀏覽器");
+          }else if("ActiveXObject" in window){
+              alert("你是IE11, 再見!");
+          }
+
+          /*
+           * 如果通過 userAgent 不能判斷, 還可以通過一些瀏覽器中持有的對象, 來判斷瀏覽器的信息
+           * 比如: ActiveXObject 是一個構造函數 =》這個是 IE 獨有的， 是 window 的 屬性
+           */
+           /* if("ActiveXObject" in window){
+               alert("你是IE");
+           }else{
+               alert("你不是IE");
+           }; */
+
+           //alert(!!window.ActiveXObject); //透過兩個 !! 感嘆號 來把它轉換成布爾值 - false 在 IE11
+
+           //alert("ActiveXObject" in window); // in window 表示在這個window裡面有沒有這個 "ActiveXObject" 的屬性
+           // in window 表示檢查一個對象是否包含某個屬性
+              
+
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

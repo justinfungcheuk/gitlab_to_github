@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 作用域！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+         * - 作用域指一個變量的作用的範圍
+         * - 在JS中一共有兩種作用域
+         *  1. 全局作用域 例如: 在script裡面的 var = 123, var = 456 和 function fun(){}
+         *   - 直接編寫在 script 標籤中的 JS 代碼, 都在全局作用中
+         *   - 全局作用域在頁面打開時創建, 在頁面關閉時銷毀
+         *   - 在全局作用域中有一個全局對象 window, 
+         *     它代表的是一個瀏覽器的窗口, 它由瀏覽器創建, 我們可以直接使用
+         *   - 在全局作用域中:
+         *     創建的變量都會作為window對象的屬性保存.
+         *     創建的函數都會作為window對象的方法保存
+         *   - 全局作用域中的變量都是全局變量
+         *     在頁面的任意部分都可以訪問的到
+         * 
+         *  2. 函數作用域 / 局部作用域
+         */
+
+        function fun() {
+            var a = 123;
+        }
+
+        fun();
+        console.log(a); // 把console.log(a) 擺在函數外部是看不到函數的 a 所以會出現報錯
+
+        var a = 10;
+        var b = 20;
+        console.log(window.b); // 所以 console.log(); 和 console.log(window.);是一樣的
+
+        function fun() {
+            console.log("我是fun函數");
+        }
+
+        //window.fun(); 和 fun(); 是一樣的
+        window.alert("hello"); // 和 alert("hello"); 是一樣的
+    </script>
+</head>
+
+</html>

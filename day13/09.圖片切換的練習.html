@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        /* 去除默認的樣式 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 設置 div樣式 */
+        #outer { 
+            width: 640px;
+            margin: 50px auto; /* auto 代表居中 */
+            /* 第一個 50px 是將圖片向下移動 50px      */
+            padding: 10px;
+            /* 上下左右有 10px 的 greenyellow顏色 背景 */
+            background-color: greenyellow;
+            /*設置文本居中*/
+            text-align: center;
+            /* 把 上一張 和 下一張 的文字擺放到圖片中間的位置 */
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+
+            /* 實現功能：
+             * 點擊按鈕切換圖片 
+             * 要達到點擊按鈕切換圖片需要先找到 上一張 和 下一張 的按鈕, 並給該兩個按鈕綁定單擊響應函數
+             */
+
+            //獲取兩個按鈕
+            var perv = document.getElementById("prev");
+            var next = document.getElementById("next");
+
+            /*
+             * 要切換圖片就是要修改 img 標籤的 src 屬性 - 當點擊的時候修改！！！！ 
+             * 先找到 img標籤 -》 <img src="img/1_BillGates.jpg" alt="BillGates" />
+             */
+
+            /*要切換圖片就是修改 img 的 src 屬性, 
+            所以要通過點擊的時候去修改 img 的 src屬性, 
+            通過 prev.onclick 和 next.onclick 的單擊響應函數代碼去修改
+
+            因此, 要修改 img 的 src 要先找到 img 標籤, 
+            也就是 <img src="img/1_BillGates.jpg" alt="BillGates" />
+            */
+            /*獲取 img 標籤, 而該var img 所獲取的是數組, 但是數組不能操作, 所以我們要操作元素。
+            所以要操作數組裡面的元素, 而不是操作數組
+            但是, 因為數組裡面只有 1 個 元素 -》  <img src="img/1_BillGates.jpg" alt="BillGates" />
+            由於該方法 var img = document.getElementsByTagName("img") 返回的一定是一個數組
+            即使你只有一個元素, 它返回的也是數組，因此我們決定它只有一個元素！！！！！！
+            所以需要在 var img = document.getElementsByTagName("img") 的後面加上 [0] 這個索引，把第一個元素取出來
+            因此, 就可以把數組修改變成元素 [object HTMLImageElement]
+            */
+            var img = document.getElementsByTagName("img")[0];
+            /*該方法 var img = document.getElementsByTagName("img") 返回的一定是一個數組
+            即使你只有一個元素, 它返回的也是數組
+            但是, 我們已經確定了它只有一個元素, 所以加上一個索引 [0], 把這一個給它拿過來到 img 裡面
+            */
+
+
+            //創建一個數組, 用來保存圖片的路徑
+            var imgArr = ["img/1_BillGates.jpg", "img/2_SteveJobs.jpg", "img/3_ElonMusk.jpg", "img/4_MarkZuckerberg.jpg", "img/5_SundarPichai.jpg"];
+            /*由於創建了 imgArr 數組保存圖片的路徑, 我們可以把 img.src = imgArr[index]; 達到切換圖片的功能
+            切記!!!!!! 不能寫成 img.src = imgArr[0], 因為 [0] 中括號裡面的數字會把代碼寫死, 而不能達到切換圖片
+            */
+
+            /*由於代碼需要做到切換圖片的功能, 避免代碼固定
+            創建一個變量, 來保存當前正在顯示的圖片的索引
+            */
+            /*為甚麼會把 var index = 0 的寫法呢? 
+            因為默認顯示的是第一張圖片 var imgArr = ["img/1_BillGates.jpg"];
+            所以默認顯示的是索引 0 
+            */
+            var index = 0;
+
+            
+            //獲取 id 為 info 的 p 元素
+            var info = document.getElementById("info");
+            //設置提示文字
+            //在 p元素 裡面設置提示文字
+            /*由於數組裡面有 5 張圖片, 我們不能把 info.innerHTML = "一共有5張圖片,當前第1張"; 把代碼寫死
+            應該把5張圖片變成一個變量數組, 把數組的長度寫進去取代5, 也就是 imgArr.length, 
+            以上寫法就會隨著圖片的轉變而改變提示在第幾張圖片的提示
+            因此, 當屬組有10張圖片就是10, 數組有5張就是5
+            */
+            /*由於顯示當前第幾張圖片, 是受到 index索引 的影響
+            而由於 index 是從 0 開始的, 所以當只寫成 index 而沒有 加上1時, 就會導致顯示為 當前第 0 張的問題
+            所以必須將 index + 1 來
+            
+            由於計算是從左到右計算, 所以前面的 imgArr.length 加上後會產生拼串, 因為它整體是一個字符串的原因, 
+            然後再把該字符串加上 index + 1 就又再次拼串了, 因此該運算就會造成拼串
+
+            所以把 index + 1 加上 括號 () 變成 (index + 1) 就會避免拼串的問題出現 
+            */
+            info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            /* info.innerHTML = "一共5 （5 代表數組的長度 imgArr.length）張圖片，當前第1張";
+               透過變量 imgArr.length 把提示的文字改變當你的圖片總數有多少張就顯示多少張。
+               由於顯示當前第幾張圖片, 是受到 index索引 的影響，index 是從 0 開始的, 所以當只寫成 index 而沒有 加上1時, 就會導致顯示為 當前第 0 張的問題，
+               所以必須將 index + 1 把文字顯示成當前第 1 張圖片開始計算！！！
+               ！！！重點！！！由於計算是從左到右計算, 因為它整體是一個字符串的原因, 所以前面的 "一共 " + imgArr.length 加上後面的 + " 張圖片, 當前第" + index + 1 + " 張"; 會產生拼串, 
+               導致當 var index = 1 時，會變成 11，如果是 2 時，會變成 21，如此類推。
+               所以要把 index + 1 加上 括號 () 變成 (index + 1) 就會避免拼串的問題出現 
+
+               ！！！重點！！！由於我們要做到當點擊按鈕的時候產生提示文字的變化，由於在該部份的 info.innerHTML 是在網頁一開始的時候設置的，不會實現點擊按鈕時產生提示文字的變化。
+               所以我們要在 prev.onclick 和 next.onclick 分別為兩個按鈕的綁定單擊響應函數添加上設置提示文字！當你每點擊一次按鈕，都會把該代碼執行一次，都會重新實現提示文字的變化。
+               info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            */
+            /*但是就算寫好了該 info.innerHTML 也不會造成 當前圖片的轉換
+            必須在點擊以後才能出現變化, 
+            所以要在 prev.onclick 和 next.onclick的裡面的最後加上以上代碼, 才可以達到以上效果
+            
+            當點擊按鈕以後, 重新設置信息
+            info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            如果只是寫 info.innerHTML 就是讀取，賦值要用等於符號 =
+            */
+
+
+            //分別為兩個按鈕綁定單擊響應函數
+            prev.onclick = function() {
+
+                /*
+                 * 當需要切換到上一張圖片的時候, 索引需要自減
+                 * 例如：當你的圖片是第4張，自減就會變成第3張，如此類推。
+                 */
+                index--;
+
+                //由於 index-- 的自減不能小於 0 ，否則會返回 undefined。
+                //所以需要判斷 index 是否小於 0
+                if (index < 0) {
+                    //index = 0; //如果 index < 0 讓它用一個 index = 0; 表示 等於 0 的值
+                    index = imgArr.length - 1; //如果 index < 0 就是等於最後的那個索引，也就是最後的那一張圖片。
+                }
+
+                //alert("上一張");
+                //由於 index -- 索引自減, 所以需要把 img.src = imgArr[0] 變成 imgArr[index]; 否則只寫img.src = imgArr[0]會把代碼寫死。
+                img.src = imgArr[index];
+
+                //當點擊按鈕以後, 重新設置信息
+                info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            };
+
+            next.onclick = function() {
+
+                /*
+                 * 切換到下一張是 index 自增
+                 */
+                index++;
+
+                //我們不能把代碼寫成 if (index > 4) 因為該寫法會導致當圖片增加或減少時出現不同的結果。例如：當圖片增加多於或少於5張圖片時，會導致點擊的不準確性，導致代碼寫死。
+                //所以必須把 index > 4 寫成一個變量 imgArr.lenth - 1
+                //而由於 index > imgArr.lenth 是我們的最大索引 +1
+                //所以需要找到最大索引, 要把 imgArr.lenth - 1
+                if (index > imgArr.length - 1) {
+                    index = 0; //這個表示 如果 index 大於最大的索引就變成 0 意思是回到第一張圖片 BillGates。
+                };
+
+                //alert("下一張");
+
+                /*要切換圖片就是修改 img 的 src 屬性, 
+                所以要通過點擊的時候去修改 img的src屬性, 
+                通過 prev.onclick 和 next.onclick 的單擊響應函數代碼去修改
+
+                因此, 要修改 img 的 src 要先找到 img 標籤, 
+                也就是 <img src="img/1_BillGates.jpg" alt="BillGates" />
+                */
+                /* 要切換圖片就是修改 img 的 src 屬性, 就要讀取屬性再修改它的屬性 -》img.src 讀書屬性 = 等於代表修改屬性，
+                   要修改一個元素的屬性就要使用該寫法: 元素.屬性 = 屬性值。
+                   原來的屬性是 src="img/1_BillGates.jpg" 而下一張是 src="img/2_SteveJobs.jpg" 再下一張是 src="img/3_ElonMusk.jpg" 如此類推，
+                   由於我們需要在 5張圖片 之間進行切換，所以我們有 5個路徑，所以我們要先把該 5個路徑 把它們存起來。要不然不能繼續寫實現功能點擊按鈕切換圖片的效果。
+                   所以我們要創建一個數組, 用來保存圖片的路徑，把它們存起來
+                   var imgArr = ["img/1_BillGates.jpg", "img/2_SteveJobs.jpg", "img/3_ElonMusk.jpg", "img/4_MarkZuckerberg.jpg", "img/5_SundarPichai.jpg"];
+                */
+                img.src = imgArr[index];
+                /*讀屬性的寫法是 img.src, 而修改就要使用 = 等於號, 就可以修改它的屬性值，所以這裡我們把 img.src 修改成 imgArr[index] !!!!!
+                因為它原本的 src 是這個 img/1_BillGates.jpg , 我們需要在5張圖片的路徑切換
+                所以首先必須創建一個 div 把這 5 張圖片存起來, 不然就沒法寫下去!!!
+                由於以上的原因, 我們要創建一個數組, 用來保存圖片的路徑
+                //由於 index ++ 索引自增, 所以需要把 img.src = imgArr[1] 變成 imgArr[index];
+                //該寫法 img.src = imgArr[index]; 當 index 的值是多少, 我們就顯示多少
+
+
+                */
+
+
+                //當點擊按鈕以後, 重新設置信息
+                info.innerHTML = "一共 " + imgArr.length + " 張圖片, 當前第" + (index + 1) + " 張";
+            };
+            //當每點擊一下的時候, 都會把整個 prev.onclick 和 next.onclick 都執行一遍
+        };
+    </script>
+</head>
+
+
+<body>
+
+    <div id="outer">
+        <!-- 由於不能把代碼寫死, 切換圖片後提示第幾張圖片, 需要在 p元素 裡面增加一個 id = "info",
+        再從 Javascript裡面獲取該 id = "info" 來修改它的功能 -->
+        <!--<p>一共5張圖片，當前第1張</p> 不能把代碼寫死，要動態設置-->
+        <p id="info"></p>
+        <!-- 該 p 元素 是可以形成一個文字上的提示 -->
+
+        <img src="img/1_BillGates.jpg" alt="BillGates" />
+
+        <button id="prev">上一張</button>
+        <button id="next">下一張</button>
+
+    </div>
+</body>
+
+</html>

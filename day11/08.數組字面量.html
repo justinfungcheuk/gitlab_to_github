@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 創建一個數組
+         */
+        // var arr = new Array();
+
+        //使用字面量來創建數組
+        //語法: []
+        //var arr = [];
+
+        // console.log(typeof arr);
+
+        //使用字面量創建數組時, 可以在創建時就指定數組中的元素
+        var arr = [1,2,3,4,5,10];
+
+        // console.log(arr[0]);
+
+        //使用構造函數創建數組時, 也可以同時添加元素, 將要添加的元素作為構造函數的參數傳遞
+        //元素之間使用逗號 , 隔開
+        var arr2 = new Array(10,20,30);
+        // console.log(arr2);
+
+        //創建一個數組數組中只有一個元素10
+        arr = [10];
+
+        //創建一個長度為10的數組
+        arr2 = new Array(10);
+
+        //console.log(arr2.length);
+        //數組中的元素可以是任意的數據類型
+        arr = ["hello",1,true,null,undefined];
+
+        //也可以是對像
+        var obj = {name:"孫悟空"};
+        arr[arr.length] = obj;
+        arr = [{name:"孫悟空"},{name:"沙和尚"},{name:"豬八戒"}];
+
+        //也可以是一個函數
+        arr = [function(){alert(1)},function(){alert(1)}];
+
+        console.log(arr);
+        //arr[0]();
+
+        //數組中也可以放數組, 如下這種數組我們稱為二維數組, 但是比較少用
+        arr = [[1,2,3],[3,4,5],[5,6,7]];
+        console.log(arr[0]);
+
+
+        </script>
+    </head>
+</html>

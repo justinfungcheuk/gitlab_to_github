@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF">
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 打印出1-100之間所有的質數
+         *
+         */
+
+        //測試如下的程序的性能
+        //在程序執行前, 開啟計時器 
+        //console.time("計時器的名字")可以用來開啟一個計時器
+        //它需要一個字符串作為參數, 這個字符串將會作為計時器的標識
+        console.time("test");
+
+        //打印 2-100 之間所有的質數
+        for (var i = 2; i <= 100; i++) {
+
+            //創建一個布爾值, 用來保存結果, 默認 i 是質數
+            var flag = true;
+
+            //判斷 i 是否是質數
+            //獲取 2-i 之間的所有的數
+            //當 i = 97 的時候, j 的值就等於 = 2 - 96
+            for (var j = 2; j <= Math.sqrt(i); j++) {
+                //使用 <= 才是正確, 例如: 在 開放 4 的因數就是等於 = 2, 所以要使用 <= 4 , 否則只用 < 就是 2
+
+                //判斷i是否能被j整除
+                if (i % j == 0) {
+                    //如果進入判斷則整明i不是質數, 修改flag值為false
+                    flag = false;
+
+                    //一旦進入判斷, 則證明i不可能是質數了, 此時循環再執行已經沒有任何意義了
+                    //使用break來結束循環
+                    break;
+
+                    //加break 速度更快 加break能夠對性能提升
+                    //加break 25ms
+                    //不加break 215ms
+                    //修改j<=後 2.6 (增加10倍速度)
+                }
+            }
+
+            //如果是質數, 則打印i的值
+            if (flag) {
+                console.log(i);
+            }
+
+        }
+
+        //終止計時器
+        //console.timeEnd()用來停止一個計時器, 需要一個計時器的名字作為參數
+        console.timeEnd("test");
+
+        /*
+         * 36
+         * 1 36
+         * 2 18
+         * 3 12
+         * 4 9
+         * 6 * 6 = 開放 6
+         * 在 6 * 6 之後就沒有新的因數
+         */
+
+        //可以通過 Math.sqrt()對一個數進行開方
+        //var result = Math.sqrt(97);
+
+
+        //console.log("result =" + result);
+        // 該 result =9.848857801796104 就是代表所有因數的中線
+    </script>
+</head>
+
+</html>

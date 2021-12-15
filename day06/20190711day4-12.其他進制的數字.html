@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var a = 123;
+
+        /*
+         * 在JS中, 如果表示16 進制的數字, 則需要以 0x 開頭
+         * - 0x 開頭的 代表 16 進制的數字 如下面的例子: a = 0x
+         * 如果需要表示 8 進制的數字, 則需要以 0 開頭
+         * - 0 開頭的  代表 8 進制的數字 如下面的例子: a = 070 (等於56)
+         * 如果需要表示 2 進制的數字, 則需要以 0b 開頭 (2進制 只有 FireFox 和 Google瀏覽器 支持)
+         *       但是不是所有的瀏覽器都支持
+         */
+
+        //十六a = 0x10;進制數字
+        a = 0x10;
+        console.log(a);
+        a = 0xff;
+        console.log(a);
+        a = 0xCafe;
+
+        //八進制數字
+        a = 070;
+
+        //二進制數字
+        a = 0b10;
+        console.log(a);
+
+        //向"070"這種字符串, 有些瀏覽器會當成 8進制 解析, 有些會當成 10進制 解析
+        a = "070";
+
+        //可以在parseInt()中傳遞第一個第二個參數, 來指定數字的進制
+        a = parseInt(a, 10);
+        console.log(typeof a);
+        console.log(a);
+    </script>
+</head>
+
+</html>

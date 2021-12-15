@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 創建一個對象
+         */
+         var obj = {
+             name: "孫悟空",
+             age:18,
+             gender:"男",
+             sayName: function(){
+                 alert(this.name);
+             }
+         };
+
+         /*
+          * 使用工廠方法創建對象
+          *  通過該方法可以大批量的創建對象
+          */
+
+          function createPerson(name, age, gender, ){ // 創造 Person 的方法
+          // 透過參數 name age gender 從外部傳遞進來 name age 和 gender
+
+              //創建一個新的對象
+              var obj = new Object();
+
+              //向對象中添加屬性
+              obj.name = name;
+              obj.age = age;
+              obj.gender = gender;
+              obj.sayName = function(){
+                  alert(this.name);
+              };
+
+              //將新的對象返回
+              return obj;
+          }
+
+          /*
+           * 用來創建狗的對象
+           */
+           // 這種function的obj的方法用得不多
+          function createDog(name, age){
+              var obj = new Object();
+              obj.name = name;
+              obj.age = age;
+              obj.sayHello = function(){
+                  alert("汪汪~~");
+              };
+
+              return obj;
+
+          }
+
+           var obj2 = createPerson("豬八戒",28,"男"); // 把屬性傳遞到 createPerson方法，再返回 obj2對象
+           var obj3 = createPerson("白骨精",16,"女");
+           var obj4 = createPerson("蜘蛛精",18,"女");
+
+           obj4.sayName();
+
+           /*
+            * 使用工廠方法創建的對象, 使用的構造函數都是Object
+            * 所以創建的對象都是Object這個類型,
+            * 就導致我們無法區分出多種不同類型的對象
+            *
+            */
+           //創建一個狗的對象
+           var dog = createDog("旺財",3);
+
+           console.log(dog);
+           console.log(obj4);
+
+        </script>
+    </head>
+</html>

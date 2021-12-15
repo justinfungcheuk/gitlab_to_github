@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 強制類型轉換
+         * - 指將一個數據類型強制轉換為其他的數據類型
+         * - 類型轉換主要指, 將其他的數據類型, 轉換為
+         * String 或 Number 或 Boolean
+         *
+         */
+
+        /*
+         * 將其他的數據類型轉換為 String
+         * 方式一:
+         * - 調用被轉換數據類型的 toString() 方法
+         * - 該方法不用影響到源變量, 它會將轉換的結果返回
+         * - 但是注意: null 和 undefined 這兩個值沒有 toString() 方式！！！！！
+         * 如果調用以上兩個數據 null 和　undefined 它們的方法, 會報錯
+         *
+         *
+         *  方式二:
+         * - 調用 String()函數, 並將被轉換的數據作為參數傳遞給函數
+         *  要是要調用 string()函數 --> 直接寫 string()就可以
+         *
+         * - 使用 String()函數做強制類型轉換時,
+         *  對於Number和Boolean實際上就是調用的 toString()方法
+         *  但是對於 null 和 undefined 就不會調用 tostring()方法
+         *    它會將 null 直接轉換為 "null"
+         *    將 undefined 直接轉換為 "undefined"  
+         */
+        var a = 123;
+        console.log(typeof a);
+        
+        //調用 a 的 toString()方法
+        //調用 xxx 的 yyy()方法, 就是 xxx.yyy();
+        //a.toString();
+        //var b = a.toString();
+        a = a.toString();
+        console.log(typeof a);
+        console.log(a);
+
+        a = true;
+        a = a.toString();
+
+        a = null;
+        //a = a.toString(); 報錯
+        a = undefined
+            //a = a.toString(); 報錯
+
+        a = 123;
+
+        //調用String()函數, 來將 a 轉換為字符串
+        a = String(a); //括號的 (a) 叫做 參數
+
+        // a = null;
+        // a = String(a);
+
+        // a = undefined;
+        // a = String(a);
+
+        console.log(typeof a);
+        console.log(a);
+    </script>
+</head>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        
+        var obj = {
+            
+            name:"孫悟空",
+            age:18,
+            gender:"男",
+            address:"花果山"
+        };
+        
+        //枚舉對象中的屬性
+        //使用 for... in 語句
+        /*
+         * 語法:
+         * for(var 變量 in 對象){
+         *
+         *  }
+         *
+         * for... in語句對象中有幾個屬性, 循環就會執行幾次
+         * 每次執行時, 會將對象中的一個屬性的名字賦值給變量, 意思是 例如：將 name 賦值給變量 var 
+         */
+        
+        for(var n in obj){ // n 代表 obj 裡面所有屬性的名字 例如: name, age, gender, address    
+            console.log("屬性名:"+n);
+            // console.log(obj.n); obj.的形式不可以使用變量, 因為會出現 undefined 
+            console.log("屬性值:"+obj[n]); // 如果 n 的值是在 內目, 就可以從 obj裡面找內目的屬性, 
+        }
+    </script>
+</html>

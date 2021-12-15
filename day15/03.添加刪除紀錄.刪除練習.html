@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict/dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>添加刪除紀錄練習</title>
+    <link rel="stylesheet" type="text/css" href="ex_2_style/css.css" />
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            /*
+             * 點擊超連結以後, 刪除一個員工的信息
+             */
+
+            //獲取所有超連結
+            var allA = document.getElementsByTagName("a");
+
+            //為每個超連結都綁定一個單擊響應函數
+            for (var i = 0; i < allA.length; i++) {
+                /*
+                 * for 循環會在頁面加載完成之後立即執行
+                 * 而響應函數會在超連結被點擊時才執行
+                 * 當響應函數執行時, for 循環早已執行完畢
+
+
+                 * 由於 for循環 是從 0 開始的，i++ 之後變成 1，再 ++ 變成 2，再 ++ 變成 3，
+                 * 當 for循環執行完畢， i = 3 時，就不小於該長度 allA.length，所以最後它不會執行，
+                 */
+
+                 alert("for循環正在執行"+i);
+
+                allA[i].onclick = function () {
+
+                    alert("響應函數正在執行"+i);
+
+                    /*
+                     * alert(allA[i]); 
+                     * 由於 for循環 是從 0 開始的，i++ 之後變成 1，再 ++ 變成 2，再 ++ 變成 3，
+                     * 當 for循環執行完畢， i = 3 時，就不小於該長度 allA.length，所以最後它不會執行，
+                     * 所以在 for循環已經執行完畢後， 它的 i=3 時，就不再執行。
+                     * 而響應函數則等於 i=3（當你點擊 Delete 的時候就會是 i = 3）。因為 for循環 在 i = 3 的時候已經停止執行了。
+                     */
+
+                    return false;
+                };
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@tom.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+
+    <div id="formDiv">
+
+        <h4>添加新員工</h4>
+
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton1" value="abc">Submit</button>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

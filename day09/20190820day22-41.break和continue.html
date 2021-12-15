@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * break 關鍵字只可以用來退出 switch 或循環語句
+         * 不能在 if 語句中使用 break 和 continue
+         * break關鍵字, 會立即終止離它最近的那個循環語句
+         */
+
+        /*for(var i=0 ; i<5 ; i++){
+            console.log(i);
+            
+            if(i === 2){
+            break;
+            }
+            
+        }*
+            
+         if(true){
+            break;
+            console.log("hello");
+        }*/ // 不能在 if 語句中使用 break 和 continue, 會報錯
+
+         for (var i = 0; i < 5; i++) {
+             console.log("@外層循環" + i);
+             for (var j = 0; j < 5; j++) {
+                 break;
+                 //由於break關鍵字, 會立即終止離它最近的那個循環語句, 所以該break會終止內層循環
+                 console.log("內層循環:" + j);
+             }
+         }
+
+        /*
+         * 可以為循環語句創建一個 label, 來標誌當前的循環
+         * label: 循環語句
+         * 使用break語句時, 可以在break後跟著一個label,
+         * 這樣break將會結束指定的循環, 而不是最近的
+         */
+
+        /* 該outer用於表示整個外層循環 */
+         outer:
+             for (var i = 0; i < 5; i++) {
+                 console.log("@外層循環" + i);
+                 for (var j = 0; j < 5; j++) {
+                     break outer;
+                     console.log("內層循環:" + j);
+                 }
+             }
+
+        /*
+         * continue 關鍵字可以用來跳過當次循環
+         * 同樣continue 也是默認只會對離它最近的循環起作用
+         */
+        for (var i = 0; i < 5; i++) {
+
+            if (i == 2) {
+                continue; //所以continue會停止運作 i==2, 但會繼續運作 3 和 4
+            }
+
+            console.log(i);
+        }
+
+        outter:
+            for (var i = 0; i < 5; i++) {
+
+                for (var j = 0; j < 5; j++) {
+
+
+                    continue; // 如果直接寫continue會直接跳過所有的運行, 變成猶如break一樣
+
+                    console.log("-->" + j); //內部循環
+                }
+
+                console.log("@----->" + i); //外部循環
+            }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

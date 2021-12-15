@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 條件分支語句也叫 switch 語句
+         *  語法:
+         *      switch(條件表達式){
+         *           case 表達式:
+         *               語句...
+         *               break;
+         *           case 表達式:
+         *               語句...
+         *               break;
+         *           case 表達式:
+         *               語句...
+         *               break;
+         *           case 表達式:
+         *               語句...
+         *               break;
+         *           case 表達式:
+         *               語句...
+         *               break;
+         *        }
+         * 執行流程:
+         *     switch...case...語句
+         *     在執行時會依次將case後的表達式的值和switch後的條件表達式的值進行全等比較
+         *     如果比較結果為 true, 則從當前 case 處開始執行代碼
+         *          當前 case 後的所有代碼都會執行, 我們可以在 case 的後邊跟著一個 break 關鍵字, 
+         *          這樣可以確保只會執行當前 case 的語句, 而不會執行其他的 case
+         *     如果比較結果為 false, 則繼續向下比較
+         *     如果所有的比較結果都為 false, 則執行 default 後的語句
+         *
+         *
+         *     switch 語句和 if 語句的功能實際上有重複的, 使用 switch 可以實現 if 的功能,
+         *          同樣使用 if 也可以實現 switch 的功能, 所以我們使用時, 可以根據自己的習慣選擇
+         */
+
+        //根據 num 的值, 輸出對應的中文
+
+        var num = 3;
+
+        /* if(num == 1);{
+            console.log("一");
+        }else if(num == 2){
+            console.log("二");
+        }else if(num == 3){
+            console.log("三");
+        } */
+
+        num = "abc";
+
+        switch (num) {
+            case 1:
+                console.log("一");
+                //使用 break 可以來退出 switch 語句
+                break;
+            case 2:
+                console.log("二");
+                break;
+            case 3:
+                console.log("三");
+                break;
+                /* case "abc":
+                    console.log("非法數字");
+                    break; */
+            default:
+                console.log("非法數字");
+                break;
+
+        }
+    </script>
+</head>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //獲取 body 標籤
+            //var body = document.getElementsByTagName("body")[0];
+            //因為 body 的標籤只有一個, 所以要從數組中獲取第一個，使用 [0] 來獲取 body 
+
+            /*
+             * 在 document 中有一個屬性 body, 它保存的是 body 的引用
+             */
+            var body = document.body; // 直接獲取 body
+
+            /*
+             * document.documentElement // 文檔元素，保存的是 html 根標籤
+             */
+
+            document.documentElement;
+
+            var html = document.documentElement; // 保存的是 html 根標籤
+
+            //console.log(html);
+
+            /*
+             * document.all 代表頁面中所有的元素
+             */
+            var all = document.all; 
+
+            //console.log(all.length); 
+            /*
+             打印所有元素的長度 =》6
+             包括：
+             <html> <head> <meta> <title> <script> <body> 
+             如果另外加上 <div> 元素的長度會變成 7 如此類推，有一個算一個
+             */
+
+            /* for(var i = 0; i < all.length; i++){
+                console.log(all[i]);
+            } */
+
+            // * 星星代表所有元素
+            //all = document.getElementsByTagName("*");
+            //console.log(all.length);
+
+            //以上兩種寫法是一樣的 var all = document.all; 和 all = document.getElementsByTagName("*");
+            //但是, var all = document.all; 更簡單
+
+            /*
+             * 根據元素的 Class 屬性值查詢一組元素節點對象
+             * getElementsByClassName( ) 可以根據 class 屬性值獲取一組元素節點對象
+             *   但是該方法不支持 IE8 及以下的瀏覽器
+             */
+            //var box1 = document.getElementsByClassName("box1"); // 根據 box1 獲取元素
+            //console.log(box1.length);
+
+            //獲取頁面中的所有的 div
+            var divs = document.getElementsByTagName("div");
+
+            //獲取 class 為 box1 中的所有的 div
+            //.box1 div 
+            /*
+             *  document.querySelector() =》query 中文：查詢    selector 中文：選擇器
+             * - 需要一個選擇器的字符串作為參數, 可以根據一個 CSS 選擇器來查詢一個元素節點對象
+             * - 雖然 IE8 中沒有 getElementsByClassName() 但是可以使用 querySelector() 代替
+             * - 使用該方法總會返回唯一的一個元素, 如果滿足條件的元素有多個, 那麼它只會返回第一個！！！！！！
+             */
+            var div = document.querySelector(".box1 div"); // 產生一個
+
+            var box1 = document.querySelector(".box1");
+
+            //console.log(div.innerHTML);
+            //console.log(box1.innerHTML);
+
+            /*
+             * document.querySelectorAll() -產生多個
+             * - 該方法和 querySelector() 用法類似, 不同的是它會將符合條件的元素封裝到一個數組中返回
+             * - 即使符合條件的元素只有一個, 它也會返回數組
+             */
+            box1 = document.querySelectorAll(".box1"); // 類數組對象 [object NodeList]
+            box1 = document.querySelectorAll("#box2");
+            console.log(box1);
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box2"></div>
+    <div class="box1">
+        我是第一個box1
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+    </div>
+    <div class="box1">
+        <div>我是box1中的div</div>
+
+        <div></div>
+</body>
+
+</html>

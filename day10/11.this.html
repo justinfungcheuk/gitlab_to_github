@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 解析器在調用函數時，每次都會向函數內部傳遞進一個隱含的參數，
+         * 這個隱含的參數就是 this, this指向的是一個對象 object - （它是由瀏覽器傳進來的，我們可以直接拿過來使用，且根據調用的方式決定 this 的對象）
+         * 這個對象我們稱為函數執行的上下文對象,
+         * 根據函數的調用方式的不同, this會指向不同的對象
+         *  1. 以函數的形式調用時, this永遠都是window ！！！！！！！！！！！！！
+         *  2. 以方法的形式調用時, this就是調用方法的那個對象！！！！！！！！！！！
+         */
+
+         function fun(){
+             //console.log("a = "+a+" b= "+b);
+             console.log(this.name); // 當調用 fun()時，這裡的 this.name 就相當於 window.name，所以 window.name 就是 var name = "全局的name屬性";
+             // this 是由瀏覽器傳過來的，this 不是固定的，根據調用的方式來決定 this 的指向對象
+
+         }
+
+         // fun();
+
+         //創建一個對象
+         var obj = {
+             name: "孫悟空",
+             sayName: fun // 把 obj 的 sayName屬性，設置為一個 fun函數
+         };
+
+         var obj2 = {
+             name: "沙和尚",
+             sayName: fun
+         };
+
+        // console.log(obj.sayName == fun); obj.sayName 和 fun 是一樣的
+        var name = "全局的name屬性";
+        /* obj.sayName(); 調用的就是 obj 的對象
+        - 以上的 sayName() 方法是由 obj調用的，所以這裡的 this 就是 obj
+        - 該方法誰調的，this就是誰
+
+        */
+
+        // 以函數形式調用, this永遠都是  window
+        // fun();
+
+        //以方法的形式調用, this是調用方法的對象
+        obj.sayName(); // 這裡的 this 就是 obj，所以 this.name 就相當於 obj.name => obj.name 就是 "孫悟空"
+        obj2.sayName();// 這裡的 this 就是 obj2，所以 this.name 就相當於 obj2.name => obj2.name 就是 "沙和尚 "
+
+        </script>
+    </head>
+</html>

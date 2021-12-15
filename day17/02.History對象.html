@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        /*
+         * History
+         * - 對象可以用來操作瀏覽器向前或向後翻頁！！！
+         */
+
+        window.onload = function () {
+
+            //獲取按鈕對象
+            var btn = document.getElementById("btn");
+
+            btn.onclick = function () {
+                /*
+                 * length
+                 * - length屬性， 可以獲取到當前訪問的連結頁面的數量
+                 */
+                //alert(history.length); 
+
+                /*
+                 * back()
+                 * - 可以用來回退到上一個頁面, 作用和瀏覽器的回退按扭一樣
+                 */
+                 //history.back(); // 當點擊按鈕就會退回到上一個瀏覽器的頁面
+
+                 /*
+                  * forward()
+                  * - 可以跳轉到下一個頁面, 作用和瀏覽器的前進按扭一樣
+                  */
+                 //history.forward(); // 當點擊按鈕就會到下一個瀏覽器的頁面
+
+                 /*
+                  * go()
+                  * - 可以用來跳轉到指定的頁面
+                  * - 它需要一個整數作為參數
+                  *    1 =》 表示向前跳轉一個頁面, 相當於 forward()
+                  *    2 =》 表示向前跳轉兩個頁面
+                  *   -1 =》 表示向後跳轉一個頁面
+                  *   -2 =》 表示向後跳轉兩個頁面
+                  */
+                  history.go(-1);
+            };
+        };
+
+    </script>
+</head>
+
+<body>
+
+    <button id="btn">點我一下</button>
+
+    <h1>History</h1>
+
+    <a href="01.BOM.Navigator對象.html">去BOM</a>
+</body>
+
+</html>

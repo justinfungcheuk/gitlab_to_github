@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 創建一個構造函數
+         */
+        function MyClass() {
+
+        }
+
+        //向MyClass的原型中添加一個name屬性
+        MyClass.prototype.name = "我是原型中的名字";
+
+        var mc = new MyClass();
+        mc.age = 18;
+
+        console.log(mc.name);
+
+        //使用 in 檢查對象中是否含有某個屬性時, 如果對象中沒有,但是原型中有, 也會返回 true
+        console.log("name" in mc);
+
+        //可以使用對象的 hasOwnProperty()來檢查對象自身中是否含有該屬性
+        //使用該方法只有當對象自身中含有屬性時, 才會返回true
+        console.log(mc.hasOwnProperty("age"));
+
+        console.log(mc.hasOwnProperty("hasOwnProperty"));
+
+        /*
+         * 原型對象也是對象, 所以它也有原型
+         *  當我們使用一個對象的屬性或方法時, 會先 在自身中尋找
+         *        自身中如果有, 則直接使用,
+         *        如果沒有則去原型對象中尋找, 如果原型對象中有, 則使用,
+         *        如果沒有則去原型的原型中尋找,直到找到Object對象的原型（Object對象是我們所有對象的組件，所以它是我們所有對象的原型）
+         *        Object對象的原型沒有原型, 如果在Object原型中依然沒有找到, 則返回 undefined
+         */
+
+        console.log(mc.__proto__.hasOwnProperty("hasOwnProperty")); // false
+
+        console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); // true  原型對象中的原型對象裡
+
+        console.log(mc.__proto__.__proto__.__proto__); // null - 沒有原型
+
+        console.log(mc.hello); // Object對象的原型沒有原型, 如果在Object原型中依然沒有找到, 則返回 undefined
+
+        console.log(mc.__proto__.__proto__.__proto__); // Object對象的原型沒有原型，但它也有 proto屬性，而它的 proto屬性 對應的值就是 null空的
+    </script>
+</head>
+
+</html>

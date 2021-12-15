@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /* 重點是隨機數 Math.random()
+         * Math
+         * - Math 和其他對象不同, 它不是一個構造函數
+         *        它屬於一個工具類, 不用創建對象, 它裡面封裝了數學運算相關的屬性和方法
+         * - 比如
+         *        Math.PI 表示圓周率
+         */
+
+        //console.log(Math.PI);
+
+        /*
+         * abs() 可以用來計算一個數的絕對值
+         */
+        //console.log(Math.abs(-1));
+
+        /*
+         * Math.ceil()
+         * - 可以對一個數進行向上取整, 小數位只要有值就自動進 1
+         * Math.floor()
+         * - 可以對一個數進行向下取整, 小數部分會被舍掉
+         * Math.round()
+         * - 可以對一個數進行四捨五入取整
+         */
+        // console.log(Math.ceil(1.1));
+        // console.log(Math.floor(1.99));
+        // console.log(Math.round(1.4));
+
+        /*
+         * Math.random()
+         * - 可以用來生成一個 0 - 1 之間的隨機數, 但是並不包括 0 和 1 該兩個數字
+         * - 生成一個 0 - 10 的隨機數
+         * - 生成一個 0 - x 之間的隨機數
+         *   Math.round(Math.random()*x)
+         *
+         * - 生成一個 1 - 10
+         * - 生成一個 x - y 之間的隨機數
+         *       Math.round(Math.random()*9)+1   當中的 1 代表 x, 而 9 則代表 y - x
+         *       Math.round(Math.random()*(y - x)) + x)
+         *    
+         */
+             // for( var i = 0; i < 100; i++){
+             // console.log(Math.round(Math.random()*10));
+             // console.log(Math.round(Math.random()*20));
+
+             // console.log(Math.round(Math.random()*9)+1);
+             // console.log(Math.round(Math.random()*8)+2); 
+             // }
+
+        //    //生成 1-6 之間的隨機數
+        /*     for( var i = 0; i < 100; i++){
+             console.log(Math.round(Math.random()*5)+1)
+            }
+        */
+
+        /*
+         * max() 可以獲取多個數中的最大值
+         * min() 可以獲取多個數中的最小值
+         */
+
+        var max = Math.max(10, 45, 30, 100);
+        var min = Math.min(10, 45, 30, 100);
+        // console.log(min);   
+        // console.log(max); 
+
+        /*
+         * Math.pow(x,y)
+         * 返回 x 的 y 次幂
+         */
+
+        console.log(Math.pow(12,3));
+
+        /*
+         * Math.sqrt()
+         * 用於對一個數進行開方運算
+         */
+
+        console.log(Math.sqrt(2));
+    </script>
+</head>
+
+</html>

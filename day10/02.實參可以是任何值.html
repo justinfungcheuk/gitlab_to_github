@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+<title></title>
+<script type="text/javascript">
+    /*
+     * 定義一個函數, 判斷一個數字是否是偶數, 如果是返回 true, 否則返回 false
+     */
+
+    function isOu(num) {
+        /*   if(num % 2 == 0){
+                return true;
+            } else {
+                return false;
+            }
+        }*/
+        return num % 2 == 0;
+    }
+
+
+    var result = isOu(2);
+    console.log("result = " + result);
+
+    /*
+     * 定義一個函數, 可以根據半徑計算一個圓的面積, 並返回計算結果
+     * 3.14 *r*r
+     */
+    function mianji(r) {
+
+        return 3.14 * r * r;
+
+    }
+
+    result = mianji(5);
+
+    console.log("result = " + result);
+
+    /*
+     * 創建一個函數, 可以在控制台中輸出一個人的信息
+     * 可以輸出人的 name age gender address
+     * 
+     * 實參可以是任意的數據類型, 也可以是一個對象！！！！！！！！！！！！！！！！！
+     * 當我們的參數過多時, 可以將參數封裝到一個對象中, 然後通過對象傳遞！！！！！！
+     */
+    function sayHello(o) {
+
+        //console.log("o =" + o);
+        console.log("我是" + o.name + ",今年我" + o.age + "歲了," + "我是一個" + o.gender + "人" + "我住在" + o.address);
+    }
+
+    //sayHello("孫悟空",18,"男","花果山");
+    //創建一個對象
+    var obj = {
+        name: "孫悟空",
+        age: 18,
+        gender: "男",
+        address: "花果山",
+    };
+
+    sayHello(obj);
+
+    /*
+     * 實參可以是一個對象, 也可以是一個函數, 對象能做的事,函數也能做
+     * 函數也可以作為一個參數
+     */
+
+    function fun(a) {
+        console.log("a = " + a);
+        //a(obj); // 調用 a 就是代表調用 sayHello
+    }
+
+    //fun(sayHello);
+
+    fun(function() {
+        alert("Hello")
+    });
+    //表示 a = 的值
+
+    fun(mianji(10)); // 把這個函數作為參數傳給mianji
+
+    /*
+     * mianji()   //加了括號就是傳到返回值
+     * - 調用函數
+     * - 相當於使用的函數的返回值
+     *
+     * mianji     //不加括號傳到對象
+     * - 函數對象
+     * - 相當於直接使用函數對象
+     */
+</script>
+
+</html>

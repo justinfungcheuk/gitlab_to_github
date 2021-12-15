@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * JS中的數據類型
+         * - String 字符串
+         * - Number 數值
+         * - Boolean 布爾值
+         * - Null 空值
+         * - Undefined 未定義
+         *   - 以上這五種類型屬於基本數據類型, 以後我們看到的值
+         *     只要不是上邊的五種, 全都是對象
+         * - Object 對象
+         *
+         *
+         *
+         *
+         * 基本數據類型類型都是單一的值"hello" 123 true,
+         * 值和值之間沒有任何的聯繫
+         * 在JS中來表示一個人的信息 (name gender age),
+         * var name = "Justin Fung";
+         * var gender = "Male";
+         * var age = 18;
+         * 如果使用基本數據類型的數據, 我們所創建的變量都是獨立, 不能成為一個整體
+         *
+         * 對象屬於一種復合的數據類型, 在對象中可以保存多個不同數據類型的屬性
+         *
+         * 對象的分類:
+         * 1. 內建對象
+         *    - 由 ES 標準中定義的對象, 在任何 ES 的實現中都可以使用
+         *    - 比如: Math String Number Boolean Function Object ......
+         *
+         * 2. 宿主對象:
+         *    - 由 JS 的運行環境提供的對象, 目前來講主要指由瀏覽器提供的對象
+         *    - 比如: BOM 瀏覽器對象模型 例如: console.log(); & document.write(); DOM 文檔對象模型
+         *
+         * 3. 自定義對象
+         *    - 由開發人員自己創建的對象
+         */
+
+        // 創建對象
+        /*
+         * 使用new關鍵字調用的函數, 是構造函數constructor！！！
+         * - 構造函數是專門用來創建對象的函數！！！
+         * 使用 typeof 檢查一個對象時, 會返回 object
+         */
+        var obj = new Object();
+
+        console.log(typeof obj);
+
+        /*
+         * 在對象中保存的值稱為屬性
+         * 向對象中添加屬性
+         * 語法: 對象.屬性名 = 屬性值;
+         */
+
+        //向obj中添加一個name屬性
+        obj.name = "孫悟空";
+        //向obj中添加一個gender屬性
+        obj.gender = "Male";
+        //向obj中添加一個age屬性
+        obj.age = 18;
+
+        /*
+         * 讀取對象中的屬性
+         * 語法: 對象.屬性名
+         *
+         * 如果讀取對象中沒有的屬性, 不會報錯而是會返回 undefined
+         */
+
+        console.log(obj.name);
+        console.log(obj.hello);
+
+        /*
+         * 修改對象的屬性值
+         * 語法: 對象.屬性名 = 新值
+         *
+         */
+        obj.name = "tom";
+
+        /*
+         * 刪除對象的屬性
+         * 語法: delete 對象.屬性名
+         * delete obj.name
+         *
+         */
+        delete obj.name;
+
+        console.log(obj.name);
+    </script>
+</head>
+
+</html>

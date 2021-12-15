@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>dom查询</title>
+    <link rel="stylesheet" type="text/css" href="style/css.css" />
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //為 id 為 btn01 的按鈕綁定一個單擊響應
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function() {
+                //1.查找#bj節點
+                var bj = document.getElementById("bj");
+                //打印 bj 
+                //innerHTML 通過這個屬性可以獲取到元素內部的 html 代碼
+                alert(bj.innerHTML);
+            };
+
+            //為 id 為 btn02 的按鈕綁定一個單擊響應函數
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function() {
+                //2.查找所有li節點
+                //getElementsByTageName() 可以根據標籤名來獲取一組元素節點對象
+                //這個方法會給我們返回一個類屬組對象, 所以查詢到的元素都會封裝到對象中
+                //即使查詢到的元素只有一個, 也會封裝到數組中返回
+                var lis = document.getElementsByTagName("li");
+
+                //打印 lis
+                //alert(lis.length);
+
+                //變量 lis
+                for (var i = 0; i < lis.length; i++) {
+                    alert(lis[i].innerHTML);
+                }
+            };
+
+            //為 id 為 btn03 的按鈕綁定一個單擊響應函數
+            var btn03 = document.getElementById("btn03");
+            btn03.onclick = function() {
+                //3.查找name=gender的所有節點
+                var inputs = document.getElementsByName("gender");
+
+                //alert(inputs.length);
+
+                for (var i = 0; i < inputs.length; i++) {
+                    /*
+                     * innerHTML用於獲取元素內部的HTML代碼的
+                     * 對於自結束標籤, 這個屬性沒有意義, 這個 innerHTML 沒用
+                     */
+                    //alert(inputs[i].innerHTML );
+                    /*
+                     * 如果需要讀取元素節點屬性, 
+                     *     直接使用元素 .屬性名
+                     *     例子: 元素.id 元素.name 元素.value
+                     *     注意: class屬性不能採用這種方式
+                     *     讀取 class 屬性時需要使用 元素.className
+                     */
+                    alert(inputs[i].className);
+                };
+            };
+
+            //4.查找#city下所有li節點
+            //5.返回#city的所有子節點
+            //6.返回#phone的第一个子節點
+            //7.返回#bj的父節點
+            //8.返回#android的前一個兄弟節點
+            //9.讀取#username的value属性值
+            //10.設置#username的value屬性值
+            //11.返回#bj的文本值
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="total">
+        <div class="inner">
+            <p>
+                你喜欢哪个城市?
+            </p>
+
+            <ul id="city">
+                <li id="bj">北京</li>
+                <li>上海</li>
+                <li>东京</li>
+                <li>首尔</li>
+            </ul>
+
+            <br>
+            <br>
+
+            <p>
+                你喜欢哪款单机游戏?
+            </p>
+
+            <ul id="game">
+                <li id="rl">红警</li>
+                <li>实况</li>
+                <li>极品飞车</li>
+                <li>魔兽</li>
+            </ul>
+
+            <br />
+            <br />
+
+            <p>
+                你手机的操作系统是?
+            </p>
+
+            <ul id="phone">
+                <li>IOS</li>
+                <li id="android">Android</li>
+                <li>Windows Phone</li>
+            </ul>
+        </div>
+
+        <div class="inner">
+            gender:
+            <input class="hello" type="radio" name="gender" value="male" /> Male
+            <input class="hello" type="radio" name="gender" value="female" /> Female
+            <br>
+            <br> name:
+            <input type="text" name="name" id="username" value="abcde" />
+        </div>
+    </div>
+    <div id="btnList">
+        <div><button id="btn01">查找#bj节点</button></div>
+        <div><button id="btn02">查找所有li节点</button></div>
+        <div><button id="btn03">查找name=gender的所有节点</button></div>
+        <div><button id="btn04">查找#city下所有li节点</button></div>
+        <div><button id="btn05">返回#city的所有子节点</button></div>
+        <div><button id="btn06">返回#phone的第一个子节点</button></div>
+        <div><button id="btn07">返回#bj的父节点</button></div>
+        <div><button id="btn08">返回#android的前一个兄弟节点</button></div>
+        <div><button id="btn09">返回#username的value属性值</button></div>
+        <div><button id="btn10">设置#username的value属性值</button></div>
+        <div><button id="btn11">返回#bj的文本值</button></div>
+    </div>
+</body>
+
+</html>
+———————————————— 版权声明：本文为CSDN博主「dream_uping」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。 原文链接：https://blog.csdn.net/weixin_42859280/java/article/details/104900275

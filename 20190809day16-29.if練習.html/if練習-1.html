@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset= "UTF-8" />
+        <title></title>
+        <!--JS代碼需要編寫到script標籤中-->
+        <script type="text/javascript">
+            /*
+             * 從鍵盤輸入小明的期末成績:
+             * 當成績為100時, 獎勵一輛BMW
+             * 當成績為[80-99]時, 獎勵一台iPhone15s
+             * 當成績為[60-80]時, 獎勵一本參考書
+             * 其他成績, 甚麼獎勵也沒有
+             *
+             *
+             */
+            
+            /*
+             * prompt()可以彈出一個提示框, 該提示框中會帶有一個文本框,
+             * 用戶可以在文本框中輸入一段內容, 該函數需要一個字符串作為參數,
+             * 該字符串將會作為提示框的提示文字
+             *
+             * 用戶輸入的內容將會作為函數的返回值返回, 可以定義一個變量來接收該內容
+             */
+            
+            //scroe就是小明的期末成績
+            var scroe = prompt("Please input Mr Ming's final exam result (0 - 100): ");
+            
+            //判斷值是否合法
+            if(scroe > 100 || scroe < 0 || isNaN(scroe)){
+                alert("There are something wrong");
+            }else{
+            
+            //根據scroe的值來決定給小明甚麼獎勵
+            if(scroe == 100){
+                //獎勵一輛寶馬
+                alert("獎勵一輛寶馬");
+            }else if(scroe >= 80){
+                //獎勵一部手機
+                alert("iPhone一部");
+            }else if(scroe >= 60){
+                //獎勵一本參考書
+                alert("參考書一本")
+            }else{
+                alert("WTF");
+            }
+        }
+
+        </script>
+    </head>
+</html>

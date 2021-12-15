@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict/dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>添加刪除紀錄練習</title>
+    <link rel="stylesheet" type="text/css" href="ex_2_style/css.css" />
+    <script type="text/javascript">
+        window.onload = function() {
+
+            /*
+             * 點擊超連結以後, 刪除一個員工的信息
+             */
+
+            //獲取所有超連結 
+            var allA = document.getElementsByTagName("a");
+
+            //為每個超連結都綁定一個單擊響應函數
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = function() {
+
+                    /*點擊超鏈接以後，超鏈接會跳轉頁面，這個是超鏈接的默認行為， 
+                      但是此時我們不希望出現默認行為, 可以通過在響應函數的最後 return false 來取消默認行為。
+                    */
+
+                    /*！！！重點！！！由於 JS 是給 a 綁定的，
+                      點擊超連結以後需要刪除超連結所在的那行，
+                      this 是什麼呢？ 給誰綁定， this 就是誰。就是當你點擊那個 a 就是那一個 a， 在響應函數裡面的 this 就是你綁定的那個事件的元素，
+                      這裡我們點擊那個超連結 this 就是誰，這裡的 this 代表超鏈接，當你點擊那個超鏈接，就是那一個超鏈接。
+                      例如：當你點擊第一個超鏈接 <a href="deleteEmp?id=001">Delete</a>，this就是這個超連結！！！
+                      alert(this); // this 表示在你點擊那一個 a 的時候, 它就屬於哪一個 a。
+                    */
+
+                    //獲取當前 tr
+                    var tr = this.parentNode.parentNode;
+                    // this.parentNode.parentNode; 表示 a 的 父親td 的 父親就是 tr, 也就是等於 tr
+
+                    /* 獲取要刪除的員工的名字
+                       var name = tr.getElementsByTagName("td")[0].innerHTML; 
+                       由於要從 tr 裡面獲取 第一個 td元素， 所以需要使用 [0], 
+                       例如：<td>Tom</td>
+                       而需要獲取 [0] 裡面的內容則需要使用 innerHTML
+                    */
+                    var name = tr.children[0].innerHTML; 
+                    /* tr.children 獲取所有的子元素，也就是獲取所有的 td，
+                       由於要從 tr 裡面獲取 第一個 td元素， 所以需要使用 [0], 
+                       例如：<td>Tom</td>
+                       而需要獲取 [0] 裡面的內容則需要使用 innerHTML
+                    */
+
+
+
+                    //刪除之前彈出一個提示框
+                    /*
+                     * confirm() 用於彈出一個帶有確認和取消按鈕的提示框
+                     *        需要一個字符串作為參數, 該字符串將會作為提示文字顯示出來
+                     * 如果用戶點擊確認則會返回 true, 如果點擊取消則返回 false
+                     */
+                    var flag = confirm("確認刪除" + name + "嗎?");
+
+                    //如果用戶點擊確認
+                    if (flag) {
+                        //刪除 tr
+                        tr.parentNode.removeChild(tr);
+                    }
+
+                    /*
+                     * 點擊超連結以後, 超連結會跳轉頁面, 這個是超連結的默認行為
+                     *     但是此時我們不希望出現默認行為, 可以通過在響應函數的最後 return false 來取消默認行為
+                     */
+                    return false;
+                };
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@tom.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+
+    <div id="formDiv">
+
+        <h4>添加新員工</h4>
+
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton1" value="abc">Submit</button>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

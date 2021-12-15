@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        //用括號表示一個整體！！！！
+        
+        //函數對象()
+        /*
+         * 立即執行函數
+         * 函數定義完, 立即被調用, 這種函數叫做立即執行函數
+         * 立即執行函數往往只會執行一次
+         */
+
+        // 在function裡面, 運用一個 () 闊號來表達該函數是一個整體 
+        /*(function(){
+            alert("我是一個匿名函數");
+        })(); 
+        
+        */
+        
+        (function(a,b){
+            console.log("a = "+a);
+            console.log("b = "+b);
+        })(123,456); // 傳遞參數 123, 456
+
+        
+    </script>
+</html>

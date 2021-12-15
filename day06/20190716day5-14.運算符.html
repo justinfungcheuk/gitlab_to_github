@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        /*
+         * 運算符也叫操作符
+         * 通過運算可以對一個 或 多個值 進行運算, 並獲取運算結果
+         * 比如: typeof 就是運算符, 可以來獲得一個值的類型
+         * - 它會將該值的類型以字符串的形式返回
+         * - number / string / boolean / undefined / object
+         *
+         * 算數運算符
+         *  當對非 Number 類型的值進行運算時, 會將這些值轉換為 Number 然後再運算
+         *      - 任何值 和 NaN 做運算都得 NaN！！！
+         * + 加號
+         *    +加號 可以對兩個值進行 加法運算, 並將結果返回
+         *      - 如果對兩個字符串進行加法運算, 則會做拼串！！！
+         *           - 會將兩個字符串拼接為一個字符串, 並返回！！！
+         *      - 任何的值和字符串做加法運算, 都會先轉換為字符串, 然後再和字符串 做拼串的操作！！！
+         *
+         *
+         * - 減號 
+         *     -減號 可以對兩個值進行減法運算, 並將結果返回
+         *           - 除了加法以外, 字符串是拚串, 其他的字符串運算都是轉成 Number！！！
+         *
+         *
+         * * 乘法符號
+         *     *乘法符號 可以對兩個值進行乘法運算
+         *
+         *
+         * / 除法符號
+         *     / 除法符號 可以對兩個值進行除法運算
+         * 
+         *
+         * % 取余數符號
+         *     % 取余數符號 取模運算 (取余數)
+         *
+         */
+
+        var a = 123;
+
+        var result = typeof a;
+
+        // console.log(result); //等於一個 number
+        // console.log(typeof result);
+
+        result = a + 1;
+
+        result = 456 + 789;
+
+        result = true + 1;
+
+        result = true + false; // true = 1; false = 0
+
+        result = 2 + null; // null = 0
+
+        result = 2 + NaN;
+
+        result = "123" + "456";
+
+        var str = "My name is Fung Yung Cheuk," +
+            "I want to be a Billionaire," +
+            "set up a tehnical corporation," +
+            "this is my dream";
+
+        result = 123 + "1";
+        console.log(result);
+
+        result = true + "hello";
+        console.log(result);
+
+        //任何值和字符串相加都會轉換為字符串, 並做拼串操作
+        /*
+         * 我們可以利用這一特點, 來將一個任意的數據類型轉換為 String
+         *  我們只需要為任意的數據類型 + 一個"" 即可將其轉換為String
+         *  這是一種隱式的類型轉換, 由瀏覽器自動完成, 實際上它也是調用String()函數
+         *
+         */
+
+        var c = 123;
+
+        // c = String(c);
+
+        // c = c + "I am making C change to string";
+
+        c = c + "";
+
+        // c = String(c);
+
+        // c = null;
+
+        // c = c + "";
+
+
+        // console.log(result);
+        // console.log(typeof c);
+        console.log("c = "+c);
+
+        result = 1 + 2 + "3"; // 33
+
+        result = "1" + 2 + 3; // 123
+
+        result = 100 - 5;
+
+        result = 100 - true;
+
+        result = 100 - "1";
+
+
+        result = 2 * 2;
+
+        result = 2 * "8";
+        console.log(result);
+
+        result = 2 * undefined; // 任何值和 undefined 運算 都是等於 NaN
+
+        result = 2 * null;
+        console.log(result);
+
+        result = 4 / 2;
+
+        result = 3 / 2;
+
+        /*
+         * 任何值做 - * / 運算時, 都會自動轉換為 Number
+         * 我們可以利用這一特點做隱式的類型轉換
+         *    我們通過為一個值 -0 *1 /1 來將其轉換為 Number
+         *    原理和Number()函數一樣, 用起來更加簡單
+         */
+
+        var d = "123";
+
+        //console.log("result = "+result);
+
+        //d = Number(d);
+        d = d - 0;
+
+        // console.log(typeof d);
+        //console.log(d);
+
+        result = 9 % 3;
+        result = 9 % 4;
+        result = 9 % 5;
+
+        console.log("result = " + result);
+    </script>
+</head>
+
+</html>

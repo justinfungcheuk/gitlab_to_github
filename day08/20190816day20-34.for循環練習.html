@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 打印 1-100 之間所有奇數之和
+         */
+
+        //創建一個變量, 用來保存奇數之和
+        //var的sum = 0 不能寫在 for循環裡面!!!
+        var sum = 0;
+
+        //打印 1-100 之間的數
+        for (var i = 1; i <= 100; i++) {
+
+            //判斷 i 是否是奇數
+            //不能被 2 整除的數是奇數
+            if (i % 2 != 0) {
+                //如果 i 除以 2 有余數則整明 i 是奇數
+                console.log(i);
+                sum = sum + i;
+                
+            }
+
+        }
+
+        console.log("奇數之和: " + sum);
+    </script>
+</head>
+
+</html>

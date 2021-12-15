@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * && 和 || 非布爾值的情況
+         * - 對於非布爾值進行 &&與 ||或 運算時,
+         *   會向將其轉換為布爾值, 然後再運算, 並且返回原值
+         *
+         * &&與 運算:
+         * - 如果第一個值為true, 則必然返回第二個值
+         * - 如果第一個值為false, 則直接返回第一個值 
+         *
+         * ||或 運算:
+         * - 如果第一個值為true, 則直接返回第一個值
+         * - 如果第一個值為false,則直接返回第二個值
+         */
+
+        //true && true
+        // &&與 運算: 如果兩個值都為true, 則返回後邊的值
+        var result = 2 && 1;
+        console.log("result = " + result);
+
+        //與運算: 如果兩個值中有false, 則返回靠前的false
+        //false && true
+        result = 0 && 2;
+        console.log("result = " + result);
+        result = 2 && 0;
+        console.log("result = " + result);
+        //false && false
+        result = NaN && 0;
+        console.log("result = " + result);
+        result = 0 && NaN;
+        console.log("result = " + result);
+
+        //true || true
+        //如果第一個值為true, 則直接返回第一個值
+        result = 1 || 2;
+        result = 2 || NaN;
+        console.log("result = " + result);
+        result = 2 || 0;
+
+        //如果第一個值為false, 則直接返回第二個值
+        result = NaN || 1;
+        console.log("result = " + result);
+        result = NaN || 0;
+        console.log("result = " + result);
+
+        result = "" || "hello";
+        //因為 "" 空號 轉成 布爾值是 false, 所以就直接返回 "hello"
+        console.log("result = " + result);
+
+        result = -1 || "hello"; // 因為 -1 是 true 所以直接返回第一個 true
+
+        console.log("result = " + result);
+    </script>
+</head>
+
+</html>

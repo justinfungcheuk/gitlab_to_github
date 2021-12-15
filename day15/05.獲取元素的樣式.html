@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //點擊按鈕以後讀取 box1 的樣式
+            var box1 = document.getElementById("box1"); // 獲取 box1
+            var btn01 = document.getElementById("btn01"); // 獲取按鈕 btn01
+            btn01.onclick = function() {
+                //讀取 box1 的寬度
+                //alert(box1.style.width); // 使用 style 只能讀取 內斂樣式
+
+                /*
+                 * 獲取元素的當前顯示的樣式!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 *     語法: 元素.currentStyle.樣式名 
+                 * 它可以用來讀取當前元素正在顯示的樣式
+                 *     如果當前元素沒有設置該樣式, 則獲取它的默認值。（例如：背景顏色的默認值是 透明transparent ）
+                 *
+                 * currentStyle 只有 IE 瀏覽器支持, 其他的瀏覽器都不支持!!!!!!!!!!!
+                 */
+
+                //alert(box1.currentStyle.width);
+                //box1.currentStyle.width = "200px"; // 通過 currentStyle 和 getComputerStyle()讀取到的樣式都是只讀的，不能修改, 如果要修改必須通過 style 屬性！！！
+                //alert(box1.currentStyle.backgroundColor);
+
+                /*
+                 * 在其他瀏覽器中可以使用
+                 *     getComputedStyle() 這個方法來獲取元素當前的樣式
+                 *     這個方法是 window 的方法，可以直接使用。   
+                 * 需要兩個參數  
+                 *     第一個: 要獲取樣式的元素
+                 *     第二個: 可以傳遞一個偽元素, 但是一般都傳 null
+                 *
+                 * 該方法會返回一個對象: 對象中封裝了當前元素對應的樣式
+                 *     可以通過對象.樣式名來讀取樣式
+                 *     如果獲取的樣式沒有設置, 則會獲取到真實的值, 而不是默認值
+                 * 比如: 沒有設置 width, 它不會獲取到 auto, 而是一個長度（根據瀏覽器大小來獲取 width）！！！！！！
+                 *
+                 * 但是該方法不支持 IE8 及以下的瀏覽器！！！！！！！
+                 *
+                 * 通過 currentStyle 和 getComputerStyle()讀取到的樣式都是只讀的,
+                 *     不能修改, 如果要修改必須通過 style 屬性
+                 */
+                //var obj = getComputedStyle(box1, null);
+
+                //alert(getComputedStyle(box1, null).width);
+
+
+
+                //正常瀏覽器的方式
+                //alert(getComputedStyle(box1, null).backgroundColor); // 如果沒有設置背景顏色是什麼，就會獲取背景顏色的默認值：transparent
+
+                //IE8的方式
+                //alert(box1.currentStyle.backgroundColor);
+
+                // 
+                //alert(getStyle(box1, "width"));
+
+                var w = getStyle(box1, "width");
+                alert(w);
+            };
+        };
+
+        /* 可以同時兼容 IE8 和其他瀏覽器使用來獲取 樣式 的方法！！！
+         * 定義一個函數, 用來獲取指定元素的當前的樣式
+         * 參數:
+         *         obj  要獲取樣式的元素
+         *         name 要獲取樣式的樣式名
+         */
+        function getStyle(obj, name) { // 該 name 是一個變量！！！
+
+            if (window.getComputedStyle) { // 判斷瀏覽器是否具有 getComputedStyle()方法，有就是正常瀏覽器，沒有就是 IE8瀏覽器
+                /*因為 getComputedStyle 是屬於全局裡面的, 所以它是 window 對象的屬性, 因此 window.getComputedStyle 和 getComputedStyle 的效果是一樣的
+                  所以加了 window. 就變成了一個對象的屬性, 而沒有加 window. 的時候則是一個變量需要去做出尋找
+                  變量和屬性的區別：
+                  - 變量如果沒有找到，就會報錯。
+                  - 而屬性沒有找到，就會返回 undefinded
+                  ！！！加了 window 就可以避免報錯的發生。！！！
+                */
+
+                //正常瀏覽器的方式, 具有 getComputedStyle() 方法
+                return getComputedStyle(obj, null)[name]; // 如果有 getComputedStyle方法 就作為結果 返回return！！！
+                /*由於 name 是一個變量，我們不可以直接寫 .name ，因為它只可以獲取名字為 name  的樣式，會把代碼寫死。
+                  我們要使用中括號 [name] 來獲取樣式，如果 name 是 width，我們就獲取 width樣式。
+                */
+            } else {
+                // IE8 的方式, 不可以使用 getComputedStyle() 方法
+                return obj.currentStyle[name];
+            };
+
+            //return window.getComputedStyle?getComputedStyle(obj,null)[name] : obj.currentStyle[name];;
+            //以上的 if else 和 return 的寫法是一樣的
+            //但是 if else 更清晰和常用!!!!! 
+        };
+
+        //正常瀏覽器的方式
+        //return getComputedStyle(obj , null)[name]; // [name] 表示使用該方式可以獲取 name的變量是甚麼就獲取甚麼 例如 name 是 width 就獲取 width, 更靈活
+
+        // IE8 的方式
+        // return obj.currentStyle[name];
+    </script>
+</head>
+
+<body>
+    <button id="btn01">點我一下</button>
+    <br /><br />
+    <div id="box1"></div>
+</body>
+
+</html>

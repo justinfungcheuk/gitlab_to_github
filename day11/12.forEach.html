@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 一般我們都是使用 for 循環去遍歷數組, 
+         * JS中還為我們提供了一個方法, 用來遍歷數組
+         * forEach()
+         * - 這個方法只支持IE8以上的瀏覽器
+         * - IE8及以下的瀏覽器均不支持該方法, 所以如果需要兼容IE8, 則不要使用 forEach
+         *   還是使用 for 循環來遍歷
+         */
+
+         // 創建一個數組
+         var arr = ["孫悟空", "豬八戒", "沙和尚", "唐僧", "白骨精"];
+
+        //  function fun(){
+
+        //  }
+
+         /*
+          * forEach()方法需要一個函數作為參數
+          * - 像這種函數, 由我們創建但是不由我們調用的, 我們稱為回調函數
+          * - 數組中有幾個元素, 函數就會執行幾次, 每次執行時, 瀏覽器會將遍歷到的元素
+          *     以實參的形式傳遞進來, 我們可以來定義形參, 來讀取這些內容
+          * - 瀏覽器會在回調函數中傳遞三個參數:
+          *     第一個參數, 就是當前正在遍歷的元素
+          *     第二個參數, 就是當前正在遍歷的元素的索引
+          *     第三個參數, 就是正在遍歷的數組
+          */
+
+         arr.forEach(function(value , index, obj){
+             console.log(obj);
+             console.log(value);
+             console.log(index);
+         });
+
+        </script>
+    </head>
+</html>

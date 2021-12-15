@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset= "UTF-8" />
+        <title></title>
+        <!--JS代碼需要編寫到script標籤中-->
+        <script type="text/javascript">
+            /*
+             * 大家都知道, 男大當婚, 女大當嫁, 那麼女方家長要嫁女兒, 當然要提出一定的條件:
+             * 高: 180CM以上; 富: 1000萬以上; 帥: 500以上;
+             * 如果這三個條件同時滿足, 則: 我一定要嫁給他
+             * 如果三個條件有為真的情況, 則: 嫁吧, 比上不足, 比下有餘
+             * 如果三個條件都不滿足, 則: 不嫁!
+             */
+            
+            var height = prompt("Please input your hight(CM):");
+            var money = prompt("Please input your wealth($):");
+            var appearance = prompt("Please input your appearance level(PX):");
+            
+            //alert(height+","+money+","+face);
+            
+            //如果這三個條件同時滿足, 則: 我一定要嫁給他
+            if(height > 180 && money > 1000 && appearance > 500){
+                alert("I must marry him");
+            }else if(height > 180 || money > 1000 || appearance > 500){
+            //如果三個條件有為真的情況, 則: 嫁吧, 比上不足, 比下有餘
+                alert("marry, it's not too bad");
+            }else{
+            //如果三個條件都不滿足, 則: 不嫁!
+                alert("don't marry");
+            }
+
+        </script>
+    </head>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        
+        #s1 {
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+
+            /*
+             * 事件的冒泡 (Bubble) - 只會往上傳遞事件的冒泡，不會往下傳！！！！！！！！！！
+             * - 所謂的冒泡指的就是事件的向上傳導, 當後代元素上的事件被觸發時, 其祖先元素的相同事件（相同事件代表是都用了 onclick 事件！！！！）也會被觸發。
+             * 例如：當你點擊 s1單擊響應函數，就會觸發事件的冒泡，導致同時觸發了 s1 和 div 還有 body的單擊響應函數，也就說會向父元素和祖先元素冒泡，產生同時點擊了所有的單擊響應函數！！！
+             *
+             * - ！！！！！！！！！！重點！！！！！！！！在開發中大部分情況冒泡都是有用的, 如果不希望發生事件冒泡可以通過事件對象來取消冒泡！！！！！！
+             */
+
+            //為 s1 綁定一個單擊響應函數
+            var s1 = document.getElementById("s1");
+            s1.onclick = function(event) { // 因為我們要使用 event事件對象，所以要傳一個 event
+                event = event || window.event;
+                alert("我是span的單擊響應函數");
+
+                //取消冒泡
+                //可以將事件對象的 cancelBubble 設置為 true, 即可取消冒泡
+                event.cancelBubble = true;
+            };
+
+            //為 box1 綁定一個單擊響應函數
+            var box1 = document.getElementById("box1");
+            box1.onclick = function(event) {
+                event = event || window.event;
+                alert("我是div的單擊響應函數");
+
+                event.cancelBubble = true;
+            };
+
+            //為 body 綁定一個單擊響應函數
+            document.body.onclick = function() {
+                alert("我是body的單擊響應函數");
+            };
+        };
+    </script>
+</head>
+
+<body>
+
+    <div id="box1">
+        我是box1
+        <span id="s1">我是span</span>
+        <!-- 當你點擊觸發 span 的單擊響應函數， 同時會事件冒泡 div，會觸發 div 的單擊響應函數，同時 div觸發後，會事件冒泡 body 的單擊響應函數，一層一層往上的做事件冒泡，
+         而 body 的上面還有 html，再往上就是 document，一層一層往上的做事件冒泡。
+        -->
+    </div>
+</body>
+
+</html>

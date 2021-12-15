@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF">
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 在頁面中接收一個用戶輸入的數字, 並判斷該數是否是質數
+         * 質數: 只能被 1 和它自身整除的數, 1 不是質數也不是合數, 質數必須是大於 1 的自然數
+         *
+         */
+
+        var num = prompt("請輸入一個大於1的整數");
+
+
+
+        //判斷這個值是否合法
+        if (num < 1) {
+            alert("該值不合法!");
+        } else {
+
+            //創建一個變量來保存當前的數的狀態
+            //默認當前 num 是質數
+            var flag = true; // flag 等於 奇質 的意思
+
+            //判斷num是否是質數
+            //獲取 2-num 之間的數 
+            for (var i = 2; i < num; i++) {
+                //console.log(i);
+                //判斷num是否能被 i 整除
+                if (num % i == 0) {
+                    //如果 num 能被 i 整除, 則說明 num 一定不是質數
+                    //設置 flag 為 false
+                    flag = false;
+                }
+            }
+
+            //如果 num 是質數則輸出
+            if (flag) {
+
+
+                alert(num + "是質數!!");
+            } else {
+                alert("這個不是質數");
+            }
+        }
+    </script>
+</head>
+
+</html>

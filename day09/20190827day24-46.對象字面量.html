@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF">
+    <title></title>
+    <script type="text/javascript">
+        //創建一個對象
+        // var obj = new Object ();
+
+        /*
+         * 使用對象字面量來創建一個對象
+         *
+         */
+
+        var obj = {}; // {} 這個大括號等於 對象字面量 的意思 也等於 new Object ();
+
+        console.log(typeof obj);
+
+        obj.name = "孫悟空";
+
+        console.log(obj.name);
+
+        /*
+         * 使用對象字面量, 可以在創建對象時, 直接指定對象中的屬性
+         * 語法: {屬性名:屬性值,屬性名:屬性值...}
+         * 對象字面量的屬性名可以加引號也可以不加, 建議不加
+         * 如果要使用一些特殊的名字, 則必須加引號
+         *
+         * 屬性名和屬性值是一組一組的名值對結構
+         * 名和值之間使用 :冒號 連結, 多個名值對之間使用 ,逗號 隔開
+         * 如果一個屬性之後沒有其他的屬性了, 就不要寫 ,逗號 !!!切記!!!沒有屬性就不要加上 , 逗號!!!!!!!
+         *
+         */
+
+        /* 以下寫法較常用 */
+        var obj2 = {
+
+            name: "豬八戒",
+            age: 28,
+            gender: "Male",
+            test: {
+                name: "沙和尚"
+            }
+
+        };
+
+        console.log(obj2.test);
+        console.log(obj2.name);
+    </script>
+</head>
+
+</html>

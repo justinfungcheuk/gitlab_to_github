@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>二級菜單</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        a,
+        img {
+            border: 0;
+            text-decoration: none;
+        }
+
+        body {
+            font: 12px/180% Arial, Helvetica, sans-serif, "新宋體";
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/sdmenu.css" />
+
+    <script type="text/javascript" src="tools.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            /*
+             * 我們的每一個菜單都是一個 div
+             *   當 div 具有 collapsed 這個類時, div 就是摺疊的狀態
+             *   當 div 沒有 collapsed 這個類時, div 就是展開的狀態 
+             */
+
+            /*
+             * 點擊菜單, 切換菜單的顯示狀態
+             */
+
+            //獲取所有的 class 為 menuSpan 的元素 - 通過 querySelectorAll()獲取所有是 menuSpan 這個類的元素！！！
+            var menuSpan = document.querySelectorAll(".menuSpan"); // . 點號是必須的, 因為它是一個 class 屬性
+
+            //定義一個變量, 來保存當前打開的菜單
+            var openDiv = menuSpan[0].parentNode; // menuSpan[0] 代表第一個 span
+            //var openDiv = menuSpan[0].parentNode; 而parentNode 就是代表第一個 div
+
+            //為 span 綁定響應單擊函數
+            for (var i = 0; i < menuSpan.length; i++) {
+                menuSpan[i].onclick = function () {
+
+                    //this 代表我當前點擊的 span
+                    //獲取當前 span 的父元素
+                    var parentDiv = this.parentNode; // parentDiv 代表我們當前點擊的要操作的 div
+
+                    //切換菜單的顯示狀態
+                    toggleMenu(parentDiv);
+
+/*                     //切換類之前, 獲取元素的高度 (在toggleClass之前獲取的高度)
+                    var begin = parentDiv.offsetHeight;
+
+                    //切換 parentDiv 的顯示
+                    toggleClass(parentDiv, "collapsed"); // 通過使用 "collapsed" 來摺疊和展開的效果
+
+                    //在切換類之後獲取一個高度
+                    var end = parentDiv.offsetHeight;
+
+                    //console.log("begin = "+begin + " , end = "+end);
+                    //動畫效果就是將高度從 begin 向 end 過度
+                    //將元素高度重置為 begin
+                    parentDiv.style.height = begin + "px"; //這是一個內聯樣式
+
+                    //執行動畫, 從 begin 向 end 過度
+                    move(parentDiv, "height", end, 10, function () {
+                        //第一個參數是執行動畫的對象 parentDiv
+                        //第二個是屬性 "height"
+                        //第三個是動畫的目標 end
+                        //第四個是速度 10
+                        //第五個是回調函數 function(){}
+
+                        //動畫執行完畢, 內聯樣式已經沒有存在的意義了, 刪除之
+                        parentDiv.style.height = ""; //所以使用 ""  就代表沒有了
+                    }); */
+
+                    //判斷 openDiv 和 parentDiv 是否相同（也就是是否同一個元素）, 在下面的 if 兩者不相等時// 同時在 openDiv 裡面還沒有 "collapsed" 這個類 才進入 if 判斷
+                    if (openDiv != parentDiv && !hasClass(openDiv, "collapsed")) { // 如果它們不相等才 addClass
+                        //打開菜單以後, 應該關閉之前打開的菜單
+                        //為了可以統一處理動畫過度效果, 我們希望在這將 addClass改為 toggleClass
+                        //addClass(openDiv, "collapsed"); //添加一個類 openDiv,  加上"collapsed" 就會關閉之前打開的菜單
+                        //此處 toggleClass() 不需要有移除功能
+                        //toggleClass(openDiv, "collapsed"); //當進入判斷了, 就可以證明這個 openDiv 肯定沒有 "collapsed"
+                        //所以就可以得出結果, 只剩下添加, 而沒有了移除的功能
+                        //因此, 使用 !hasClass(openDiv, "collapsed") 用來判斷, 就是可以在兩個地方使用 toggleClass 
+
+                        toggleMenu(openDiv);
+                    }
+
+                    //修改 openDiv 為當前打開的菜單
+                    openDiv = parentDiv; //為甚麼等於 parentDiv ?? 因為現在操作的是 var parentDiv = this.parentNode; 可以確保 openDiv 總是新的一個
+                };
+            };
+
+            /*
+             * 用來切換菜單摺疊和顯示狀態
+             */
+
+            function toggleMenu(obj) { // obj 代表傳誰就改誰
+                //切換類之前, 獲取元素的高度 (在toggleClass之前獲取的高度)
+                var begin = obj.offsetHeight; 
+                
+                /*在獲取動畫之前獲取一個值, 然後在切換 toggleClass之前獲取一個begin的值, 在切換 class之後,再獲取end值
+                 * 之後把動畫從 begin 的值 到 end 的值之間過度, 這個動畫就可以實現
+                 */
+
+                //切換 parentDiv 的顯示
+                toggleClass(obj, "collapsed"); // 通過使用 "collapsed" 來摺疊和展開的效果
+                
+
+                //在切換類之後獲取一個高度
+                var end = obj.offsetHeight;
+
+                //console.log("begin = "+begin + " , end = "+end);
+                //動畫效果就是將高度從 begin 向 end 過度
+                //將元素高度重置為 begin
+                obj.style.height = begin + "px"; //這是一個內聯樣式
+
+                //執行動畫, 從 begin 向 end 過度
+                move(obj, "height", end, 10, function () {
+                    //第一個參數是執行動畫的對象 parentDiv
+                    //第二個是屬性 "height"
+                    //第三個是動畫的目標 end
+                    //第四個是速度 10
+                    //第五個是回調函數 function(){}
+
+                    //動畫執行完畢, 內聯樣式已經沒有存在的意義了, 刪除之
+                    obj.style.height = ""; //所以使用 ""  就代表沒有了
+                });
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="my_menu" class="sdmenu"> 
+
+        <div> <!-- 該 div 就是一個二級菜單 -->
+            <span class="menuSpan">在線工具</span>
+            <a href="#">圖像優化</a>
+            <a href="#">收藏夹圖標生成器</a>
+            <a href="#">郵件</a>
+            <a href="#">htaccess密碼</a>
+            <a href="#">梯度圖像</a>
+            <a href="#">按鈕生成器</a>
+        </div>
+
+        <div class="collapsed">
+            <!-- class = "collapsed" 代表可以摺疊起來的功能 -->
+            <span class="menuSpan">支持我們</span>
+            <a href="#">推薦我們</a>
+            <a href="#">連結我們</a>
+            <a href="#">網絡資源</a>
+        </div>
+
+        <div class="collapsed">
+            <span class="menuSpan">合作伙伴</span>
+            <a href="#">JavaScript工具包</a>
+            <a href="#">CSS驅動</a>
+            <a href="#">CodingForums</a>
+            <a href="#">CSS例子</a>
+        </div>
+
+        <div class="collapsed">
+            <span class="menuSpan">測試電流</span>
+            <a href="#">Current or not</a>
+            <a href="#">Current or not</a>
+            <a href="#">Current or not</a>
+            <a href="#">Current or not</a>
+        </div>
+    </div>
+</body>
+
+</html>

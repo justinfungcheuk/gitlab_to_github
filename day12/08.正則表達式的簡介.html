@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 正則表達式
+         * - admin@atguigu.com
+         * - admin@.com  adminatgugu.com
+         * - 郵件的規則:
+         *   1. 前面可以是xxxx亂七八糟
+         *   2. 跟著一個 @
+         *   3. 後面可以是xxxx亂七八糟
+         *   4. .com獲取其他的亂七八糟
+         *
+         * - 正則表達式用於定義一些字符串的規則,
+         *       計算機可以根據正則表達式, 來檢查一個字符串是否符合規則,
+         *       獲取字符串中符合規則的內容提取出來
+         */
+
+         //創建正則表達式的對象
+         /*
+          * 語法:
+          * var 變量 = new RegExp("正則表達式","匹配模式");
+          * 使用 typeof 檢查正則對象, 會返回 object
+          *  var reg = new RegExp("a"); 這個正則表達式可以來檢查一個字符串中是否含有 a
+          * 在構造函數中可以傳遞一個匹配模式作為第二個參數,
+          *  可以是 
+          *       i 忽略大小寫 
+          *       g 全局匹配模式 
+          */
+         var reg = new RegExp("ab","i");
+
+         var str = "a";
+
+         /*
+          * 正則表達式的方法:
+          * test()
+          * - 使用這個方法可以用來檢查一個字符串是否符合正則表達式的規則,
+          *   如果符合則返回 true, 否則返回 false
+          */
+          var result = reg.test(str);
+          console.log("result = "+result);
+          console.log(reg.test("Ac"));
+
+        </script>
+    </head>
+</html>

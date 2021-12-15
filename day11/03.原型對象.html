@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+           * 原型 prototype - 所有對象都可以訪問我們原型對象裡面的屬性
+             - 確保函數只有一個, 而且又不會影響到全局作用域
+             *
+             * 我們所創建的每一個函數, 瀏覽器 / 解析器 都會向函數中添加一個屬性 prototype
+             * 這個屬性對應著一個對象, 這個對象就是我們所謂的原型對象
+
+             * 如果函數作為普通函數調用 prototype 沒有任何作用
+
+             * 當函數以構造函數調用時, 它所創建的對象中都會有一個隱含的屬性，
+             - 指向該構造函數的原型對象, 我們可以通過 __proto__ 來訪問屬性。 
+             例如：var mc = new MyClass(); - MyClass() 作為構造函數調用，通過 MyClass 創建了一個對象 mc，
+             - 而 MyClass 裡面有一個屬性稱為 prototype，並且由於 mc 是通過 MyClass 構造函數創建的，所以 mc 裡面也會有一個屬性指向 prototype。
+             - 因此， mc 裡面有一個隱含屬性，它也會指向原型對象，我們可以通過 __proto__ 來訪問屬性。 
+             *   
+             *
+             * 原型對象就相當於一個公共的區域, 所有同一個類的實例都可以訪問到這個原型對象（例如：mc，mc2 都可以訪問 __proto__ ）
+             * 我們可以將對象中共有的內容, 統一設置到原型對象中 （例如：原型對象是 mc.MyClass.prototype)）
+             * 當我們訪問對象的一個屬性或方法時, 它會先在對像自身中尋找, 如果有則直接使用,
+             * 如果沒有則會去原型對象中尋找, 如果找到則直接使用
+             - 例如：通過MyClass創建的對象 mc 裡面沒有 a 屬性，就會到原型對象裡面找到 a屬性 - MyClass.prototype.a = 123;
+             *
+             * 以後我們創建構造函數時, 可以將這些對象共有的屬性和方法, 統一添加到構造函數的原型對象中,
+             *  這樣不用分別為每一個對象添加, 也不會影響到全局作用域, 就可以使每一個對象都具有這些屬性和方法了
+         */
+
+
+    
+
+        /* function Person(){
+
+        }*/
+
+        //console.log(Person.prototype);
+
+        function MyClass() {
+
+        }
+
+        // 向MyClass的原型中添加屬性a
+        MyClass.prototype.a = 123;
+
+        // 向MyClass的原型中添加一個方法
+        MyClass.prototype.sayHello = function() {
+            alert("hello");
+        };
+
+        var mc = new MyClass();
+
+        var mc2 = new MyClass();
+
+
+
+        console.log(MyClass.prototype)
+            //console.log(MyClass.prototype)
+            //console.log(MyClass.prototype == Person.prototype); // 出現false, 所以每一個函數都有它自己的 prototype
+            
+            //console.log(mc.__proto__ == MyClass.prototype) // true，它們都有相同的屬性，指向同一個原型對象
+            // 該原型對象包括：構造函數，實例對象（例如：通過 MyClass 創建的對象 mc）
+
+        //向mc中添加a屬性
+        mc.a = "我是mc中的a";
+        console.log(mc.a);
+
+        mc.sayHello();
+    </script>
+</head>
+
+</html>
+

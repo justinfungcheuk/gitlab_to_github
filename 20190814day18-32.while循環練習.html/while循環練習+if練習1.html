@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset= "UTF-8" />
+        <title></title>
+        <!--JS代碼需要編寫到script標籤中-->
+        <script type="text/javascript">
+            /*
+             * 從鍵盤輸入小明的期末成績:
+             * 當成績為100時, 獎勵一輛BMW
+             * 當成績為[80-99]時, 獎勵一台iPhone15s
+             * 當成績為[60-80]時, 獎勵一本參考書
+             * 其他成績, 甚麼獎勵也沒有
+             *
+             *
+             */
+            
+            /*
+             * prompt()可以彈出一個提示框, 該提示框中會帶有一個文本框,
+             * 用戶可以在文本框中輸入一段內容, 該函數需要一個字符串作為參數,
+             * 該字符串將會作為提示框的提示文字
+             *
+             * 用戶輸入的內容將會作為函數的返回值返回, 可以定義一個變量來接收該內容
+             */
+/*
+            while(true){
+                var score = prompt("Please input your score among 0 to 100:");
+                if(score >=0 && score <=100){
+                    break;
+                }
+
+                alert("Please input valid number")
+            }
+
+            if(score>100 || score<0 || isNaN(score)){
+                alert("Please input valid number again")
+            }else if(score == 100){
+                    alert("Reward a BMW Car");
+                }else if(score >= 80 && score <=99){
+                    alert("Reward an iPhone 15s");
+                }else if(score >=60 && score <=80){
+                    alert("Reward a Reference Book");
+                }else{
+                    alert("WTF")
+                
+            }
+        */
+
+
+
+
+
+            
+            //將prompt放入到一個循環中
+            while(true){
+                //score就是小明的期末成績
+            var score = prompt("Please input Mr Ming's final exam result (0 - 100): ");
+                //判斷用戶輸入的值是否合法
+                if(score >= 0 && score <= 100){
+                    //滿足該條件則證明用戶的輸入合法, 退出循環
+                    break;
+                }
+                
+                alert("Please input the valid number")
+            }
+            
+            //判斷值是否合法
+            if(score > 100 || score < 0 || isNaN(score)){
+                alert("There are something wrong");
+            }else{
+            
+            //根據scroe的值來決定給小明甚麼獎勵
+            if(score == 100){
+                //獎勵一輛寶馬
+                alert("獎勵一輛寶馬");
+            }else if(score >= 80){
+                //獎勵一部手機
+                alert("iPhone一部");
+            }else if(score >= 60){
+                //獎勵一本參考書
+                alert("參考書一本")
+            }else{
+                alert("WTF");
+            }
+        }
+        
+
+        </script>
+    </head>
+</html>

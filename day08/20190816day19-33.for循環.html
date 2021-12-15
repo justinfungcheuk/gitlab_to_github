@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+    // let vs var
+    /* We have introduced the keyword let and var in the previous sections. 
+    But let and var actually have a very subtle difference in the scope rule. 
+    let is declared within the nearest block structure(if,while,for, etc.) 
+    while var is declared within the nearest function scope. */
+
+            /*
+             * for 語句, 也是一個循環語句, 也稱為 for 循環
+             * 在 for 循環中, 為我們提供了專門的位置用來放三個表達式:
+             * 1. 初始化表達式
+             * 2. 條件表達式
+             * 3. 更新表達式
+             * 
+             *  for循環的語法:
+             *  for(初始化表達式; 條件表達式; 更新表達式){
+             *    語句...
+                  }
+             *  for循環的執行流程:!!!
+             * 第一步: 執行初始化表達式, 初始化變量 [初始化表達式只會執行一次]
+             * 第二步: 執行條件表達式, 判斷是否執行循環
+             * 第三步: 如果為 true, 則執行循環
+             *        如果為 false, 終止循環
+             * 第四步: 執行更新表達式, 更新表達式執行完畢繼續重複 [循環第二步]
+             */
+            
+             /* For-loop
+             While-loop and do-while-loop are normally used when we don't know how many repetitions we need. 
+             But sometimes we know exactly how many times we need the block statement to run. 
+             In those case, we want to use the For-loop instead.
+             */
+
+
+            //創建一個執行 10 次的 while 循環
+            //創始化表達式
+            /* var i = 0;
+            
+            //創建一個循環, 定義條件表達式
+            while(i < 10){
+                //設置更新表達式
+                alert(i++);
+            } */
+            
+            /* for(var i = 0 ; i < 10 ; i++){
+                alert(i);
+            }*/
+            
+            /*
+             * for 循環中的三個部分都可以省略, 也可以寫在外部!!!
+             * 如果在 for 循環中不寫任何的表達式, 只寫兩個分號 ; ;
+             * 此時循環是一個死循環, 會一直執行下去, 慎用!!!
+            */
+            var i = 0; 
+            
+             for(;i<10;){
+                alert(i++);
+            }
+            
+            /* for(;;){
+                alert("hello");
+            } */
+        </script>
+    </head>
+</html>

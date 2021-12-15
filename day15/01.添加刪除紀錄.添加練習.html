@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict/dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>添加刪除紀錄練習</title>
+    <link rel="stylesheet" type="text/css" href="ex_2_style/css.css" />
+    <script type="text/javascript">
+        /*
+         * 刪除 tr 的響應函數
+         * 
+         * 把 function函數 提取出來，實現點擊按鈕可以 delete 的效果！！！ 
+         */
+        function delA() {
+
+            //點擊超連結以後需要刪除超連結所在的那行
+            //這裡我們點擊那個超連結 this 就是誰
+            //alert(this); // this 表示在你點擊那一個 A 的時候, 它就屬於哪一個 A
+
+            //獲取當前 tr
+            var tr = this.parentNode.parentNode; // this.parentNode.parentNode; 表示 A 的父親的父親, 也就是等於 tr
+
+            //獲取要刪除的員工的名字
+            //var name = tr.getElementsByTagName("td")[0].innerHTML; //獲取 td 裡面的第一個 tom 所以需要使用 [0], 而需要獲取 [0] 裡面的內容則需要使用 innerHTML
+            var name = tr.children[0].innerHTML;
+
+            //刪除之前彈出一個提示框
+            /*
+             * confirm() 用於彈出一個帶有確認和取消按鈕的提示框
+             *        需要一個字符串作為參數, 該字符串將會作為提示文字顯示出來
+             * 如果用戶點擊確認則會返回 true, 如果點擊取消則返回 false
+             */
+            var flag = confirm("確認刪除" + name + "嗎?");
+
+            //如果用戶點擊確認
+            if (flag) {
+                //刪除 tr
+                tr.parentNode.removeChild(tr);
+            }
+
+            /*
+             * 點擊超連結以後, 超連結會跳轉頁面, 這個是超連結的默認行為
+             *     但是此時我們不希望出現默認行為, 可以通過在響應函數的最後 return false 來取消默認行為
+             */
+
+            return false;
+        };
+
+        window.onload = function() {
+
+            /*
+             * 點擊超連結以後, 刪除一個員工的信息
+             */
+
+            //獲取所有超連結
+            var allA = document.getElementsByTagName("a");
+
+            //為每個超連結都綁定一個單擊響應函數
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = delA; // 把對象 delA 賦值給 allA[i].onclick，所以不用加 delA() 括號 ！！！！
+            }
+
+
+
+
+
+
+            /*
+             * 添加員工的功能
+             * - 點擊按鈕以後, 將員工的信息添加到表格中
+             */
+
+            //為提交按鈕綁定一個單擊響應函數
+            var addEmpButton = document.getElementById("addEmpButton");
+            addEmpButton.onclick = function() {
+
+                //獲取用戶添加的員工信息
+                //獲取員工的名字
+                var name = document.getElementById("empName").value; // 文本框裡面的內容就是文本框的 value屬性，所以要加上 value屬性。獲取文本框裡面的內容
+                //獲取員工的 email 和 salary
+                var email = document.getElementById("email").value;
+                var salary = document.getElementById("salary").value;
+                //alert(name+","+email+","+salary);
+
+                 
+                /*
+                 * <tr>
+                   <td>Tom</td>
+                   <td>tom@tom.com</td>
+                   <td>5000</td>
+                   <td><a href="deleteEmp?id=001">Delete</a></td>
+                   </tr>
+                   需要將獲取到的信息保存到 tr 中
+                 */
+
+                //創建一個 tr
+                var tr = document.createElement("tr");
+
+                //創建四個 td
+                var nameTd = document.createElement("td");
+                var emailTd = document.createElement("td");
+                var salaryTd = document.createElement("td");
+                var aTd = document.createElement("td");
+
+                //創建一個 a 元素
+                var a = document.createElement("a");
+
+                //創建文本節點
+                var nameText = document.createTextNode(name);
+                var emailText = document.createTextNode(email);
+                var salaryText = document.createTextNode(salary);
+                var delText = document.createTextNode("Delete");
+
+                //將文本添加到 td 中 -》向元素裡面添加一個文本子節點
+                nameTd.appendChild(nameText);
+                emailTd.appendChild(emailText);
+                salaryTd.appendChild(salaryText);
+
+                //向 a 中添加文本
+                a.appendChild(delText);
+                //將 a 添加到 td 中
+                aTd.appendChild(a);
+
+                //將 td 添加到 tr 中
+                tr.appendChild(nameTd);
+                tr.appendChild(emailTd);
+                tr.appendChild(salaryTd);
+                tr.appendChild(aTd);
+
+                //向 a 中添加 href 屬性
+                a.href = "javascript:;";
+
+                //為新添加的 a 再綁定一次單擊響應函數！！！！！！！！
+                a.onclick = delA;
+
+
+
+                //獲取 table -》把 tr 添加到 table 裡面
+                var employeeTable = document.getElementById("employeeTable");
+                //獲取 employeeTable 中的 tbody
+                var tbody = employeeTable.getElementsByTagName("tbody")[0]; // 由於返回的是一個數組，所以要加上索引值 [0]
+                // ！！！重點！！！ tbody是瀏覽器自己加上的，而且 tr 是在 tbody 裡面的
+
+                //將 tr 添加到 table 中 
+                //employeeTable.appendChild(tr);
+
+                //將 tr 添加到 tbody 中
+                tbody.appendChild(tr);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="deleteEmp?id=001">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@tom.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+
+    <div id="formDiv">
+
+        <h4>添加新員工</h4>
+
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton">Submit</button>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

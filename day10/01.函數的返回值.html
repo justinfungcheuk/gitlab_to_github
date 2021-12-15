@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        
+        /*！！！！！！！！！！！！！！！！！！！！
+         * 創建一個函數, 用來計算三個數的和 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！1
+         * 
+         * 可以使用 return 來設置函數的返回值
+         * 語法:
+         *         return 值
+         * return 後的值將會作為函數的執行結果返回,
+         * 可以定義一個變量, 來接收該結果
+         *
+         * 在函數中 return 後的語句都不會執行
+         *
+         * 如果 return 語句後不跟任何值就相當於返回一個 undefined.
+         * 如果函數中不寫 return, 則也會返回 undefined
+         *
+         * return 後可以跟任意類型的值, 所以你 return甚麼就是等於甚麼, 例如: return="hello"; 就等於 result = hello
+         */
+    
+        function sum(a , b , c ){
+            //alert(a + b + c);
+            
+            var d = a + b + c;
+            
+            return d;
+            
+            //return undefined; 因為 return 後面沒有跟隨一個值
+            
+            //alert("hello"); //這是死代碼 - 在函數中 return 後的語句都不會執行
+        }
+        
+        //調用函數
+        //變量 result 的值就是
+        //函數返回甚麼 result 的值就是甚麼
+        var result = sum(4,7,8);
+        
+        //var result = alert("hello"); 由於alert沒有一個return的返回值, 所以是一個 undefined
+        
+        console.log("result = "+result);
+        
+    </script>
+</html>

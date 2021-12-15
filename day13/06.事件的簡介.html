@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+
+    </head>
+    <body>
+        <!--
+            我們可以在事件對應的屬性中設置一些 JS 代碼,
+                這樣當事件被觸法時, 這些代碼會執行
+
+            這種寫法我們稱為叫結構和行為觸合, 不方便維護, 不推薦使用
+        -->
+        <button id = "btn">我是一個按鈕</button>
+        <script type="text/javascript">
+
+        /*！！！！！！！！！！！！！！！！！！！！！！
+         * 事件, 就是用戶和瀏覽器之間的交互行為.
+         *       比如: 點擊按鈕, 鼠標移動, 關閉窗口...
+         * 
+         */
+
+         /*
+          * 可以為按鈕的對應事件綁定處理函數的形式來響應事件
+          */
+
+          //獲取按鈕對象
+          var btn = document.getElementById("btn");
+
+          /*
+          * 可以為按鈕的對應事件綁定處理函數的形式來響應事件
+          *    這樣當事件被觸法時, 其對應的函數將會被調用
+          */
+
+          //綁定一個單擊事件
+          //像這種為單擊事件綁定的函數, 我們稱為單擊響應事件, 而雙擊 ondblclick 則是雙擊響應事件
+          btn.onclick = function(){
+              alert("你還點~~~");
+          };
+          
+          console.log("btn");
+
+
+        </script>
+    </body>
+</html>

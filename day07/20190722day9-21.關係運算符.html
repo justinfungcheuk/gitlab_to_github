@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 通過關係運算符可以比較兩個值之間的大小關係
+         * - 如果關係成立它會返回 true, 如果關係不成立則返回 false 
+         *
+         * > 大於號
+         * - 判斷符號左則的值是否大於右則的值
+         * - 如果關係成立, 返回 true, 如果關係不成立則返回 false
+         *
+         * >= 大於等於
+         * - 大於或等於 判斷符號左則的值是否大於 或 等於 右則的值
+         *
+         * < 小於號
+         *
+         * <= 小於或等於
+         *
+         *
+         * 非數值的情況
+         * - 對於非數值進行比較時, 會將其轉換為數字, 然後再比較
+         * - 如果符號兩則的值都是 字符串時, 不會將其轉換為數字進行比較
+         *   而會分別比較字符串中字符的 Unicode編碼
+         */
+
+        var result = 5 > 10; //false
+
+        result = 5 > 4; // true
+
+        result = 5 > 5; // false
+
+        result = 5 >= 5; // true
+
+        result = 5 >= 4; // true
+
+        result = 5 < 4; // false
+
+        result = 4 <= 4; // true
+
+        // console.log("result = "+result);
+
+        //console.log(1 > true); // false
+        //console.log(1 >= true); // true - true轉成數字 = 1 
+        //console.log(1 >="0");// true - "0"轉成數字 = 0
+        //console.log(10 > null);// true - null轉成數字 = 0
+
+        //任何值和 NaN 做任何比較都是 false
+        //console.log(10 > "hello");//false - "hello"轉成數字 = NaN
+        //console.log(true > false); // true - true 轉換成 1; false 轉換成 0;
+
+        //console.log("1" < "5"); // true
+        console.log("11" < "5"); // true
+
+        //比較兩個字符串時, 比較的是字符串的字符編碼
+        //console.log("a" < "b"); // true 該例子比較的是字符串的字符編碼
+
+        //比較字符編碼時是一位一位進行比較, 如以下例子: b 只和 abc中的 a 比較
+        //console.log("abc" < "b"); //true
+
+        //如果兩位一樣, 則比較下一位, 所以借用它來對英文進行排序
+        //console.log("bbb" < "b" ); //false
+
+        //比較中文時沒有意義, 因為它是根據漢斯字典編排順序的
+        //console.log("戒" > "我"); // true
+
+        //如果比較的兩個字符串的數字, 可能會得到不可預期的結果
+        console.log("11123123123123123" < "5"); //true
+        //注意: 在比較兩個字符串型的數字, 一定一定一定要轉型, 可以用 + 加號轉型為數字
+        console.log("112345" < +"5"); // false
+    </script>
+</head>
+
+</html>

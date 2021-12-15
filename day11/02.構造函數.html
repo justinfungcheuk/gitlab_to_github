@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 創建一個 Person 構造函數
+         * - 在 Person 構造函數中, 為每一個對象都添加了一個 sayName 的方法
+         *       目前我們的方法是在構造函數內部創建的, 也就是構造函數每執行一次就會創建一個新的 sayName 的方法，
+         *    也就是所有實例的 sayName 都是唯一的。
+         *    這樣就導致了構造函數執行一次就會創建一個新的方法,
+         *         所以 執行 10000 次就會創建 10000個的方法, 而 10000 個方法都是一模一樣的
+         *         這是完全沒有必要的, 完全可以使所有的對象共享同一個方法
+         */
+        function Person(name, age, gender) {
+            this.name = name; // 把 name 添加到新建的對象裡面
+            this.age = age;
+            this.gender = gender;
+             
+            // 向對象中添加一個方法
+            this.sayName = fun;
+
+            /*this.sayName = function(){
+                alert("Hello, I am:"+this.name);
+            };
+            */
+        }
+
+        
+        /*
+         * 將函數定義在全局作用域, 汙染了全局作用域的命名空間, 因為重新建立一個fun會覆蓋掉原來的fun函數
+         *   而且定義在全局作用域中也很不安全, 儘量不要在全局作用域中寫玩意
+         */
+         //將 sayName 方法在全局作用域中定義
+        /*
+        function fun(){ // 將函數定義在全局作用域種，再把該 函數fun 賦值給 this.sayName。因此，即使構造函數執行了10000次，sayName方法也是只有一個。
+        // 因為在全局作用域中定義 sayName方法，所以它只會執行一次。而且所有對象都會指向同一個（console.log(per.sayName == per2.sayName); // true ）且調用同一個函數
+                alert("Hello大家好, 我是:"+this.name);
+        };
+        */
+
+
+        //向原型中添加sayName方法 - 可以確保函數只有一個，而且不會影響到全局作用域
+        Person.prototype.sayName = function() {
+            alert("Hello大家好, 我是:" + this.name);
+        };
+
+        // 創建一個Person的實例
+        var per = new Person("孫悟空", 18, "男");
+        var per2 = new Person("豬八戒", 28, "男");
+
+        per.sayName();
+        per2.sayName();
+
+        console.log(per.sayName == per2.sayName);
+    </script>
+</head>
+
+</html>

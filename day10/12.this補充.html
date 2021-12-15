@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        // 創建一個 屬性為name 的變量
+        var name = "全局";
+
+        // 創建一個 fun()函數
+        function fun(){
+            // console.log(name); 
+            /* 當調用 obj.sayName(); 的時候，會是全局作用域。因為調用了 fun() 函數，在這個函數會直接輸出 name，
+               而由於當前的 函數作用域 沒有自己的 name，就會去全局作用域尋找 name屬性，因此該 console.log(name); 會輸出 "全局"
+            */
+
+
+            /*
+               我們希望輸出的值是可變的，
+               - 當 obj 調用的時候，就是 obj 的名字
+               - 當 obj2 調用的時候，就是 obj2 的名字
+               - 當 window 調用的時候，就是 window
+               因此，我們需要使用 this 來替換以上效果，所以 this 可以根據調用者的不同變成不同的值。
+             */
+            console.log(this.name);
+        }
+
+        // 創建兩個對象
+        var obj = {
+            name:"孫悟空",
+            sayName: fun
+        };
+
+        var obj2 = {
+            name:"沙和尚",
+            sayName: fun
+        };
+
+        fun(); // 全局
+
+        //我們希望調用 obj.sayName()時可以輸出obj的名字
+        //obj.sayName();
+
+        obj.sayName();
+
+        </script>
+    </head>
+</html>

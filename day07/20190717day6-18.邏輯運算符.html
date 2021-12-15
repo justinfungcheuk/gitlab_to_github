@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <head>
+        <script type="text/javascript">
+            /*
+             * JS 中為我們提供了三種邏輯運算符
+             * ! 非
+             * - ! 可以用來對一個值進行 非運算
+             * - 所謂非運算就是值對一個布爾值進行取反操作, 
+             *     true 變 false, false 變 true
+             * - 如果對一個值進行兩次取反, 它不會變化
+             * - 如果對非布爾值進行元素, 則會將其轉換為布爾值, 然後再取反
+             *    所以我們可以利用該特點, 來將一個其它的數據類型轉換為布爾值
+             *    可以為一個任意數據類型取兩次反, 來將其轉換為布爾值,
+             *    原理和Boolean()函數一樣  // 布爾值 隱式類型轉換 -為任意的數據類型做兩次非運算, 
+             *    即可將其轉換為布爾值 例子: var a ="Hello"; a = !!a; //true
+             *
+             *
+             * && 與
+             * - &&可以對符號兩側的值進行 與 運算並返回結果
+             * - 運算規則
+             *   - 兩個值中只要有一個值為false就返回false,
+             *   - 只有兩個值都為true時, 才會返回true
+             *   - JS 中的"與"屬於短路的與, 如果第一個值為 false, 則不會看第二個值
+             *
+             * || 或
+             *   - || 可以對符號兩則的值進行 或 運算並返回結果
+             *   - 運算規則: 
+             *      - 兩個值中只要有一個true, 就返回true
+             *        如果兩個值都是false則返回false
+             *      - JS中的"或"屬於短路的或
+             *      如果第一個值為 true, 則不會檢查第二個值
+             *
+             */
+
+            // 如果兩個值都是true則返回true
+            var result = true && true;
+
+            //只要有一個false, 就返回false
+            result = true && false;
+            result = false && true;
+            result = false && false;
+
+            //console.log("result = "+result);
+
+            //第一個值為 true, 會檢查第二個值
+            //true && alert("You cannot see me!");
+
+            //第一個值為 false, 不會檢查第二個值
+            //false && alert("You cannot see me!");
+
+            //兩個都是　false,　則返回 false
+            result = false || false;
+
+            //只要有一個true, 就返回true
+            result = true || false;
+            result = false || true;
+            result = true || true;
+
+            //console.log("result = "+result);
+
+            //第一個值為false 則會檢查第二個值
+            //false || alert("one more time");
+
+            //第一個值為true, 則不再檢查第二個值
+            //true || alert("one more time");
+
+
+
+            var a = true;
+
+            //對 a 進行非運算
+            a = !a; // a = true 就會因為 !a 的取反, 而變成 false
+            a = !!a; //  而 !!a 因為 取反再取反的原因而變回 true, 所以不會有變化
+
+            var a = false;
+
+            //對 a 進行非運算
+            a = !a;
+            a = !!a;
+
+            
+
+            var b = 10;
+            // b = !b; //該方法 !b 會先把 10 變成 布爾值, 再把它取反變成 false, 但由於 b = 10 是 true, 所以它的結果是不對的
+            b = !!b; // 承上的結果, 應該使用 !!b 來取反兩次, 把它變回 true, 才是正確的
+
+            console.log("b = " + b);
+            console.log(typeof b);
+        </script>
+    </head>
+</head>
+
+</html>

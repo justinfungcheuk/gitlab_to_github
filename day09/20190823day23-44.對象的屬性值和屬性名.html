@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF">
+    <title></title>
+    <script type="text/javascript">
+        var obj = new Object();
+
+        /*
+         * 向對象中添加屬性
+         * 屬性名:
+         * - 對象的屬性名不強制要求遵守標誌符的規範
+         *    任何名字都可以使用
+         * - 但是我們使用時還是盡量按照標誌符的規範去做
+         */
+
+        obj.name = "孫悟空";
+
+        //obj.var = "hello";
+
+        /*
+         * 如果要使用特殊的屬性名, 不能採用.的方式來操作
+         * 需要使用另一種方式:
+         * 語法: 對象["屬性名"] = 屬性值
+         * 讀取時也需要採用這種方式
+         *
+         * 使用 [] 這種方式去操作屬性, 更加的靈活
+         * 在 [] 中可以直接傳遞一個變量, 這樣變量值是多少就會讀取那個
+         */
+        obj["123"] = 789;
+        obj["nihao"] = "你好";
+
+        var n = "nihao";
+
+
+
+        console.log(obj[n]); //中括號裡面可以傳遞變量, 變量值是甚麼就會讀取那個屬性
+
+        /*
+         * 屬性值
+         * JS 對象的屬性值, 可以是任意的數據類型
+         * 甚至也可以是一個對象
+         *
+         */
+
+        obj.test = true;
+        obj.test = null;
+        obj.test = undefined;
+
+        //創建一個對象
+        var obj2 = new Object();
+        obj2.name = "豬八戒";
+
+        //將obj2設置為obj的屬性
+        obj.test = obj2;
+
+        console.log(obj.test.name);
+
+        /*！！！！！！！！！！！！！！！！
+         * in 運算符
+         * - 通過該運算符可以檢查一個對象中是否含有指定的屬性
+         * 如果有則返回 true, 沒有則返回 false
+         * - 語法:
+         * "屬性名" in 對象
+         */
+        //console.log(obj.test2);
+
+        //檢查obj中是否含有test2屬性
+        console.log("test2" in obj);
+        console.log("test" in obj);
+        console.log("name" in obj);
+    </script>
+</head>
+
+</html>

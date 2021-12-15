@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 由於設置的偏移量只對開啟定位有作用，所以我們要為 box1 設置絕對定位
+             * 開啟 box1 的絕對定位
+             */
+            position: absolute;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+
+            /*
+             * 使 div 可以跟隨鼠標移動
+             */
+
+            //獲取 box1 
+            var box1 = document.getElementById("box1");
+            //綁定鼠標移動事件
+            document.onmousemove = function(event) { //重點！！！ 由於整個頁面都是 document，無論如何移動我們都不能移出 document，所以我們要把該 onmousemove事件 綁定給 doucment！！！！！
+
+                //解決兼容問題
+                event = event || window.event;
+
+                //獲取滾動條滾動的距離！！！！！！
+                /*
+                 * chrome 認為瀏覽器的滾動條是 body 的, 可以通過 body.scrollTop 來獲取
+                 * 火狐等瀏覽器認為瀏覽器的滾動條是 html 的
+                 */
+                //var st = document.body.scrollTop; //適用於　chrome
+                //var st = document.documentElement.scrollTop; // 適用於其他瀏覽器
+                var st = document.body.scrollTop || document.documentElement.scrollTop; // 得到垂直滾動條滾動的距離！！！
+                
+                var sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+                
+                /**
+                我們的 高度style="height: 1000px 是給 body 的，所以 body 的整個高度是 1000px，
+                由於它的父元素容不下整個高度1000px 才會出現滾動條，但是滾動條不應該是 body 的，因為 body 是子元素，它應該是 body 的父元素 html！！！
+                 */
+
+                //修改 box1 的位置之前，要先獲取鼠標的座標！！！
+                /*
+                 * clientX 和 clientY
+                 *  用於獲取鼠標在當前的可見窗口的座標 （從網頁頁面的可見頁面區域，都是由 0 開始計算）
+                 * div 的偏移量, 是相對於整個頁面的，不是只從可見頁面區域計算的 (包括滑鼠可以移動的滾動條畫面)
+                 *
+                 * pageX 和 pageY 可以獲取鼠標相對於當前頁面的座標
+                 var left = event.pageX; //水平座標
+                 var top = event.pageY; //垂直座標
+                 * 但是這兩個屬性在 IE8 中不支持, 所以如果需要兼容 IE8, 則不要使用
+
+
+                 ！！！重點！！！鼠標的 0 點位置在可以的頁面區域
+                 ！！！重點！！！ div 的 0 點位置在整個頁面的區域
+                 而要把它們兩個的位置結合，就需要把 div 整個往鼠標的可見區域移動，
+                 它們之間移動是一段距離的，而該段距離就等於 垂直滾動條滾動的距離（該滾動距離就是 scrollTop）
+                 所以，我們可以把 垂直滾動條滾動的距離 + 垂直偏移量 = div往下移動到鼠標的可見區域的 0點 位置！！！
+                 */
+                var left = event.clientX; //水平座標
+                var top = event.clientY; //垂直座標
+
+                //設置 div 的偏移量 - 要用 left 屬性
+                box1.style.left = left + sl + "px";
+                box1.style.top = top + st + "px";
+                // 由於設置的偏移量只對開啟定位有作用，所以我們要為 box1 設置絕對定位！！！！！！
+
+            };
+            // 當 box1 移動到 box2 時，沒有觸發事件的冒泡，所以它不可以移動進去 box2 的區域！！！！！
+            var box2 = document.getElementById("box2");
+            box2.onmousemove = function(event) {
+                event = event || window.event;
+
+                event.cancelBubble = true;
+
+            };
+        };
+    </script>
+
+    <body style="height: 1000px; width: 2000px;">
+        <div id="box2" style="width: 500px; height: 500px; background-color: #bfa;"></div>
+        <div id="box1"></div>
+    </body>
+</head>
+
+</html>

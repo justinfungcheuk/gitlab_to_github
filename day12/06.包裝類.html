@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+        /*
+         * 基本數據類型
+         * String Number Boolean Null Undefined
+         * 引用數據類型
+         * Object
+         *
+         * 在 JS 中為我們提供了三個包裝類, 通過這三個包裝類可以將基本數據類型的數據轉換為對象 (首字母都是大寫表示是構造函數)
+         * String()
+         * - 可以將基本數據類型字符串轉換為 String 對象
+         * Number()
+         * - 可以將基本數據類型的數字轉換為 Number 對象
+         * Boolean()
+         * - 可以將基本數據類型的布爾值轉換為 Boolean 對象
+         * 但是注意!!! 我們在實際應用中不會使用基本數據類型的對象
+         *         如果使用基本數據類型的對象, 在做一些比較時,可能會帶來一些不可預期的結果
+         */
+
+         //創建一個 Number 類型的對象
+         var num = new Number(3); // var num = new Number(); 是將基本數據類型的數字轉換為 Number 對象
+         var num2 = new Number(3);
+         var str = new String("hello"); // 可以將基本數據類型字符串轉換為 String 對象
+         var str2 = new String("hello");
+         var bool = new Boolean(true); // 可以將基本數據類型的布爾值轉換為 Boolean 對象
+         var bool2 = true;
+         //因為以上是屬於兩個對象, 所以在比較 === 時, 會出現 false
+
+         //向 num 中添加一個屬性
+         num.hello = "abcdefg"; //這是一個對象所以可以添加屬性
+
+         var a = 3; //這是一個基本數據類型
+         a.hello = "你好"; //最後會出現 undefined 而不是 object
+         //所以基本對象 比 基本數據類型的功能更強大,
+         console.log(str === str2); // false - 因為以上是屬於兩個對象, 所以在比較 === 時, 會出現 false
+
+         var b = new Boolean(false);
+
+        //  if(b){
+        //      alert("我運行了")
+        //  }
+
+        /*
+         * 方法和屬性只能添加給對象, 不能添加給基本數據類型
+         *  當我們對一些基本數據類型的值去調用屬性和方法時,
+         *        瀏覽器會臨時使用包裝類將其轉換為對象, 然後再調用對象的屬性和方法
+         *        調用完以後, 再將其轉換為基本數據類型
+         */
+        var s = 123; 
+
+        s = s.toString(); 
+
+        s.hello = "你好"; // 基本數據類型不能添加和保存屬性
+        //臨時把這個字符串"你好"換成字符串對象, 然後再去讀這個屬性
+        /* 因為轉換了兩個對象所以會出現 undefined
+         * 第一次轉換一個對象1, 然後把 hello 屬性添加到我們的對象 1 裡, 添加完對象 1 之後就銷毀了對象 1, 
+         * 第二次再讀這個 s 的屬性的時候, 又要把它轉換成一個對象, 此時轉換的對象是一個對象 2
+         * 所以對象 1 和 對象 2 不是同一個對象, 因此, 對象 1 裡面添加了, 但是 對象 2 並沒有
+         * 最後讀取時, 就會出現 undefined
+         */
+        console.log(s.hello);
+        // console.log(typeof s);
+
+        </script>
+    </head>
+</html>

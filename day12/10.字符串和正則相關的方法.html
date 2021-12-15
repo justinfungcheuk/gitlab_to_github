@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        var str = "1a2b3c4d5e6f";
+        /*
+         * split()
+         * - 可以將一個字符串拆分為一個數組
+         * - 方法中可以傳遞一個正則表達式作為參數, 這樣方法將會根據正則表達式去拆分字符串
+         * - 這個方法即使不指定全局匹配, 也會全部拆分
+         */
+
+        /*
+         * 根據任意字母來將字符串拆分
+         */
+        var result = str.split(/[A-z]/); // 拆分後就會刪除所有字母，只要數字
+        console.log(result); // result = ['1', '2', '3', '4', '5', '6', '']
+
+        /*
+         * search()
+         * - 可以搜索字符串中是否含有指定內容
+         * - 如果搜索到指定內容, 則會返回第一次出現的索引, 如果沒有搜索到返回 -1
+         * - 它可以接收一個正則表達式作為參數, 然後會根據正則表達式去檢索字符串
+         * - search() 只會查找第一個, 即使設置全局匹配也沒用！！！！！！！！！！！！
+         */
+        str = "hello abc hello aec afc";
+        /*
+         * 搜索字符串中是否含有 abc 或 aec 或 afc
+         */
+        result = str.search(/a[bef]c/); //搜索索引
+        console.log(result); // 索引6，搜尋得到 abc
+
+        /*
+         * match()
+         * - 可以根據正則表達式, 從一個字符串中將符合條件的內容提取出來
+         * - 默認情況下我們的　match 只會找到第一個符合要求的內容, 找到以後就停止檢索
+         *     我們可以設置正則表達式為全局匹配模式, 這樣就會匹配到所有的內容 ！！！！！！！！！
+         *     可以為一個正則表達式設置多個匹配模式, 且順序無所謂 ！！！！！！！！！！！！！！！
+         * - match() 會將匹配到的內容封裝到一個數組中返回, 即使只查詢到一個結果！！！！！！！
+         */
+        str = "1a2a3a4a5e6fA8B9C";
+
+        //result = str.match(/[A-z]/); 該寫法只能提取出 a 一個字母 - 默認情況下我們的　match 只會找到第一個符合要求的內容, 找到以後就停止檢索
+        result = str.match(/[a-z]/gi); // i 任意大寫和小寫字母, 而 g 是全局匹配模式, 可以把全部的字符串內的內容更換或提取出來
+        console.log(result);
+        // console.log(result[0]);
+
+        /*
+         * replace()
+         * - 可以將字符串中指定內容替換為新的內容
+         * - 參數:
+         *       1. 被替換的內容, 可以接收一個正則表達式作為參數
+         *       2. 新的內容
+         * - 默認只會替換第一個 
+         */
+        result = str.replace(/[a-z]/gi, "@_@");
+        console.log(result);
+        // 將上面的 str = "1a2b3c4d5e6fA8B9C";裡面的 a 透過 result = str.replace("a", "@_@");, 把 a 替換成 @_@
+        result = str.replace(/[a-z]/gi, ""); // 把字母換成空號"", 就會只提取到所有的數字 0-9
+
+        console.log(result);
+    </script>
+</head>
+
+</html>

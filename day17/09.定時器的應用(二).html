@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            /* 因為在 IE 裡面沒有指定的值, 所以會獲取 auto, 所以最好是給予它一個值 例如: left: 0; */
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+
+            //獲取 box1
+            var box1 = document.getElementById("box1");
+            //獲取 btn01
+            var btn01 = document.getElementById("btn01");
+
+            //獲取 btn02
+            var btn02 = document.getElementById("btn02");
+
+            //點擊按鈕以後, 使 box1 向右移動 (left值增大)
+            btn01.onclick = function() {
+                // box1 代表要移動的對象obj
+                move(box1, 800, 10); // 800 代表要移動的目標是 800 往右移動, 而 10 則代表移動的速度
+            };
+
+            //點擊按鈕以後, 使 box1 向左移動 (left值減小)
+            btn02.onclick = function() {
+                move(box1, 0, 10); // 0 代表要移動的目標是 0 往左移動, 而 -10 則代表移動的速度
+            };
+        };
+
+        //定義一個變量, 用來保存定時器的標識 
+        /**
+         * 目前我們的定時器的標識由全局變量 timer 保存，
+         * 所有的執行正在執行的定時器都在這個變量中保存
+         */
+        var timer;
+
+        //嘗試創建一個可以執行簡單動畫的函數
+        /*
+         * 參數: 有3個參數
+         * - 第一個參數  obj: 要執行動畫的對象
+         * - 第二個參數  target: 執行動畫的目標位置
+         * - 第三個參數  speed: 移動的速度 (正數向右移動, 負數向左移動)
+         */
+
+        //嘗試創建一個可以執行簡單動畫的函數
+        function move(obj, target, speed) {
+            //因為這個動畫是給 box1 添加的, 所以需要把 box1 作為參數傳遞進去函數裡面, 所以需要寫上 (obj)
+            //關閉上一個定時器
+            clearInterval(timer); //用途是取消連續按鈕增加移動速度，避免在同一個元素上開啟多個定時器
+
+            //獲取元素目前的位置
+            var current = parseInt(getStyle(obj, "left"));
+
+            //判斷速度的正負值
+            //如果從 0 向 800 移動, 則 speed 為正
+            //如果從 800 向 0 移動, 則 speed 為負
+            if (current > target) {
+                //由於 current > target, 所以此時速度應為負值
+                speed = -speed;
+            }
+
+            //開啟一個定時器, 用來執行動畫效果
+            timer = setInterval(function() { //把var去掉 用途是取消連續按鈕增加移動速度
+
+                //獲取 box1 的原來的 left 值
+                var oldValue = parseInt(getStyle(obj, "left")); // 運用 parseInt()把一個字符串的和法數字取出來
+
+                //在舊值的基礎上增加
+                var newValue = oldValue + speed;
+
+                //判斷 newValue 是否大於 800
+                //從 800 向 0 移動
+                //向左移動時, 需要判斷 newValue 是否小於 target =》0 （如果 speed的值是 負數，代表向左移動）
+                //向右移動時, 需要判斷 newValue 是否大於 target =》800
+                if ((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) { //左右的條件只要滿足一條, 就可以讓它等於 target
+                    //    向左移動就代表小於該目標 target      向右移動就代表大於該目標 target
+                    newValue = target;
+                }
+
+                //將新值設置給 box1
+                obj.style.left = newValue + "px";
+
+                //當元素移動到 0px 時, 使其停止執行動畫
+                if (newValue == target) {
+                    //達到目標, 關閉定時器
+                    clearInterval(timer);
+                }
+
+
+            }, 30);
+        }
+        /*
+         * 定義一個函數, 用來獲取指定元素的當前的樣式
+         * 參數:
+         *         obj  要獲取樣式的元素
+         *         name 要獲取樣式的樣式名
+         */
+        function getStyle(obj, name) {
+
+            if (window.getComputedStyle) { //因為 getComputedStyle 是屬於全局裡面的, 所以它是 window 對象的屬性, 因此 window.getComputedStyle 和 getComputedStyle 是一樣的
+                //所以加了 window. 就變成了一個對象的屬性, 而沒有加 window. 的時候則是一個變量需要去做出尋找
+
+                //正常瀏覽器的方式, 具有 getComputedStyle() 方法
+                return getComputedStyle(obj, null)[name];
+            } else {
+                // IE8 的方式, 沒有 getComputedStyle() 方法
+                return obj.currentStyle[name];
+            };
+        };
+    </script>
+</head>
+
+<body>
+
+    <button id="btn01">點擊按鈕以後box1向右移動</button>
+
+    <button id="btn02">點擊按鈕以後box1向左移動</button>
+
+    <br /><br />
+
+    <div id="box1"></div>
+
+    <div style="width: 0; height: 1000px; border-left: 1px black solid; position: absolute; left: 800px; top: 0px;">
+    </div>
+</body>
+
+</html>

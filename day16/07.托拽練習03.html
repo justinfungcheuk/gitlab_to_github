@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+        
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            /*
+             * 拖拽 box1 元素 
+             * - 拖拽的流程
+             *    1. 當鼠標在被拖拽元素按下時, 開始拖拽      onmousedown
+             *    2. 當鼠標移動時被拖拽元素跟隨鼠標移動      onmousemove
+             *    3. 當鼠標鬆開時, 被拖拽元素固定在當前位置  onmouseup
+             *
+             * - onmouseup 和 onmousemove 這兩個事件只有在鼠標按下的時候有效, 而當鼠標鬆開這兩個事件都沒有存在的意義, 所以應該把它們取消掉
+             */
+
+            //獲取 box1
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var img1 = document.getElementById("img1");
+            var box3 = document.getElementById("box3");
+
+            //開啟 box1 的拖拽
+            drag(box1);
+            //開啟 box2 的拖拽
+            drag(box2);
+
+            drag(img1);
+
+            drag(box3);
+
+
+            //為 box1 綁定一個鼠標按下事件
+            //1. 當鼠標在被拖拽元素按下時, 開始拖拽      onmousedown
+            box1.onmousedown = function(event) {
+
+                //設置 box1 捕獲所有鼠標按下的事件
+                /*
+                 * setCapture()
+                 * - 只有 IE 支持, 但是在火狐中調用時不會報錯
+                 *       而如果使用 chrome 調用, 會報錯
+                 */
+                /* if(box1.setCapture){　
+               box1.setCapture();
+                }; */
+                box1.setCapture && box1.setCapture();
+                //以上的 if 和 && 寫法是一樣的
+
+                event = event || window.event;
+
+                // div 的偏移量 鼠標.clientX - 元素.offsetLeft
+                // div 的偏移量 鼠標.clientY - 元素.offsetTop
+                var ol = event.clientX - box1.offsetLeft; // outside left
+                var ot = event.clientY - box1.offsetTop; // outside top
+
+                //這個 document.onmousemove = function(event){}; 必須要擺在 box1.onmousedown = function(){}; 裡面, 因為它是發生在當鼠標按下後的事件
+
+                //為 document 綁定一個 onmousemove 事件
+                document.onmousemove = function(event) {
+                    event = event || window.event;
+                    //2. 當鼠標移動時被拖拽元素跟隨鼠標移動      onmousemove
+                    //獲取鼠標的座標
+                    var left = event.clientX - ol;
+                    var top = event.clientY - ot;
+
+                    //修改 box1 的位置
+                    box1.style.left = left + "px";
+                    box1.style.top = top + "px";
+
+                };
+
+                //為document綁定一個鼠標鬆開事件
+                document.onmouseup = function() {
+                    //3. 當鼠標鬆開時, 被拖拽元素固定在當前位置  onmouseup
+                    //取消 document 的 onmousemove 事件
+                    document.onmousemove = null;
+
+                    //取消 document 的 onmouseup 事件
+                    document.onmouseup = null;
+                    //當鼠標鬆開時, 取消對事件的捕獲
+                    box1.releaseCapture && box1.releaseCapture();
+                };
+
+                /*
+                 * 當我們拖拽一個網頁中的內容時, 瀏覽器會默認去搜索引擎中搜索內容,
+                 * 此時會導致拖拽功能的異常, 這個是瀏覽器提供的默認行為
+                 * 如果不希望發生這個行為, 則可以通過 return  false 來取消默認行為
+                 *
+                 * 但是這招對 IE8 不起作用
+                 */
+                return false;
+
+            };
+
+        };
+
+        /*！！！！！！重點！！！！！！！
+         * 提取一個專門用來設置拖拽的函數
+         * 參數: 開啟拖拽的元素
+         */
+        function drag(obj) { // 括號裡面的 (obj) 代表 給誰開啟拖拽就開誰
+            //1. 當鼠標在被拖拽元素按下時, 開始拖拽      onmousedown
+            obj.onmousedown = function(event) {
+
+                //設置 box1 捕獲所有鼠標按下的事件
+                /*
+                 * setCapture()
+                 * - 只有 IE 支持, 但是在火狐中調用時不會報錯
+                 *       而如果使用 chrome 調用, 會報錯
+                 */
+                /* if(box1.setCapture){　
+                box1.setCapture();
+                }; */
+                obj.setCapture && obj.setCapture();
+                //以上的 if 和 && 寫法是一樣的
+
+                event = event || window.event;
+
+                // div 的偏移量 鼠標.clientX - 元素.offsetLeft
+                // div 的偏移量 鼠標.clientY - 元素.offsetTop
+                var ol = event.clientX - obj.offsetLeft; // outside left
+                var ot = event.clientY - obj.offsetTop; // outside top
+
+                //這個 document.onmousemove = function(event){}; 必須要擺在 box1.onmousedown = function(){}; 裡面, 因為它是發生在當鼠標按下後的事件
+
+                //為 document 綁定一個 onmousemove 事件
+                document.onmousemove = function(event) {
+                    event = event || window.event;
+                    //2. 當鼠標移動時被拖拽元素跟隨鼠標移動      onmousemove
+                    //獲取鼠標的座標
+                    var left = event.clientX - ol;
+                    var top = event.clientY - ot;
+
+                    //修改 box1 的位置
+                    obj.style.left = left + "px";
+                    obj.style.top = top + "px";
+
+                };
+
+                //為document綁定一個鼠標鬆開事件
+                document.onmouseup = function() {
+                    //3. 當鼠標鬆開時, 被拖拽元素固定在當前位置  onmouseup
+                    //取消 document 的 onmousemove 事件
+                    document.onmousemove = null;
+
+                    //取消 document 的 onmouseup 事件
+                    document.onmouseup = null;
+                    //當鼠標鬆開時, 取消對事件的捕獲
+                    obj.releaseCapture && obj.releaseCapture();
+                };
+
+                /*
+                 * 當我們拖拽一個網頁中的內容時, 瀏覽器會默認去搜索引擎中搜索內容,
+                 * 此時會導致拖拽功能的異常, 這個是瀏覽器提供的默認行為
+                 * 如果不希望發生這個行為, 則可以通過 return  false 來取消默認行為
+                 *
+                 * 但是這招對 IE8 不起作用
+                 */
+                return false;
+
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+
+    我是一段文字
+
+    <div id="box1"></div>
+
+    <div id="box2"></div>
+
+    <div id="box3"></div>
+
+    <img src="Rockefeller.jpg" id="img1" style="position: absolute;" />
+</body>
+
+</html>

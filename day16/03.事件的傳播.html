@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background-color: yellowgreen;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+        #box3 {
+            width: 150px;
+            height: 150px;
+            background-color: skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            /*
+             * 分別為三個 div 綁定單擊響應函數
+             */
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var box3 = document.getElementById("box3");
+
+            /*
+             * 事件的傳播 - 由內而外的傳播 - 例如：box3 =》box2 =》box1 
+             * - 關於事件的傳播網景公司和微軟公司有不同的理解 
+             * - 微軟公司認為事件應該是由內向外傳播, 也就是當事件觸發時, 應該先觸發當前元素上的事件
+             *    然後再向當前元素的祖先元素上傳播, 也就是說事件應該在冒泡階段執行 - 事件的冒泡 =》 由內而外的傳播 - 例如：box3 =》box2 =》box1 ！！！！！！！！！！！
+             *
+             *
+             * 網景公司認為事件應該是由外向內傳播的, 也就是當前事件觸發時, 應該先觸發當前元素的最外層的祖先元素的事件
+             *    然後再向內傳播給後代元素
+
+                 用於 IE8或以上和其他的瀏覽器
+             * - W3C綜合了兩個公司的方案, 將事件傳播分成了三個階段
+             *    1. 捕獲階段
+             *       - 在捕獲階段時從最外層的祖先元素, 向目標元素進行事件的捕獲, 但是默認此時不會觸發事件
+             *     =》（W3C默認是從 document 開始補獲，但是大部分瀏覽器都是從 window 開始，一層一層往裡面補獲，捕獲到你所點擊的那個目標！！！）
+             *     =》 所以當你點擊時，就會從最外面的 window 往裡面捕獲，捕獲到你所點擊的目標階段，就會停止。但是在捕獲過程當中是不會觸發事件！！！
+             *    2. 目標階段
+             *       - 事件捕獲到目標元素, 捕獲結束, 才開始在目標元素上執行事件
+             *    3. 冒泡階段
+             *       - 事件從目標元素向它的祖先元素傳遞, 依次觸發祖先元素上的事件
+             *
+             *
+             *       - 如果希望在捕獲階段就觸發事件, 可以將 addEventListener() 的第三個參數設置為 true
+             *           一般情況下我們不會希望在捕獲階段觸發事件, 所以這個參數一般都是 false
+             *
+             * - IE8及以下的瀏覽器中沒有捕獲階段!!!!!!!!!!
+             */
+
+            bind(box1, "click", function(){
+                alert("我是box1的響應函數");
+            });
+
+            bind(box2, "click", function(){
+                alert("我是box2的響應函數");
+            });
+
+            bind(box3, "click", function(){
+                alert("我是box3的響應函數");
+            });
+        };
+
+        function bind(obj, eventStr, callback) {
+
+            if (obj.addEventListener) {
+                //大部分瀏覽器兼容的方式
+                obj.addEventListener(eventStr, callback, true);
+                // 如果希望在捕獲階段就觸發事件, 可以將 addEventListener() 的第三個參數設置為 true！！！但是一般情況我們不用在捕獲階段觸發事件！！！
+                // =》一般情況下我們不會希望在捕獲階段觸發事件, 所以這個參數一般都是 false
+            } else {
+                /*
+                 * this 是誰由調用方式決定
+                 * callback.call(obj) // 這個 call(obj) 的方法是可以修改函數的 this
+                 */
+
+                //IE8 及以下瀏覽器兼容的方式
+                obj.attachEvent("on" + eventStr, function () {
+                    //在匿名函數 function(){} 中調用回調函數
+                    callback.call(obj); // callback.call(obj) 這樣就可以指定這個 this
+                });
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

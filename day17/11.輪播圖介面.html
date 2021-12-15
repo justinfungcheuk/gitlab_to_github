@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        /* 设置div容器 */
+        
+        #outer {
+            /* 设置高和宽,
+            虽然照片宽度是640px,但是imgList li设置了margin左右外边距为10px,
+            所以这里的宽度为640px + 左边距10px + 右边距10px,总共为660px */
+            width: 660px;
+            height: 400px;
+            /* 居中，第一个数字代表上下,auto代表左右 */
+            margin: 50px auto;
+            /* 设置背景颜色 */
+            background-color: greenyellow;
+            /* 这只padding，第一个数值代表上下，第二个数值代表左右*/
+            padding: 10px 0px;
+            /* 开启相对定位
+            子配置决定定位 ,父需要配置相对定位. */
+            position: relative;
+            /* 裁剪溢出的内容 */
+            overflow: hidden;
+        }
+        /* 設置 imgList */
+        
+        #imgList {
+            /* 去除項目符號 */
+            list-style: none;
+            /* 設置 ul 的寬度 */
+            /* width: 3300px; */
+            /* 開啟絕對定位  這是相對於對窗口的定位, 所以給予子元素開啟絕對定位, 最好同時給副元素開啟相對定位 position: relative*/
+            position: absolute;
+            /* 設置偏移量 */
+            /* 
+              * 每向左移動 660px, 就會顯示到下一張圖片
+              */
+            left: 0px;
+        }
+        /* 設置圖片中的 li */
+        
+        #imgList li {
+            /* 設置浮動 */
+            float: left;
+            /* 設置左右外邊距 */
+            margin: 0 10px;
+            /*上下是 0 左右是 10px */
+        }
+        /* 設置導航按鈕 */
+        
+        #navDiv {
+            /* 開啟絕對定位 */
+            position: absolute;
+            /* 設置位置 */
+            bottom: 15px;
+            /* 設置 left 值 
+                 outer 寬度 660
+                 navDiv寬度(width 15px + margin 5px = 25px) 25 * 5(一共有5張圖) = 125
+                  660 - 125 = 535/2 = 267.5
+             */
+            /* left: 267px; */
+        }
+        
+        #navDiv a {
+            /* 設置超連結浮動 */
+            float: left;
+            /* 設置超連結的寬和高 */
+            width: 15px;
+            height: 15px;
+            /* 設置背景顏色 */
+            background-color: red;
+            /* 設置左右外邊距 */
+            margin: 0 10px;
+            /* 設置透明 */
+            opacity: 0.5;
+            /* 兼容 IE8 透明 */
+            filter: alpha(opacity=50);
+        }
+        /* 設置鼠標移入的效果 */
+        
+        #navDiv a:hover {
+            background-color: black;
+        }
+    </style>
+
+    <!-- 引用工具 -->
+    <script type="text/javascript" src="tools.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var outer = document.getElementById('outer');
+            var imgList = document.getElementById('imgList');
+            var imgs = imgList.getElementsByTagName('img');
+            // 为防止增 删图片,因此元素imgList的宽度不应该写死,而是由图片的数量来决定宽度.
+            // 660为div容器660的宽度,乘以 imgs.length为图片的数量.
+            imgList.style.width = 660 * imgs.length + 'px';
+
+            // 设置导航按钮居中:
+            var navDiv = document.getElementById('navDiv');
+            // 设置navDiv的left值
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + 'px';
+
+
+            // 获取图片索引
+            var index = 0;
+            // 获得navDiv元素里所有的a元素
+            var allA = navDiv.getElementsByTagName('a');
+            // 设置默认选中效果
+            allA[index].style.backgroundColor = 'black';
+
+            /*
+             * 點擊超連結切換到指定的圖片
+             *     點擊第一個超連結, 顯示第一個圖片
+             *     點擊第二個超連結, 顯示第二個圖片
+             */
+
+            //為所有的超連結都綁定單擊響應函數
+            for (var i = 0; i < allA.length; i++) {
+
+                //為每一個超連結添加一個 num 屬性
+                //把索引作為對象的屬性去保存
+                allA[i].num = i; // allA[i] 代表所有每一個的超連結
+
+                //為超連結綁定單擊響應函數
+                allA[i].onclick = function() {
+
+                    //獲取點擊超連結的索引, 並將其設置為 index
+                    //alert(this.num); // this 代表的對象
+                    index = this.num; // 將這個 this.num 賦值給全局變量 var index = 0;
+
+                    //切換圖片
+                    /*
+                     * 第一張　0 left = 0
+                     * 第二張  1 -520
+                     * 第三張  2 -1040
+                     */
+                    //imgList.style.left = -660*index + "px";
+                    //設置選中的a
+                    setA();
+
+                    //使用 move 函數來切換圖片
+                    move(imgList, "left", -660 * index, 50, function() {
+                        //要執行動畫的對象是 imgList
+                        //要執行的動畫的屬性 "left"
+                        //要執行的動畫的目標 -660*index
+                        //要執行動畫時的速度 20
+                        //回調函數可以先寫上, 不一定用: function(){};
+                    });
+
+                };
+            };
+
+            //開啟自動切換圖片
+            autoChange();
+
+            //創建一個方法用來設置選中的 a
+            function setA() {
+
+                //遍歷所有的 a, 並將它們的背景顏色設置為紅色
+                for (var i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = "";
+                    // 空號 "" 的用途是可以把 backgroundColor 的樣式去掉, 去了以後就可以變成默認樣式
+                }
+
+                //將選中的 a 設置為黑色
+                allA[index].style.backgroundColor = "black";
+            };
+
+            //創建一個函數, 用來開啟自動切換圖片
+            function autoChange() {
+
+                //開啟一個定時器, 用來定時去切換圖片
+                setInterval(function() {
+
+                    //使索引自增
+                    index++;
+
+                    //判斷 index 的值
+                    index %= imgArr.length;
+
+                    //執行動畫, 切換圖片
+                    move(imgList, "left", -660 * index, 50, function() {
+                        //修改導航按鈕
+                        setA();
+                    });
+                }, 3000);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <!-- 創建一個外部的 div, 來作為大的容器 -->
+    <div id="outer">
+        <!-- 創建一個 ul, 用於放置圖片 -->
+        <ul id="imgList">
+            <li><img src="img/1_BillGates.jpg" /></li>
+            <li><img src="img/2_SteveJobs.jpg" /></li>
+            <li><img src="img/3_ElonMusk.jpg" /></li>
+            <li><img src="img/4_MarkZuckerberg.jpg" /></li>
+            <li><img src="img/5_SundarPichai.jpg" /></li>
+        </ul>
+        <!-- 創建導航按鈕 -->
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+
+</html>

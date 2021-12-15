@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        /*
+         * 使用字面量來創建正則表達式
+         * 語法: var 變量 = /正則表達式/匹配模式
+         *    使用字面量的方式創建更加簡單
+         *    使用構造函數更加靈活
+         *
+         */
+        //var reg = new RegExp("a","i");
+
+        var reg = /a/i;
+        // 以上兩個寫法是一樣的正則表達式
+
+        console.log(typeof reg);
+        console.log(reg.test("abc"));
+
+        //創建一個正則表達式, 檢查一個字符串中是否有 a 或 b
+        /*
+         * 使用 | 表示或者的意思
+         */
+        reg = /a|b|c/;
+
+        /*
+         * 創建一個正則表達式檢查一個字符串中是否有字母
+         */
+        reg = /a|b|c|d|e|f|g/;   
+
+        /*
+         * [] 中括號裡面的內容也是或的關係
+         * [ab] == a|b
+         * [a-z] 表示任意的小寫字母
+         * [A-Z] 表示任意的大寫字母
+         * [A-z] 表示任意的字母（小寫 及 大寫字母都可以）！！！！
+         * [0-9] 任意的數字
+         */
+        reg = /[A-z]/
+
+        //檢查一個字符串中是否含有 abc 或 adc 或 aec
+        //reg = /abc|adc|aec/
+        reg = /a[bde]c/
+
+        /*
+         * [^ ] 除了！！！！
+         */
+        reg = /[^ab]/;
+
+        reg = /[^0-9]/;
+
+        console.log(reg.test("a12312"));
+    </script>
+</head>
+
+</html>

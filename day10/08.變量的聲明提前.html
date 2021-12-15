@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+        // var a // 使用 var 關鍵字聲明的變量, 會在所有的代碼執行之前被聲明
+        /*z
+         * 變量的聲明提前
+         *  - 使用 var 關鍵字聲明的變量, 會在所有的代碼執行之前被聲明(但是不會賦值)
+         *    但是如果聲明變量時不使用 var 關鍵字, 則變量不會被聲明提前
+         * 
+         * 函數的聲明提前
+         *   - 使用函數聲明形式創建的函數 function 函數(){}
+         *     它會在所有的代碼執行之前就被創建, 所以我們可以在函數聲明前來調用
+         *     使用函數表達式創建的函數, 不會被聲明提前, 所以不能在聲明前調用
+         */
+
+        // console.log("a= "+a);
+
+        // var a = 123; // 不寫 var就是相當於 window.a = 123;
+
+        // fun();
+
+        // fun2(); // 直接擺在 var fun2之前會出現報錯
+
+        // 函數聲明, 會被提前創建
+        function fun() {
+            console.log("我是一個fun函數");
+        }
+
+        //函數表達式, 不會被提前創建
+        var fun2 = function() {
+            console.log("我是fun2函數");
+        };
+    </script>
+</head>
+
+</html>

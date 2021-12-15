@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <script type="text/javascript">
+
+            /*
+             * 瀏覽器在加載一個頁面時, 是按照自上向下的順序加載的
+             *   讀取到一行就運行一行
+             * 在代碼執行時, 頁面還沒有加載, 頁面沒有加載 DOM 對象也沒有加載
+             *   會導致無法獲取到 DOM 對象
+             */
+
+                
+
+                /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！1
+                 * onload 事件會在整個頁面加載完成之後才觸法
+                 * 為 window 綁定一個 onload 事件
+                 *           該事件對應的響應函數將會在頁面加載完成之後執行
+                 *           這樣可以確保我們的代碼執行時所有的 DOM 對象已經加載完畢了
+                 */
+                
+                window.onload = function(){ 
+                     // 所以該寫法 window.onload 就是可以確保這個 alert("hello") 的回調函數的代碼可以在整個頁面加載完成以後才執行
+                    //獲取 id 為 btn 的按鈕
+                var btn = document.getElementById("btn");
+                //為按鈕綁定一個單擊響應函數
+                btn.onclick = function(){
+                      alert("hello");
+                    }; 
+                };
+
+                
+        
+                </script>
+
+
+    </head>
+    <body>
+
+        <button id = "btn">點我一下</button>
+
+        <!-- <script type="text/javascript">
+
+             /*
+              * 將 JS 代碼編寫到頁面的下部就是為了, 可以在頁面加載完畢以後再執行 JS 代碼
+              */
+                //獲取 id 為 btn 的按鈕
+                 var btn = document.getElementById("btn");
+                //為按鈕綁定一個單擊響應函數
+                btn.onclick = function(){
+                      alert("hello");
+                };
+        
+                </script> -->
+
+
+
+    </body>
+</html>
