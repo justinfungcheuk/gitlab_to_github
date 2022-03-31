@@ -21,10 +21,10 @@
          */
 
          function fun(a,b) {
-            // console.log(arguments instanceof Array);
-            // console.log(Array.isArray(arguments)); //Array.isArray() 是可以檢查是不是一個Array
-            // console.log(arguments.length);
-            // console.log(arguments[1]);
+             console.log(arguments instanceof Array); // false
+             console.log(Array.isArray(arguments)); //Array.isArray() 是可以檢查是不是一個Array ----> false
+             console.log(arguments.length);
+             console.log(arguments[1]);
              console.log(arguments.callee == fun);
          }
          fun("hello",true); // fun()的括號裡面是傳遞實參 "hello", true

@@ -33,7 +33,7 @@
              * addEventListener()
              * - 通過這個方法也可以為元素綁定響應函數
              * - 參數: 包含 3個參數 - "click" , function(){}, 布爾值); 其中布爾值一般都是傳 false  ！！！重點！！！
-             *   第1個參數： 事件的字符串, 不要寫 on 要寫字符串 "click" 例如: 是 clieck 的編碼, 不要寫成 onclick
+             *   第1個參數： 事件的字符串, 不要寫 on 要寫字符串 "click" 例如: 是 click 的編碼, 不要寫成 onclick
              *   第2個參數： 回調函數, 當事件觸發時, 該函數會被調用    例如: function(){}  這個是回調函數
              *   第3個參數： 是否在捕獲階段觸發事件, 需要一個布爾值, 一般都傳 false
              *
@@ -85,7 +85,7 @@
             }); */ 
 
             bind(btn01, "click", function() {
-                alert(this); // 該 this 代表是
+                alert(this); // 該 this 代表 button， 因為你綁定了 btn01，而它是 button 這個元素的，所以你綁定誰 this 就是誰！！！！！！
             });
         };
 
@@ -111,7 +111,7 @@
             } else {
                 /*
                  * this 是誰由調用方式決定 (這裡的 this 是 window，所以它的底層是由函數形式調用的，所以是一個 window)
-                 * 因為它是由調用調用方式決定，只能通過更改該 callback 調用方式，
+                 * 因為它是由調用方式決定，只能通過更改該 callback 調用方式，
                  * 而由於該 函數callback 是由瀏覽器調用的，所以我們要控制它，把它更改為 callback.call(obj)
                  * callback.call(obj) // 這個 call(obj) 的方法是可以修改函數的 this
                  * 把調用回調函數的控制拿回來，而要怎麼拿回來呢？ 我們可以直接傳遞一個 匿名函數 function(){}，所以它會在 IE8 裡觸發匿名函數！！！

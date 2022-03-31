@@ -21,7 +21,7 @@
     <script type="text/javascript">
         window.onload = function() {
             /*
-             * 當鼠標在 areadiv 中移動時, 在 showMsg 中來顯示鼠標得座標
+             * 當鼠標在 areadiv 中移動時, 在 showMsg 中來顯示鼠標的座標
              */
             //獲取兩個 div
             var areaDiv = document.getElementById("areaDiv");
@@ -36,7 +36,7 @@
              *     在事件對象中封裝了當前事件相關的一切信息, 比如: 鼠標的座標 鍵盤那個按鍵被按下 鼠標滾輪滾動的方向...
              */
             areaDiv.onmousemove = function(event) { // (event) 是一個形參  
-                // alert(event);
+                 alert(event);
                 /*
                  * 在 IE8 中, 響應函數被觸發時, 瀏覽器不會傳遞事件對象
                  *  在 IE8 及以下的瀏覽器中, 是將事件對象作為 window 對象的屬性保存的

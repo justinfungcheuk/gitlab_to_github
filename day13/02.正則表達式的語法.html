@@ -38,7 +38,7 @@
 
          reg = /ab?c/;
 
-         //console.log(reg.test("abbc"));
+         console.log(reg.test("abbc"));
 
          /*
           * 檢查一個字符串中是否以 a 開頭
@@ -50,7 +50,7 @@
 
           reg = /a$/; // 匹配結尾的 a
 
-          //console.log(reg.test("abcabca"));
+          console.log(reg.test("abcabca"));
 
           /*
            * 如果在正則表達式中同時使用 ^ $ 則要求字符串必須完全符合正則表達式
@@ -58,7 +58,7 @@
           reg = /^a|a$/; // 要是使用 /^a$/ 則表示 只可以有一個 a 的存在！！！！！！！
           // 但是 使用以上寫法 /^a|a$/ 則可以同時以 a 開頭 或 以 a 結尾！！！！！！！！
 
-          // console.log(reg.test("aba"))
+          console.log(reg.test("aba"))
 
           /*
            * 創建一個正則表達式, 用來檢查一個字符串是否是一個合法的手機號
@@ -74,6 +74,11 @@
            */
 
            var phoneStr = "13067890123";
+           var phoneReg = /^1[3-9][0-9]{9}$/;
+           console.log(phoneReg.test(phoneStr));
+
+
+
 
            var phoneReg = /^1[3-9][0-9]{9}$/;
 

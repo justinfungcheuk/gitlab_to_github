@@ -27,15 +27,15 @@
           * - 數組中有幾個元素, 函數就會執行幾次, 每次執行時, 瀏覽器會將遍歷到的元素
           *     以實參的形式傳遞進來, 我們可以來定義形參, 來讀取這些內容
           * - 瀏覽器會在回調函數中傳遞三個參數:
-          *     第一個參數, 就是當前正在遍歷的元素
-          *     第二個參數, 就是當前正在遍歷的元素的索引
-          *     第三個參數, 就是正在遍歷的數組
+          *     第一個參數 - value, 就是當前正在遍歷的元素
+          *     第二個參數 - index, 就是當前正在遍歷的元素的索引
+          *     第三個參數 - obj,   就是正在遍歷的數組
           */
 
          arr.forEach(function(value , index, obj){
-             console.log(obj);
-             console.log(value);
-             console.log(index);
+            console.log(value);
+            console.log(index); 
+            console.log(obj);
          });
 
         </script>

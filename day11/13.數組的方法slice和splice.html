@@ -21,13 +21,13 @@
          */
 
         var result = arr.slice(0, 4);
-        console.log(result);
+        console.log(result); // "孫悟空", "豬八戒", "沙和尚", "唐僧"
 
         result = arr.slice(1);
-        console.log(result);
+        console.log(result); // "豬八戒", "沙和尚", "唐僧", "白骨精"
 
         result = arr.slice(1, -2);
-        console.log(result);
+        console.log(result); // "豬八戒", "沙和尚"
 
         /*
          * splice()  中文：拼接
@@ -44,7 +44,7 @@
         var result = arr.splice(1, 0, "牛魔王", "鐵扇公主", "紅孩兒");
         // 從索引的1 開始, 0就代表不刪除元素添加新的元素
         console.log(arr);
-        // console.log(result);
+        console.log(result); // "孫悟空", "牛魔王", "鐵扇公主", "紅孩兒", "豬八戒", "沙和尚", "唐僧", "白骨精"
     </script>
 </head>
 

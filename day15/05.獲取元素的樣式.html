@@ -52,20 +52,20 @@
                  * 通過 currentStyle 和 getComputerStyle()讀取到的樣式都是只讀的,
                  *     不能修改, 如果要修改必須通過 style 屬性
                  */
-                //var obj = getComputedStyle(box1, null);
+                var obj = getComputedStyle(box1, null);
 
-                //alert(getComputedStyle(box1, null).width);
+                alert(getComputedStyle(box1, null).width);
 
 
 
                 //正常瀏覽器的方式
-                //alert(getComputedStyle(box1, null).backgroundColor); // 如果沒有設置背景顏色是什麼，就會獲取背景顏色的默認值：transparent
+                alert(getComputedStyle(box1, null).backgroundColor); // 如果沒有設置背景顏色是什麼，就會獲取背景顏色的默認值：transparent
 
                 //IE8的方式
                 //alert(box1.currentStyle.backgroundColor);
 
                 // 
-                //alert(getStyle(box1, "width"));
+                alert(getStyle(box1, "width"));
 
                 var w = getStyle(box1, "width");
                 alert(w);

@@ -24,14 +24,14 @@
 
             var html = document.documentElement; // 保存的是 html 根標籤
 
-            //console.log(html);
+            console.log(html);
 
             /*
              * document.all 代表頁面中所有的元素
              */
             var all = document.all; 
 
-            //console.log(all.length); 
+            console.log(all.length); 
             /*
              打印所有元素的長度 =》6
              包括：
@@ -44,8 +44,8 @@
             } */
 
             // * 星星代表所有元素
-            //all = document.getElementsByTagName("*");
-            //console.log(all.length);
+            all = document.getElementsByTagName("*");
+            console.log(all.length);
 
             //以上兩種寫法是一樣的 var all = document.all; 和 all = document.getElementsByTagName("*");
             //但是, var all = document.all; 更簡單
@@ -55,8 +55,8 @@
              * getElementsByClassName( ) 可以根據 class 屬性值獲取一組元素節點對象
              *   但是該方法不支持 IE8 及以下的瀏覽器
              */
-            //var box1 = document.getElementsByClassName("box1"); // 根據 box1 獲取元素
-            //console.log(box1.length);
+            var box1 = document.getElementsByClassName("box1"); // 根據 box1 獲取元素
+            console.log(box1.length);
 
             //獲取頁面中的所有的 div
             var divs = document.getElementsByTagName("div");
@@ -73,8 +73,8 @@
 
             var box1 = document.querySelector(".box1");
 
-            //console.log(div.innerHTML);
-            //console.log(box1.innerHTML);
+            console.log(div.innerHTML);
+            console.log(box1.innerHTML);
 
             /*
              * document.querySelectorAll() -產生多個
@@ -82,6 +82,7 @@
              * - 即使符合條件的元素只有一個, 它也會返回數組
              */
             box1 = document.querySelectorAll(".box1"); // 類數組對象 [object NodeList]
+            console.log(box1);
             box1 = document.querySelectorAll("#box2");
             console.log(box1);
 

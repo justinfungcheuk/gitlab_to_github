@@ -29,10 +29,8 @@
             //判斷值是否合法
             if(scroe > 100 || scroe < 0 || isNaN(scroe)){
                 alert("There are something wrong");
-            }else{
-            
-            //根據scroe的值來決定給小明甚麼獎勵
-            if(scroe == 100){
+                //根據scroe的值來決定給小明甚麼獎勵
+            }else if(scroe == 100){
                 //獎勵一輛寶馬
                 alert("獎勵一輛寶馬");
             }else if(scroe >= 80){
@@ -44,7 +42,6 @@
             }else{
                 alert("WTF");
             }
-        }
 
         </script>
     </head>
