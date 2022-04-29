@@ -111,7 +111,7 @@
             } else {
                 /*
                  * this 是誰由調用方式決定 (這裡的 this 是 window，所以它的底層是由函數形式調用的，所以是一個 window)
-                 * 因為它是由調用方式決定，只能通過更改該 callback 調用方式，
+                 * 因為它是由調用識方式決定，只能通過更改該 callback 調用方式，
                  * 而由於該 函數callback 是由瀏覽器調用的，所以我們要控制它，把它更改為 callback.call(obj)
                  * callback.call(obj) // 這個 call(obj) 的方法是可以修改函數的 this
                  * 把調用回調函數的控制拿回來，而要怎麼拿回來呢？ 我們可以直接傳遞一個 匿名函數 function(){}，所以它會在 IE8 裡觸發匿名函數！！！
